@@ -145,6 +145,33 @@ export default async function CaseStudiesPage({
 
       <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
         <SectionHeading
+          eyebrow={content.caseStudies.startingPoints.eyebrow}
+          title={content.caseStudies.startingPoints.title}
+          description={content.caseStudies.startingPoints.description}
+          className="max-w-4xl"
+        />
+
+        <div className="grid gap-5 lg:grid-cols-3">
+          {content.caseStudies.startingPoints.items.map((item, index) => (
+            <FadeIn key={item.title}>
+              <Card
+                tone={index === 1 ? "strong" : "default"}
+                className="h-full"
+              >
+                <CardHeader>
+                  <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <BodyText>{item.description}</BodyText>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          ))}
+        </div>
+      </PageSection>
+
+      <PageSection containerClassName="space-y-10">
+        <SectionHeading
           eyebrow={content.caseStudies.catalog.eyebrow}
           title={content.caseStudies.catalog.title}
           description={content.caseStudies.catalog.description}

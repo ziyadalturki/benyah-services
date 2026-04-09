@@ -43,7 +43,10 @@ export function BookingShell({
   config,
   content,
 }: BookingShellProps) {
-  const contactHref = `${localizedPathname(locale, sitePaths.contact)}#lead-form`;
+  const contactHref = `${localizedPathname(
+    locale,
+    `${sitePaths.contact}?preferredNextStep=discovery-call`,
+  )}#lead-form`;
   const servicesHref = localizedPathname(locale, sitePaths.services);
 
   if (!config.enabled) {

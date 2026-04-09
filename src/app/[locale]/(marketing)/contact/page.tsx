@@ -19,6 +19,10 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { isLocale } from "@/i18n/config";
+import {
+  isPreferredNextStepValue,
+  isServiceNeededValue,
+} from "@/lib/contact-submission";
 import { createPageMetadata } from "@/lib/metadata";
 import { localizedPathname } from "@/lib/routes";
 import {
@@ -50,16 +54,33 @@ export async function generateMetadata({
 
 export default async function ContactPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
 
   if (!isLocale(locale)) {
     notFound();
   }
 
   const content = getMarketingContent(locale);
+  const serviceQuery = Array.isArray(resolvedSearchParams?.service)
+    ? resolvedSearchParams?.service[0]
+    : resolvedSearchParams?.service;
+  const nextStepQuery = Array.isArray(resolvedSearchParams?.preferredNextStep)
+    ? resolvedSearchParams?.preferredNextStep[0]
+    : resolvedSearchParams?.preferredNextStep;
+  const initialValues = {
+    serviceNeeded:
+      serviceQuery && isServiceNeededValue(serviceQuery) ? serviceQuery : undefined,
+    preferredNextStep:
+      nextStepQuery && isPreferredNextStepValue(nextStepQuery)
+        ? nextStepQuery
+        : undefined,
+  };
 
   const serviceOptions = [
     ...serviceSlugs.map((slug) => ({
@@ -152,6 +173,8 @@ export default async function ContactPage({
             content={content.contact.form}
             serviceOptions={serviceOptions}
             locale={locale}
+            showHeader={false}
+            defaultValues={initialValues}
           />
 
           <FadeIn>
@@ -191,16 +214,36 @@ export default async function ContactPage({
           className="max-w-4xl"
         />
 
-        <div className="surface-panel px-6 py-7 sm:px-7">
-          <div className="space-y-3">
-            {content.contact.trust.points.map((point) => (
-              <div
-                key={point}
-                className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
-              >
-                {point}
-              </div>
-            ))}
+        <div className="grid gap-5 lg:grid-cols-2">
+          <div className="surface-panel px-6 py-7 sm:px-7">
+            <p className="ui-label">{content.contact.trust.bestFitTitle}</p>
+            <BodyText className="mt-4">
+              {content.contact.trust.bestFitDescription}
+            </BodyText>
+            <div className="mt-5 space-y-3">
+              {content.contact.trust.bestFitPoints.map((point) => (
+                <div
+                  key={point}
+                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
+                >
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="surface-panel px-6 py-7 sm:px-7">
+            <p className="ui-label">{content.contact.trust.eyebrow}</p>
+            <div className="mt-4 space-y-3">
+              {content.contact.trust.points.map((point) => (
+                <div
+                  key={point}
+                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
+                >
+                  {point}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </PageSection>

@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 
 import {
+  isServiceSlug,
   serviceIcons,
   serviceSlugs,
   sitePaths,
-  type ServiceSlug,
 } from "@/config/site";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -38,10 +38,6 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
-}
-
-function isServiceSlug(slug: string): slug is ServiceSlug {
-  return serviceSlugs.includes(slug as ServiceSlug);
 }
 
 export async function generateMetadata({
@@ -284,12 +280,12 @@ export default async function ServiceDetailPage({
       <PageSection containerClassName="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
         <SectionHeading
           eyebrow={detail.process.eyebrow}
-          title={detail.process.title}
-          description={detail.process.description}
+          title={service.processTitle ?? detail.process.title}
+          description={service.processDescription ?? detail.process.description}
         />
 
         <div className="grid gap-5 md:grid-cols-2">
-          {detail.process.steps.map((step, index) => (
+          {(service.processSteps ?? detail.process.steps).map((step, index) => (
             <FadeIn key={step.step}>
               <Card
                 tone={index === 1 ? "strong" : "default"}
@@ -354,28 +350,28 @@ export default async function ServiceDetailPage({
 
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
             <TrackedLink
-              href={localizedPathname(locale, "/contact")}
+              href={localizedPathname(locale, sitePaths.book)}
               trackingEvent={createCtaClickedEvent({
                 locale,
                 page: "service_detail",
                 placement: "final_primary",
-                label: content.ctas.contact,
-                destination: "contact",
+                label: content.ctas.primary,
+                destination: "book",
                 ctaType: "primary",
                 serviceSlug: slug,
               })}
               className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
             >
-              {content.ctas.contact}
+              {content.ctas.primary}
             </TrackedLink>
             <TrackedLink
-              href={localizedPathname(locale, sitePaths.book)}
+              href={localizedPathname(locale, sitePaths.contact)}
               trackingEvent={createCtaClickedEvent({
                 locale,
                 page: "service_detail",
                 placement: "final_secondary",
-                label: content.ctas.primary,
-                destination: "book",
+                label: content.ctas.contact,
+                destination: "contact",
                 ctaType: "secondary",
                 serviceSlug: slug,
               })}
@@ -384,7 +380,7 @@ export default async function ServiceDetailPage({
                 "w-full bg-background/80 sm:w-auto",
               )}
             >
-              {content.ctas.primary}
+              {content.ctas.contact}
             </TrackedLink>
           </div>
         </div>

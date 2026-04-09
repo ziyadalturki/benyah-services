@@ -66,6 +66,16 @@ type LeadFormProps = {
   locale?: Locale;
   formId?: string;
   endpoint?: string;
+  showHeader?: boolean;
+  defaultValues?: Partial<{
+    name: string;
+    companyName: string;
+    email: string;
+    phoneOrWhatsApp: string;
+    serviceNeeded: string;
+    projectBrief: string;
+    preferredNextStep: string;
+  }>;
 };
 
 export function LeadForm({
@@ -74,6 +84,8 @@ export function LeadForm({
   locale,
   formId = "lead-form",
   endpoint = "/api/contact",
+  showHeader = true,
+  defaultValues,
 }: LeadFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [pending, setPending] = useState(false);
@@ -169,10 +181,12 @@ export function LeadForm({
 
   return (
     <Card tone="strong" className="h-full">
-      <CardHeader className="space-y-3">
-        <CardTitle className="text-[1.7rem]">{content.title}</CardTitle>
-        <BodyText>{content.description}</BodyText>
-      </CardHeader>
+      {showHeader ? (
+        <CardHeader className="space-y-3">
+          <CardTitle className="text-[1.7rem]">{content.title}</CardTitle>
+          <BodyText>{content.description}</BodyText>
+        </CardHeader>
+      ) : null}
       <CardContent className="space-y-6">
         {statusCopy ? (
           <div
@@ -217,6 +231,7 @@ export function LeadForm({
                 }
                 autoComplete="name"
                 dir="auto"
+                defaultValue={defaultValues?.name ?? ""}
                 placeholder={content.placeholders.name}
                 required
               />
@@ -240,6 +255,7 @@ export function LeadForm({
                 }
                 autoComplete="organization"
                 dir="auto"
+                defaultValue={defaultValues?.companyName ?? ""}
                 placeholder={content.placeholders.company}
                 required
               />
@@ -265,6 +281,7 @@ export function LeadForm({
                 }
                 autoComplete="email"
                 dir="ltr"
+                defaultValue={defaultValues?.email ?? ""}
                 placeholder={content.placeholders.email}
                 type="email"
                 inputMode="email"
@@ -290,6 +307,7 @@ export function LeadForm({
                 }
                 autoComplete="tel"
                 dir="ltr"
+                defaultValue={defaultValues?.phoneOrWhatsApp ?? ""}
                 placeholder={content.placeholders.phone}
                 type="tel"
                 inputMode="tel"
@@ -314,7 +332,7 @@ export function LeadForm({
                     ? getFieldMessageId("serviceNeeded")
                     : undefined
                 }
-                defaultValue=""
+                defaultValue={defaultValues?.serviceNeeded ?? ""}
                 required
               >
                 <option value="" disabled>
@@ -344,7 +362,7 @@ export function LeadForm({
                     ? getFieldMessageId("preferredNextStep")
                     : undefined
                 }
-                defaultValue=""
+                defaultValue={defaultValues?.preferredNextStep ?? ""}
               >
                 <option value="" disabled>
                   {content.placeholders.nextStepPrompt}
@@ -375,6 +393,7 @@ export function LeadForm({
                   : undefined
               }
               placeholder={content.placeholders.brief}
+              defaultValue={defaultValues?.projectBrief ?? ""}
               className="min-h-44"
               dir="auto"
               minLength={20}

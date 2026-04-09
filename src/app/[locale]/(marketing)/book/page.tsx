@@ -79,7 +79,10 @@ export default async function BookingPage({
           label: content.book.heroPrimaryAction,
         }}
         secondaryAction={{
-          href: `${localizedPathname(locale, sitePaths.contact)}#lead-form`,
+          href: `${localizedPathname(
+            locale,
+            `${sitePaths.contact}?preferredNextStep=discovery-call`,
+          )}#lead-form`,
           label: content.book.heroSecondaryAction,
         }}
         supportingLine={content.book.supportingLine}

@@ -14,12 +14,20 @@ export const serviceSlugs = [
   "automation",
   "websites",
   "booking-workflows",
-  "cafm-cmms",
-  "n8n-automations",
-  "saas-tools",
+  "facility-maintenance-management",
+  "workflow-systems-automation",
+  "business-systems",
 ] as const;
 
 export type ServiceSlug = (typeof serviceSlugs)[number];
+
+export const legacyServiceSlugRedirects = {
+  "cafm-cmms": "facility-maintenance-management",
+  "n8n-automations": "workflow-systems-automation",
+  "saas-tools": "business-systems",
+} as const satisfies Record<string, ServiceSlug>;
+
+export type LegacyServiceSlug = keyof typeof legacyServiceSlugRedirects;
 
 export const sitePaths = {
   home: "/",
@@ -33,7 +41,7 @@ export const sitePaths = {
 export const siteConfig = {
   name: "Benyah",
   description:
-    "Premium websites, automation, booking workflows, CAFM/CMMS solutions, n8n automations, and internal tools for small businesses.",
+    "Premium websites, automation, booking and AI call workflows, facility and maintenance management solutions, workflow automation, and internal systems for small businesses.",
   defaultLocale,
   locales,
 } as const;
@@ -42,9 +50,9 @@ export const serviceIcons: Record<ServiceSlug, LucideIcon> = {
   automation: WorkflowIcon,
   websites: Globe2Icon,
   "booking-workflows": CalendarRangeIcon,
-  "cafm-cmms": Building2Icon,
-  "n8n-automations": WaypointsIcon,
-  "saas-tools": BlocksIcon,
+  "facility-maintenance-management": Building2Icon,
+  "workflow-systems-automation": WaypointsIcon,
+  "business-systems": BlocksIcon,
 };
 
 export const staticMarketingPaths = [
@@ -61,6 +69,26 @@ export function getMarketingPaths() {
     ...staticMarketingPaths,
     ...serviceSlugs.map((slug) => `${sitePaths.services}/${slug}`),
   ];
+}
+
+export function isServiceSlug(value: string): value is ServiceSlug {
+  return serviceSlugs.includes(value as ServiceSlug);
+}
+
+export function isLegacyServiceSlug(value: string): value is LegacyServiceSlug {
+  return value in legacyServiceSlugRedirects;
+}
+
+export function getCanonicalServiceSlug(value: string) {
+  if (isServiceSlug(value)) {
+    return value;
+  }
+
+  if (isLegacyServiceSlug(value)) {
+    return legacyServiceSlugRedirects[value];
+  }
+
+  return null;
 }
 
 export function getSiteUrl() {
