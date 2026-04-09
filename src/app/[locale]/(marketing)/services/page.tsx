@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { serviceIcons, serviceSlugs, type ServiceSlug } from "@/config/site";
+import {
+  serviceIcons,
+  serviceSlugs,
+  sitePaths,
+  type ServiceSlug,
+} from "@/config/site";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PageSection } from "@/components/marketing/section";
@@ -17,8 +24,16 @@ import { FadeIn } from "@/components/motion/fade-in";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { isLocale } from "@/i18n/config";
+import {
+  createCtaClickedEvent,
+  createServiceDetailSelectedEvent,
+} from "@/lib/analytics-events";
 import { createPageMetadata } from "@/lib/metadata";
 import { localizedPathname } from "@/lib/routes";
+import {
+  createBreadcrumbJsonLd,
+  createWebPageJsonLd,
+} from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 function getServiceDetailHref(locale: "en" | "ar", slug: ServiceSlug) {
@@ -61,13 +76,36 @@ export default async function ServicesPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          createWebPageJsonLd({
+            locale,
+            pathname: sitePaths.services,
+            title: content.services.title,
+            description: content.services.description,
+            type: "CollectionPage",
+          }),
+          createBreadcrumbJsonLd(locale, [
+            { name: content.navigation[0].label, pathname: sitePaths.home },
+            { name: content.navigation[1].label, pathname: sitePaths.services },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={content.services.eyebrow}
         title={content.services.title}
         description={content.services.description}
         primaryAction={{
-          href: localizedPathname(locale, "/contact"),
+          href: localizedPathname(locale, sitePaths.book),
           label: content.ctas.primary,
+          trackingEvent: createCtaClickedEvent({
+            locale,
+            page: "services",
+            placement: "hero_primary",
+            label: content.ctas.primary,
+            destination: "book",
+            ctaType: "primary",
+          }),
         }}
         secondaryAction={{
           href: "#services-grid",
@@ -124,12 +162,18 @@ export default async function ServicesPage({
                 key={slug}
                 title={service.title}
                 summary={service.summary}
-                bullets={service.outcomes}
+                bullets={service.capabilities}
                 href={getServiceDetailHref(locale, slug)}
                 icon={serviceIcons[slug]}
                 badgeLabel={content.services.labels.serviceBadge}
                 actionLabel={content.services.labels.serviceAction}
                 bulletsLabel={content.services.labels.serviceSupportLabel}
+                trackingEvent={createServiceDetailSelectedEvent({
+                  locale,
+                  source: "services_overview",
+                  serviceSlug: slug,
+                  serviceTitle: service.title,
+                })}
               />
             );
           })}
@@ -194,12 +238,20 @@ export default async function ServicesPage({
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-            <Link
-              href={localizedPathname(locale, "/contact")}
+            <TrackedLink
+              href={localizedPathname(locale, sitePaths.book)}
+              trackingEvent={createCtaClickedEvent({
+                locale,
+                page: "services",
+                placement: "final_primary",
+                label: content.ctas.primary,
+                destination: "book",
+                ctaType: "primary",
+              })}
               className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
             >
               {content.ctas.primary}
-            </Link>
+            </TrackedLink>
             <Link
               href={localizedPathname(locale, "/case-studies")}
               className={cn(

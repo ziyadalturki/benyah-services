@@ -67,6 +67,11 @@ type MarketingContent = {
   meta: {
     description: string;
     languageSwitcherLabel: string;
+    primaryNavigationLabel: string;
+    openNavigationLabel: string;
+    closeNavigationLabel: string;
+    mobileNavigationTitle: string;
+    mobileNavigationDescription: string;
   };
   navigation: NavigationItem[];
   ctas: {
@@ -77,6 +82,7 @@ type MarketingContent = {
   footer: {
     strapline: string;
     note: string;
+    navigationLabel: string;
   };
   home: {
     eyebrow: string;
@@ -220,6 +226,40 @@ type MarketingContent = {
       secondaryAction: string;
     };
   };
+  book: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    supportingLine: string;
+    highlightsLabel: string;
+    highlights: string[];
+    heroPrimaryAction: string;
+    heroSecondaryAction: string;
+    covers: HomeSection & {
+      items: Principle[];
+    };
+    audience: HomeSection & {
+      items: Principle[];
+    };
+    booking: HomeSection & {
+      shell: {
+        configuredBadge: string;
+        configuredTitle: string;
+        configuredDescription: string;
+        configuredAction: string;
+        configuredNote: string;
+        fallbackBadge: string;
+        fallbackTitle: string;
+        fallbackDescription: string;
+        fallbackPrimaryAction: string;
+        fallbackSecondaryAction: string;
+        fallbackNote: string;
+      };
+    };
+    reassurance: HomeSection & {
+      points: string[];
+    };
+  };
   contact: {
     eyebrow: string;
     title: string;
@@ -287,8 +327,14 @@ export const marketingContent: Record<Locale, MarketingContent> = {
   en: {
     meta: {
       description:
-        "Benyah builds premium websites, automation, booking workflows, business systems, CAFM/CMMS solutions, n8n automations, and internal tools for small businesses.",
+        "Benyah builds premium websites, automation, booking and AI call workflows, facility and maintenance management systems, business systems, and internal tools for small businesses.",
       languageSwitcherLabel: "Switch language",
+      primaryNavigationLabel: "Primary navigation",
+      openNavigationLabel: "Open navigation",
+      closeNavigationLabel: "Close navigation",
+      mobileNavigationTitle: "Navigation",
+      mobileNavigationDescription:
+        "Lean site navigation with a single primary action.",
     },
     navigation: [
       { href: "/", label: "Home" },
@@ -306,18 +352,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       strapline:
         "Premium websites, workflows, and systems designed for better small-business operations.",
       note: "Built for businesses that want more structure, more clarity, and less operational friction.",
+      navigationLabel: "Navigation",
     },
     home: {
       eyebrow: "Benyah",
       title: "The digital foundation for better business operations.",
       description:
-        "Benyah helps small businesses run with more structure through websites, automations, booking workflows, business systems, CAFM/CMMS solutions, n8n automations, and internal tools.",
+        "Benyah helps small businesses run with more structure through websites, automation solutions, booking & AI call workflows, facility & maintenance management solutions, workflow & systems automation, and internal tools.",
       supportingLine:
         "Built for businesses that have outgrown fragmented tools, manual handoffs, and unclear systems.",
       highlightsLabel: "What Benyah Covers",
       highlights: [
         "Premium websites that build trust and generate the right enquiries",
-        "Automations and booking workflows that reduce manual coordination",
+        "Automation and booking-call workflows that reduce manual coordination",
         "Operational systems and internal tools built around real processes",
       ],
       labels: {
@@ -736,92 +783,92 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           ],
         },
         "booking-workflows": {
-          title: "Booking Workflows",
+          title: "Booking & AI Call Workflows",
           summary:
-            "Structured booking systems that manage scheduling, confirmations, reminders, intake, and internal handoff with less friction.",
+            "Structured booking and AI-assisted call workflows for scheduling, confirmations, reminders, intake, internal handoff, and fewer no-shows.",
           heroSupportingLine:
-            "Best for businesses where booking quality directly affects customer experience, team readiness, and daily capacity.",
+            "Best for businesses where booking quality, call handling, and team readiness directly affect conversion, service quality, and daily capacity.",
           intro:
-            "Booking Workflows turn scheduling from a patchwork of steps into a dependable service process. Benyah designs the logic around booking rules, client intake, confirmations, reminders, and what the team needs internally before delivery begins.",
+            "Booking & AI Call Workflows turn scheduling and inbound call handling into a more dependable service process. Benyah structures availability, confirmations, reminders, intake, internal handoff, and AI-assisted call handling where appropriate so clients get a smoother path in and the team gets cleaner information out.",
           capabilities: [
-            "Booking rules, availability, and intake steps",
-            "Confirmation, reminder, and follow-up flows",
-            "Internal notifications and service handoff logic",
+            "Scheduling logic, booking rules, confirmations, and reminders",
+            "Intake steps, pre-visit information capture, and reduced no-show flows",
+            "Internal handoff and AI-assisted call handling where it improves response quality",
           ],
           outcomes: [
-            "Fewer missed steps and no-shows",
-            "Smoother customer experience",
-            "Better-prepared internal delivery",
+            "Smoother scheduling and fewer missed steps",
+            "Lower no-show risk and better client preparation",
+            "Cleaner internal handoff after each booking or call",
           ],
           problems: [
             {
-              title: "Back-and-forth scheduling",
+              title: "Back-and-forth scheduling and missed calls",
               description:
-                "Clients and staff spend too much time resolving availability, correcting details, or managing avoidable scheduling confusion.",
+                "Clients and staff spend too much time resolving availability, returning calls, correcting details, or managing avoidable booking confusion.",
             },
             {
               title: "Missing reminders or incomplete intake",
               description:
-                "The business lacks a dependable system for confirmations, reminders, forms, or pre-appointment information collection.",
+                "The business lacks a dependable system for confirmations, reminders, pre-appointment forms, or collecting the right information before service begins.",
             },
             {
-              title: "Weak preparation after booking",
+              title: "Weak handoff after booking or call",
               description:
-                "The booking is made, but the internal team does not receive the right information or next-step trigger at the right time.",
+                "An appointment or inbound call happens, but the internal team does not receive the right information, trigger, or preparation step at the right time.",
             },
           ],
           audience: [
             {
-              title: "Appointment-based businesses",
+              title: "Appointment-based businesses with real scheduling pressure",
               description:
-                "A strong fit for businesses where booking is central to revenue, scheduling quality, and client experience.",
+                "A strong fit for businesses where booking quality and response handling directly affect revenue, conversion, and client experience.",
             },
             {
-              title: "Teams that prepare work after a booking is made",
+              title: "Teams that need intake and preparation after each booking",
               description:
-                "Useful when bookings trigger intake review, staffing, reminders, preparation steps, or additional internal coordination.",
+                "Useful when bookings trigger intake review, reminders, staffing, preparation steps, or additional internal coordination before delivery begins.",
             },
             {
-              title: "Operators treating booking as part of operations",
+              title: "Businesses that want calls and bookings feeding operations cleanly",
               description:
-                "Best when scheduling affects service readiness, capacity planning, and day-to-day workflow, not just calendar availability.",
+                "Best when scheduling, inbound calls, and follow-up need to feed service readiness, capacity planning, and day-to-day workflow cleanly.",
             },
           ],
           faqs: [
             {
-              question: "Can you work with our current booking platform?",
+              question: "Can you work with our current booking platform or phone setup?",
               answer:
-                "Usually yes. The first step is understanding the current setup and deciding whether it should be improved, connected, or replaced.",
+                "Usually yes. The first step is understanding the current booking and call flow, then deciding whether it should be improved, connected, or partially replaced.",
             },
             {
-              question: "Do you handle reminders, confirmations, and intake too?",
+              question: "Does this include reminders, intake, and AI-assisted call handling?",
               answer:
-                "Yes. Booking quality depends on the communication and preparation around it, so reminders, confirmations, intake steps, and internal notifications can be designed together.",
+                "Yes, where it makes operational sense. Reminders, confirmations, intake steps, internal notifications, and AI-assisted call handling can be structured together so the process feels consistent instead of fragmented.",
             },
             {
               question: "Is this only useful for high-volume booking businesses?",
               answer:
-                "No. Even modest booking volume can create real friction when the process is inconsistent, manual, or poorly connected to delivery.",
+                "No. Even moderate booking volume can create real friction when the process is inconsistent, manual, or poorly connected to service delivery and internal preparation.",
             },
           ],
         },
         "cafm-cmms": {
-          title: "CAFM / CMMS Solutions",
+          title: "Facility & Maintenance Management Solutions",
           summary:
-            "Structured CAFM / CMMS solutions for assets, work orders, service records, and clearer facilities control.",
+            "Structured facility and maintenance systems for work orders, service records, asset visibility, and contractor coordination.",
           heroSupportingLine:
-            "Best for facilities and maintenance operations that need better visibility, coordination, and operational record-keeping.",
+            "Best for small to mid-sized facilities and maintenance operations that need better visibility, coordination, and operational control.",
           intro:
-            "CAFM / CMMS Solutions give facilities-led businesses a clearer system for managing assets, requests, work orders, service history, and reporting. Benyah focuses on practical operational structure so teams can see what is open, what is due, what has been completed, and where attention is needed.",
+            "Facility & Maintenance Management Solutions give small to mid-sized businesses a clearer operating system for assets, work orders, service records, contractor coordination, and reporting. Benyah can implement and structure Computerized Maintenance Management System (CMMS) setups, Computer-Aided Facility Management (CAFM) approaches, asset management tools, and contractor management workflows around the way the operation actually runs.",
           capabilities: [
-            "Asset, location, and record structure",
-            "Work order and request workflows",
-            "Oversight dashboards and reporting views",
+            "Facility and maintenance system structure for assets, sites, and service records",
+            "Work order, request handling, and contractor coordination workflows",
+            "Asset visibility, reporting views, and operational oversight",
           ],
           outcomes: [
-            "Better control over service activity",
-            "Cleaner maintenance records",
-            "Stronger operational visibility",
+            "Clearer control over maintenance activity",
+            "More dependable service records and asset visibility",
+            "Better coordination across internal teams and contractors",
           ],
           problems: [
             {
@@ -830,68 +877,68 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "Maintenance requests are moving through email, calls, spreadsheets, or separate tools with no dependable single view.",
             },
             {
-              title: "Incomplete service history and asset records",
+              title: "Incomplete service history and weak asset visibility",
               description:
-                "Teams cannot easily see what has been done, what is recurring, or how a specific asset or site has been serviced over time.",
+                "Teams cannot easily see what has been done, what is recurring, or how a specific asset, location, or contractor history should be tracked over time.",
             },
             {
-              title: "Limited operational oversight",
+              title: "Limited oversight across contractors and recurring work",
               description:
-                "Managers lack a clean view across workload, completion status, contractor activity, response times, or recurring issues.",
+                "Managers lack a clean view across workload, completion status, contractor activity, recurring work, response times, or recurring issues.",
             },
           ],
           audience: [
             {
-              title: "Facilities and maintenance teams",
+              title: "Small to mid-sized facilities and maintenance teams",
               description:
-                "A strong fit for teams that need more control over requests, assets, work status, and service delivery quality.",
+                "A strong fit for teams that need better control over requests, assets, work status, contractor coordination, and service delivery quality.",
             },
             {
-              title: "Property and site operations",
+              title: "Property, site, and service-led operations",
               description:
-                "Useful where multiple sites, assets, service providers, or internal stakeholders need a clearer operational structure.",
+                "Useful where multiple sites, assets, service providers, or internal stakeholders need a clearer structure around work orders, records, and day-to-day service coordination.",
             },
             {
-              title: "Businesses moving beyond informal tracking",
+              title: "Businesses moving beyond spreadsheets and informal tracking",
               description:
                 "Ideal when maintenance activity is still being managed through spreadsheets, email, or ad hoc request handling.",
             },
           ],
           faqs: [
             {
-              question: "Does this need a large enterprise CMMS to be worthwhile?",
+              question: "Does this need a large enterprise platform to be worthwhile?",
               answer:
-                "No. The right setup depends on the scale and complexity of the operation. Many businesses get better value from a focused, well-structured system than from an oversized platform.",
+                "No. The right setup depends on the scale and complexity of the operation. Many small to mid-sized businesses get better value from a focused, well-structured system than from an oversized platform.",
+            },
+            {
+              question: "Can this include CMMS, CAFM, asset management, and contractor workflows?",
+              answer:
+                "Yes. The service can cover Computerized Maintenance Management System (CMMS) structures, Computer-Aided Facility Management (CAFM) workflows, asset management tools, and contractor coordination, depending on what the operation actually needs.",
             },
             {
               question: "Can we start with requests or work orders before expanding?",
               answer:
                 "Yes. It is often better to begin with the highest-friction part of the operation, then expand once the process and record structure are clear.",
             },
-            {
-              question: "Can the setup reflect our process and reporting needs?",
-              answer:
-                "Yes. Benyah shapes the setup around the actual operating model so the system supports the team instead of forcing the team into the wrong structure.",
-            },
           ],
         },
         "n8n-automations": {
-          title: "n8n Automations",
+          title: "Workflow & Systems Automation",
           summary:
-            "Flexible n8n automations for connected tools, webhook-based workflows, and more controlled process execution.",
+            "Connected workflow and systems automation for webhooks, API integrations, internal process execution, and cleaner data flow.",
           heroSupportingLine:
-            "Best for businesses that need deeper integrations, more flexible workflow logic, and cleaner data movement between systems.",
+            "Best for businesses that need deeper workflow control, more reliable integrations, and connected systems that work together properly.",
           intro:
-            "n8n Automations are designed for workflows that need more control than basic automation tools usually allow. Benyah uses n8n to connect systems, handle webhooks and APIs, move data cleanly, and shape logic around the way the business actually operates.",
+            "Workflow & Systems Automation is for businesses that need more than basic task automation. Benyah can design and implement automation across n8n, webhook-based workflows, API integrations, connected business systems, and internal process automation so data, decisions, and actions move in the right order.",
           capabilities: [
-            "Webhook and API-driven workflows",
-            "Cross-system data movement and sync logic",
-            "Flexible branching, conditions, and process orchestration",
+            "n8n workflows, webhook handling, and API integrations",
+            "Connected system logic across forms, CRMs, internal tools, and operations platforms",
+            "Internal process automation, branching rules, and orchestration",
           ],
           outcomes: [
-            "More connected business systems",
-            "Faster, cleaner process execution",
-            "Less manual data handling",
+            "More connected systems and cleaner handoffs",
+            "Faster internal process execution",
+            "Less manual movement of data and status",
           ],
           problems: [
             {
@@ -905,43 +952,43 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "Information is being copied manually or passing inconsistently between systems, which leads to duplication, stale data, and avoidable errors.",
             },
             {
-              title: "Brittle integrations as complexity grows",
+              title: "Disconnected systems and brittle logic as complexity grows",
               description:
-                "The business needs connected systems, but the current setup cannot support the required webhook, API, or logic depth reliably.",
+                "The business needs connected systems, but the current setup cannot support the required webhook, API, internal process automation, or logic depth reliably.",
             },
           ],
           audience: [
             {
-              title: "Businesses using several SaaS tools",
+              title: "Businesses using several SaaS and internal tools",
               description:
                 "A strong fit when forms, CRMs, internal tools, and other systems need deeper integration and more reliable data movement.",
             },
             {
-              title: "Teams relying on webhooks, APIs, or custom logic",
+              title: "Teams relying on webhooks, APIs, or cross-system logic",
               description:
-                "Useful when the process needs more precision than a basic rule-based no-code tool can comfortably support.",
+                "Useful when the process needs more precision than a basic rule-based automation setup can comfortably support.",
             },
             {
-              title: "Operators who want flexible automation without enterprise overhead",
+              title: "Operators who want deeper automation without enterprise overhead",
               description:
                 "Best when the business wants automation that can evolve thoughtfully as process design becomes more structured.",
             },
           ],
           faqs: [
             {
-              question: "Why use n8n instead of a simpler automation tool?",
+              question: "Is this service limited to n8n?",
               answer:
-                "Because it offers more flexibility where the workflow needs custom logic, cleaner orchestration, or broader integration options. It is chosen where that extra control genuinely matters.",
+                "No. n8n can be part of the stack, but the service is about the workflow outcome. Benyah can structure webhook-based workflows, API integrations, connected business systems, and internal process automation using the right approach for the job.",
             },
             {
-              question: "Can n8n work with the systems we already use?",
+              question: "Can this work with the systems we already use?",
               answer:
                 "Usually yes, as long as those systems provide workable access points such as APIs, webhooks, or supported connectors.",
             },
             {
-              question: "Is n8n only suitable for technical businesses?",
+              question: "When is this better than a simpler automation setup?",
               answer:
-                "No. What matters is that the workflow is designed clearly and owned properly. The technical layer should support the business, not become an obstacle to it.",
+                "When the workflow needs deeper logic, cleaner orchestration, stronger integrations, or more reliable movement between business systems. The aim is not more complexity. It is better control where the process genuinely needs it.",
             },
           ],
         },
@@ -1037,7 +1084,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         description:
           "Benyah helps small businesses bring more order to the parts of the business that usually become disconnected over time.",
         body:
-          "The work spans websites, automation, booking workflows, CAFM / CMMS, n8n automations, business systems, and internal tools. The goal is not to add technology for its own sake. It is to create a stronger foundation for how the business presents itself, runs internally, and delivers day to day.",
+          "The work spans websites, automation, booking & AI call workflows, facility & maintenance management solutions, workflow & systems automation, business systems, and internal tools. The goal is not to add technology for its own sake. It is to create a stronger foundation for how the business presents itself, runs internally, and delivers day to day.",
         asideEyebrow: "Meaning",
         asideTitle:
           "Benyah relates to structure, foundation, and connected systems.",
@@ -1206,12 +1253,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       items: [
         {
-          title: "Booking Workflow Setup",
-          sector: "Booking Systems",
+          title: "Booking & AI Call Workflow Setup",
+          sector: "Booking & Call Workflows",
           summary:
-            "A structured booking setup for service businesses where appointment flow, reminders, and internal readiness need to work together cleanly.",
+            "A structured booking and call-handling setup for service businesses where scheduling, reminders, intake, and internal readiness need to work together cleanly.",
           addressed:
-            "Scheduling rules, confirmations, reminder flow, intake steps, and the handoff from booking into delivery.",
+            "Scheduling rules, confirmations, reminder flow, intake steps, AI-assisted call handling where appropriate, and the handoff from booking into delivery.",
           outcome:
             "Cleaner client experience, fewer missed steps, and better-prepared service delivery.",
           scope:
@@ -1242,12 +1289,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             "Focused implementation or website rebuild with conversion structure.",
         },
         {
-          title: "CAFM / CMMS Operational Setup",
-          sector: "CAFM / CMMS",
+          title: "Facility & Maintenance Management Setup",
+          sector: "Facility & Maintenance Management",
           summary:
-            "A structured facilities setup for handling assets, work orders, service records, and operational oversight more cleanly.",
+            "A structured facility and maintenance setup for handling assets, work orders, service records, contractor coordination, and operational oversight more cleanly.",
           addressed:
-            "Request flow, asset structure, work order status, reporting visibility, and day-to-day coordination across maintenance activity.",
+            "Request flow, asset structure, work order status, service records, reporting visibility, and day-to-day coordination across maintenance activity.",
           outcome:
             "Better operational control, cleaner records, and clearer visibility across facilities work.",
           scope:
@@ -1266,16 +1313,16 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             "Focused implementation or system setup around a high-friction internal process.",
         },
         {
-          title: "n8n Integration Workflow",
-          sector: "n8n Automations",
+          title: "Workflow & Systems Automation Build",
+          sector: "Workflow & Systems Automation",
           summary:
-            "A connected n8n workflow designed for businesses that need more control over integrations, logic, and cross-system execution.",
+            "A connected automation build designed for businesses that need more control over integrations, logic, and cross-system execution.",
           addressed:
-            "Webhook and API coordination, data movement between tools, and automation logic beyond basic rule-based setups.",
+            "n8n workflows, webhook and API coordination, data movement between tools, and automation logic beyond basic rule-based setups.",
           outcome:
             "More connected systems, cleaner data flow, and faster process execution.",
           scope:
-            "Integration workflow or deeper automation build using n8n.",
+            "Integration workflow or deeper workflow automation build.",
         },
       ],
       engagements: {
@@ -1315,11 +1362,122 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         secondaryAction: "Explore Services",
       },
     },
+    book: {
+      eyebrow: "Discovery Call",
+      title: "A focused first conversation for structure, scope, and the right next step.",
+      description:
+        "The Benyah discovery call is for understanding how the business works today, where the friction sits, and whether the next step is a website, workflow improvement, system setup, or wider operational build.",
+      supportingLine:
+        "Designed for serious enquiries that need clarity before implementation.",
+      highlightsLabel: "What To Expect",
+      highlights: [
+        "A practical business conversation, not a scripted sales call",
+        "Useful for websites, automations, booking flows, operational systems, and internal tools",
+        "The goal is clarity on fit, likely scope, and the most sensible next step",
+      ],
+      heroPrimaryAction: "Go To Booking",
+      heroSecondaryAction: "Prefer To Send An Enquiry?",
+      covers: {
+        eyebrow: "What The Call Covers",
+        title: "A practical review of the business, the problem, and the likely scope.",
+        description:
+          "The conversation is designed to create enough clarity for both sides to understand whether there is a fit and what the next step should be.",
+        items: [
+          {
+            title: "Current Setup",
+            description:
+              "How the business currently handles enquiries, delivery, scheduling, systems, or internal operations.",
+          },
+          {
+            title: "Operational Friction",
+            description:
+              "Where manual work, weak handoffs, disconnected tools, or unclear structure are slowing the business down.",
+          },
+          {
+            title: "Service Or System Need",
+            description:
+              "Whether the need points toward a website, automation layer, booking & AI call workflow, facility & maintenance management setup, or internal tool.",
+          },
+          {
+            title: "Recommended Next Step",
+            description:
+              "What the most practical next move should be after the call, including whether a focused project or broader system build makes sense.",
+          },
+        ],
+      },
+      audience: {
+        eyebrow: "Who It Is For",
+        title: "Best suited to businesses with a real systems or operational need.",
+        description:
+          "The discovery call is most useful when there is a concrete need to define, improve, or structure properly.",
+        items: [
+          {
+            title: "Automation Projects",
+            description:
+              "For businesses that want to reduce repeat admin, tighten handoffs, and connect the tools they already use.",
+          },
+          {
+            title: "Websites",
+            description:
+              "For businesses that need a premium website with clearer positioning, better trust signals, and stronger lead capture.",
+          },
+          {
+            title: "Booking & AI Call Workflows",
+            description:
+              "For businesses that need smoother scheduling, confirmations, reminders, intake, internal handoff, and AI-assisted call handling where it makes sense.",
+          },
+          {
+            title: "Facility & Maintenance Management",
+            description:
+              "For facilities or service-led operations that need stronger control around service records, assets, work orders, and contractor coordination.",
+          },
+          {
+            title: "Internal Tools / Systems",
+            description:
+              "For teams that need better visibility, structured data flow, and fit-for-purpose operational software.",
+          },
+        ],
+      },
+      booking: {
+        eyebrow: "Booking",
+        title: "Choose the right next step.",
+        description:
+          "If booking is enabled, you can reserve a discovery call here. If not, the enquiry form remains the right fallback and the conversation can still move forward from there.",
+        shell: {
+          configuredBadge: "Booking Ready",
+          configuredTitle: "Schedule the conversation",
+          configuredDescription:
+            "Use the booking area below to reserve a suitable time for an initial discussion around business context, fit, and likely scope.",
+          configuredAction: "Open Booking In A New Tab",
+          configuredNote:
+            "If the embedded schedule does not load cleanly, use the direct booking link instead.",
+          fallbackBadge: "Contact Fallback",
+          fallbackTitle: "Booking is not yet configured here.",
+          fallbackDescription:
+            "You can still send a project enquiry through the contact form and note that you prefer a discovery call. That keeps the conversation moving without waiting on a booking provider.",
+          fallbackPrimaryAction: "Go To Contact Form",
+          fallbackSecondaryAction: "Explore Services",
+          fallbackNote:
+            "Discovery-call requests can still be handled through the existing enquiry flow.",
+        },
+      },
+      reassurance: {
+        eyebrow: "What Happens Next",
+        title: "The first conversation is for fit, scope, and next-step clarity.",
+        description:
+          "It is not a commitment to start a project immediately. The aim is to understand the context properly, confirm whether Benyah is the right fit, and identify the most practical way forward.",
+        points: [
+          "A short brief or rough business context is enough to begin",
+          "If a discovery call is not the best first step, Benyah can recommend a better route",
+          "Detailed scope, timing, and delivery structure can follow after the initial conversation",
+        ],
+      },
+    },
     contact: {
       eyebrow: "Contact",
       title: "Start a structured conversation with Benyah.",
       description:
-        "Get in touch about websites, automation, booking workflows, business systems, CAFM / CMMS, n8n automations, or broader operational structure.",
+        "Get in touch about websites, automation, booking & AI call workflows, business systems, facility & maintenance management solutions, workflow & systems automation, or broader operational structure.",
       supportingLine:
         "Benyah works across digital presence, workflow, and internal operations for businesses that need clearer systems and better execution.",
       highlightsLabel: "Contact Fit",
@@ -1436,8 +1594,13 @@ export const marketingContent: Record<Locale, MarketingContent> = {
   ar: {
     meta: {
       description:
-        "تساعد Benyah الشركات الصغيرة عبر مواقع احترافية وأنظمة تشغيل وأتمتة وسير عمل للحجز وحلول CAFM/CMMS وأدوات داخلية مخصصة.",
+        "تساعد Benyah الشركات الصغيرة عبر مواقع احترافية وحلول أتمتة وتدفقات للحجز والمكالمات الذكية وحلول لإدارة المرافق والصيانة وأنظمة تشغيلية وأدوات داخلية مخصصة.",
       languageSwitcherLabel: "تغيير اللغة",
+      primaryNavigationLabel: "التنقل الرئيسي",
+      openNavigationLabel: "فتح التنقل",
+      closeNavigationLabel: "إغلاق التنقل",
+      mobileNavigationTitle: "التنقل",
+      mobileNavigationDescription: "تنقل مختصر للموقع مع إجراء رئيسي واحد.",
     },
     navigation: [
       { href: "/", label: "الرئيسية" },
@@ -1455,12 +1618,13 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       strapline:
         "مواقع وأنظمة وسير عمل رقمية مصممة بهيكل أوضح لعمليات الشركات الصغيرة.",
       note: "مصممة للأعمال التي تريد وضوحاً أكبر وهيكلاً أفضل واحتكاكاً تشغيلياً أقل.",
+      navigationLabel: "التنقل",
     },
     home: {
       eyebrow: "Benyah",
       title: "الأساس الرقمي لعمليات أعمال أكثر وضوحاً.",
       description:
-        "تساعد Benyah الشركات الصغيرة على العمل بهيكل أوضح من خلال المواقع الإلكترونية، الأتمتة، أنظمة الحجز، الأنظمة التشغيلية، حلول CAFM/CMMS، أتمتة n8n، والأدوات الداخلية.",
+        "تساعد Benyah الشركات الصغيرة على العمل بهيكل أوضح من خلال المواقع الإلكترونية، حلول الأتمتة، تدفقات الحجز والمكالمات الذكية، حلول إدارة المرافق والصيانة، أتمتة سير العمل والأنظمة، والأدوات الداخلية.",
       supportingLine:
         "مبنية للأعمال التي تجاوزت الأدوات المبعثرة، والخطوات اليدوية، والأنظمة غير الواضحة.",
       highlightsLabel: "ما الذي تقدمه Benyah",
@@ -1873,7 +2037,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             {
               question: "هل يمكن ربط الموقع بأنظمة الحجز أو الأتمتة؟",
               answer:
-                "نعم. الموقع غالباً جزء من بنية تشغيلية أوسع، لذلك يمكن التخطيط للنماذج وتدفقات الحجز ومسارات الأتمتة ضمن البناء نفسه.",
+                "نعم. الموقع غالباً جزء من بنية تشغيلية أوسع، لذلك يمكن التخطيط للنماذج وتدفقات الحجز والمكالمات الذكية ومسارات الأتمتة ضمن البناء نفسه.",
             },
             {
               question: "هل هذه الخدمة مخصصة لإعادة التصميم فقط أم تشمل موقعاً جديداً؟",
@@ -1883,92 +2047,92 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           ],
         },
         "booking-workflows": {
-          title: "أنظمة الحجز",
+          title: "تدفقات الحجز والمكالمات الذكية",
           summary:
-            "أنظمة حجز منظمة تدير الجدولة والتأكيدات والتذكيرات ونماذج الإدخال والتسليم الداخلي باحتكاك أقل.",
+            "تدفقات منظمة للحجز والمكالمات الذكية تدير الجدولة والتأكيدات والتذكيرات والإدخال المسبق والتسليم الداخلي وتقليل حالات عدم الحضور.",
           heroSupportingLine:
-            "مناسبة للأعمال التي تؤثر فيها جودة الحجز مباشرة على تجربة العميل وجاهزية الفريق والطاقة اليومية.",
+            "مناسبة للأعمال التي تؤثر فيها جودة الحجز والتعامل مع المكالمات مباشرة على التحويل وجاهزية الفريق والطاقة اليومية.",
           intro:
-            "تحول Benyah الحجز من مجموعة خطوات متفرقة إلى عملية خدمة يمكن الاعتماد عليها. يتم تصميم المنطق حول قواعد الحجز ومعلومات العميل الأولية والتأكيدات والتذكيرات وما يحتاجه الفريق داخلياً قبل بدء التنفيذ.",
+            "تحول Benyah الحجز والتعامل مع المكالمات الواردة إلى عملية خدمة أكثر اعتمادية. يتم تنظيم التوفر والتأكيدات والتذكيرات وخطوات الإدخال والتسليم الداخلي، مع دعم المكالمات بالذكاء الاصطناعي عند ملاءمة ذلك، حتى يحصل العميل على مسار أوضح ويحصل الفريق على معلومات أدق.",
           capabilities: [
-            "قواعد الحجز والتوفر وخطوات الإدخال",
-            "تدفقات التذكير والتأكيد والمتابعة",
-            "إشعارات داخلية ومنطق تسليم الخدمة",
+            "منطق الجدولة وقواعد الحجز والتأكيدات والتذكيرات",
+            "خطوات الإدخال وجمع المعلومات المسبقة ومسارات تقليل عدم الحضور",
+            "التسليم الداخلي ودعم المكالمات بالذكاء الاصطناعي عندما يخدم جودة الاستجابة",
           ],
           outcomes: [
-            "خطوات فائتة وحالات عدم حضور أقل",
-            "تجربة عميل أكثر سلاسة",
-            "تنفيذ داخلي أكثر جاهزية",
+            "جدولة أكثر سلاسة وخطوات فائتة أقل",
+            "انخفاض مخاطر عدم الحضور وجاهزية أفضل للعميل",
+            "تسليم داخلي أوضح بعد كل حجز أو مكالمة",
           ],
           problems: [
             {
-              title: "تبادل طويل في الجدولة",
+              title: "تبادل طويل في الجدولة ومكالمات فائتة",
               description:
-                "يقضي العميل والفريق وقتاً أطول من اللازم في تنسيق المواعيد أو تصحيح التفاصيل أو معالجة ارتباك كان يمكن تجنبه.",
+                "يقضي العميل والفريق وقتاً أطول من اللازم في تنسيق المواعيد أو إعادة المكالمات أو تصحيح التفاصيل أو معالجة ارتباك كان يمكن تجنبه.",
             },
             {
               title: "غياب التذكيرات أو إدخال غير مكتمل",
               description:
-                "لا توجد بنية موثوقة للتأكيدات والتذكيرات والنماذج أو جمع المعلومات قبل الموعد.",
+                "لا توجد بنية موثوقة للتأكيدات والتذكيرات أو النماذج أو جمع المعلومات الصحيحة قبل بدء الخدمة.",
             },
             {
-              title: "ضعف الاستعداد بعد الحجز",
+              title: "ضعف التسليم بعد الحجز أو المكالمة",
               description:
-                "يتم الحجز، لكن الفريق الداخلي لا يستلم المعلومات أو الإشعار أو الخطوة التالية في الوقت المناسب.",
+                "يتم الحجز أو المكالمة، لكن الفريق الداخلي لا يستلم المعلومات أو الإشعار أو خطوة التجهيز التالية في الوقت المناسب.",
             },
           ],
           audience: [
             {
-              title: "الأعمال المعتمدة على المواعيد",
+              title: "الأعمال المعتمدة على المواعيد ذات الضغط الحقيقي في الجدولة",
               description:
-                "مناسبة عندما يكون الحجز جزءاً أساسياً من الإيراد وجودة الجدولة وتجربة العميل.",
+                "مناسبة عندما تؤثر جودة الحجز والتعامل مع الاستفسارات الهاتفية مباشرة على الإيراد وتجربة العميل.",
             },
             {
-              title: "الفرق التي تبدأ التجهيز بعد تأكيد الحجز",
+              title: "الفرق التي تحتاج إدخالاً وتجهيزاً بعد كل حجز",
               description:
-                "مفيدة عندما يطلق الحجز مراجعة إدخال أو تجهيزاً أو توزيعاً للموظفين أو تنسيقاً داخلياً إضافياً.",
+                "مفيدة عندما يطلق الحجز مراجعة إدخال أو تذكيرات أو توزيعاً للموظفين أو تجهيزاً أو تنسيقاً داخلياً إضافياً.",
             },
             {
-              title: "المشغلون الذين يرون الحجز جزءاً من التشغيل",
+              title: "الأعمال التي تريد أن تصب المكالمات والحجوزات في التشغيل بشكل منظم",
               description:
-                "الأفضل عندما يؤثر الحجز على جاهزية الخدمة وتخطيط الطاقة الاستيعابية وسير العمل اليومي، لا مجرد توفر المواعيد.",
+                "الأفضل عندما تحتاج المواعيد والمكالمات والمتابعة أن تصب في جاهزية الخدمة وتخطيط الطاقة الاستيعابية وسير العمل اليومي بشكل أنظف.",
             },
           ],
           faqs: [
             {
-              question: "هل يمكنكم العمل مع منصة الحجز الحالية لدينا؟",
+              question: "هل يمكنكم العمل مع منصة الحجز أو إعداد المكالمات الحالي لدينا؟",
               answer:
-                "غالباً نعم. الخطوة الأولى هي فهم الوضع الحالي ثم تقرير ما إذا كان الأفضل تحسينه أو ربطه أو استبداله.",
+                "غالباً نعم. الخطوة الأولى هي فهم تدفق الحجز والمكالمات الحالي ثم تقرير ما إذا كان الأفضل تحسينه أو ربطه أو استبداله جزئياً.",
             },
             {
-              question: "هل تشمل الخدمة التذكيرات والتأكيدات والإدخال المسبق؟",
+              question: "هل تشمل الخدمة التذكيرات والإدخال المسبق ودعم المكالمات بالذكاء الاصطناعي؟",
               answer:
-                "نعم. جودة الحجز تعتمد على ما يحيط به من تواصل وتجهيز، لذلك يمكن تصميم التذكيرات والتأكيدات وخطوات الإدخال والإشعارات الداخلية معاً.",
+                "نعم، عندما يكون ذلك مناسباً تشغيلياً. يمكن تنظيم التذكيرات والتأكيدات وخطوات الإدخال والإشعارات الداخلية ودعم المكالمات بالذكاء الاصطناعي ضمن تدفق واحد أكثر اتساقاً.",
             },
             {
               question: "هل هذه الخدمة مفيدة فقط للأعمال ذات الحجم الكبير؟",
               answer:
-                "لا. حتى حجم الحجز المتواضع قد يسبب احتكاكاً حقيقياً عندما تكون العملية غير متسقة أو يدوية أو غير مرتبطة جيداً بالتنفيذ.",
+                "لا. حتى حجم الحجز المتوسط قد يسبب احتكاكاً حقيقياً عندما تكون العملية غير متسقة أو يدوية أو غير مرتبطة جيداً بالتنفيذ والاستعداد الداخلي.",
             },
           ],
         },
         "cafm-cmms": {
-          title: "حلول CAFM / CMMS",
+          title: "حلول إدارة المرافق والصيانة",
           summary:
-            "حلول CAFM / CMMS منظمة للأصول وأوامر العمل والسجلات التشغيلية وسيطرة أوضح على أعمال المرافق.",
+            "أنظمة منظمة لإدارة المرافق والصيانة تغطي أوامر العمل وسجلات الخدمة ورؤية الأصول وتنسيق المتعهدين.",
           heroSupportingLine:
-            "مناسبة لعمليات المرافق والصيانة التي تحتاج رؤية أفضل وتنسيقاً أقوى وسجلات تشغيلية أوضح.",
+            "مناسبة للأعمال الصغيرة والمتوسطة التي تدير مرافق أو صيانة وتحتاج رؤية أوضح وتنسيقاً أقوى وسيطرة تشغيلية أفضل.",
           intro:
-            "تمنح حلول CAFM / CMMS الأعمال المعتمدة على المرافق نظاماً أوضح لإدارة الأصول والطلبات وأوامر العمل وسجل الخدمة والتقارير. تركيز Benyah هنا عملي: أن تعرف الفرق ما المفتوح وما المستحق وما تم تنفيذه وأين توجد نقاط الانتباه داخل التشغيل.",
+            "تمنح حلول إدارة المرافق والصيانة الأعمال الصغيرة والمتوسطة نظاماً أوضح لإدارة الأصول وأوامر العمل وسجلات الخدمة وتنسيق المتعهدين والتقارير. ويمكن لـ Benyah تنفيذ وهيكلة أنظمة إدارة الصيانة المحوسبة (CMMS) وحلول الإدارة المساندة للمرافق (CAFM) وأدوات إدارة الأصول وتدفقات إدارة المتعهدين بما يلائم طريقة التشغيل الفعلية.",
           capabilities: [
-            "هيكلة الأصول والمواقع والسجلات",
-            "تدفقات أوامر العمل والطلبات",
-            "لوحات إشراف وتقارير تشغيلية",
+            "هيكلة أنظمة المرافق والصيانة للأصول والمواقع وسجلات الخدمة",
+            "تدفقات أوامر العمل والطلبات وتنسيق المتعهدين",
+            "رؤية أوضح للأصول ولوحات متابعة وتقارير تشغيلية",
           ],
           outcomes: [
-            "سيطرة أفضل على النشاط الخدمي",
-            "سجلات صيانة أنظف",
-            "رؤية تشغيلية أقوى",
+            "سيطرة أوضح على نشاط الصيانة والخدمة",
+            "سجلات خدمة أكثر موثوقية ورؤية أفضل للأصول",
+            "تنسيق أفضل بين الفرق الداخلية والمتعهدين",
           ],
           problems: [
             {
@@ -1977,29 +2141,29 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "تتحرك طلبات الصيانة بين البريد والاتصالات والجداول أو أدوات منفصلة بدون رؤية واحدة موثوقة.",
             },
             {
-              title: "سجل خدمة وأصول غير مكتمل",
+              title: "سجل خدمة غير مكتمل ورؤية ضعيفة للأصول",
               description:
-                "لا تستطيع الفرق رؤية ما تم تنفيذه أو ما يتكرر أو تاريخ خدمة أصل أو موقع معين بشكل واضح عبر الوقت.",
+                "لا تستطيع الفرق رؤية ما تم تنفيذه أو ما يتكرر أو تاريخ أصل أو موقع أو متعهد معين بشكل واضح عبر الوقت.",
             },
             {
-              title: "إشراف تشغيلي محدود",
+              title: "إشراف محدود على المتعهدين والأعمال المتكررة",
               description:
-                "يفتقد المدراء رؤية واضحة للأحمال وحالة الإنجاز وأداء المتعهدين وأزمنة الاستجابة أو المشكلات المتكررة.",
+                "يفتقد المدراء رؤية واضحة للأحمال وحالة الإنجاز وأداء المتعهدين والأعمال المتكررة أو أزمنة الاستجابة والمشكلات المتكررة.",
             },
           ],
           audience: [
             {
-              title: "فرق المرافق والصيانة",
+              title: "فرق المرافق والصيانة في الأعمال الصغيرة والمتوسطة",
               description:
-                "مناسبة للفرق التي تحتاج سيطرة أفضل على الطلبات والأصول وحالة العمل وجودة التنفيذ.",
+                "مناسبة للفرق التي تحتاج سيطرة أفضل على الطلبات والأصول وحالة العمل وتنسيق المتعهدين وجودة التنفيذ.",
             },
             {
-              title: "تشغيل المواقع والعقارات",
+              title: "تشغيل المواقع والعقارات والخدمات الميدانية",
               description:
-                "مفيدة عندما توجد مواقع متعددة أو أصول أو مزودو خدمة أو أطراف داخلية تحتاج إلى بنية تشغيلية أوضح.",
+                "مفيدة عندما توجد مواقع متعددة أو أصول أو مزودو خدمة أو أطراف داخلية تحتاج إلى بنية أوضح حول أوامر العمل والسجلات والتنسيق اليومي.",
             },
             {
-              title: "الأعمال التي تنتقل إلى ما بعد التتبع غير الرسمي",
+              title: "الأعمال التي تتجاوز الجداول والتتبع غير الرسمي",
               description:
                 "مثالية عندما ما زالت أعمال الصيانة تُدار عبر الجداول أو البريد أو المعالجة غير المنظمة للطلبات.",
             },
@@ -2008,37 +2172,37 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             {
               question: "هل يجب أن تكون المنصة كبيرة حتى تكون مفيدة؟",
               answer:
-                "لا. الشكل المناسب يعتمد على حجم وتعقيد التشغيل. كثير من الأعمال تستفيد أكثر من نظام مركز وواضح بدلاً من منصة أكبر من حاجتها.",
+                "لا. الشكل المناسب يعتمد على حجم وتعقيد التشغيل. كثير من الأعمال الصغيرة والمتوسطة تستفيد أكثر من نظام مركز وواضح بدلاً من منصة أكبر من حاجتها.",
+            },
+            {
+              question: "هل يمكن أن تشمل الخدمة CMMS و CAFM وإدارة الأصول وتدفقات المتعهدين؟",
+              answer:
+                "نعم. يمكن أن تغطي الخدمة هيكلة أنظمة إدارة الصيانة المحوسبة (CMMS) وحلول الإدارة المساندة للمرافق (CAFM) وأدوات إدارة الأصول وتنسيق المتعهدين بحسب ما يحتاجه التشغيل فعلياً.",
             },
             {
               question: "هل يمكن أن نبدأ بالطلبات أو أوامر العمل ثم نتوسع؟",
               answer:
                 "نعم. غالباً يكون الأفضل البدء في الجزء الأعلى احتكاكاً من التشغيل ثم التوسع بعد اتضاح العملية وهيكل السجل.",
             },
-            {
-              question: "هل يمكن أن يعكس الإعداد طريقة عملنا وتقاريرنا؟",
-              answer:
-                "نعم. تصوغ Benyah الإعداد حول نموذج التشغيل الفعلي حتى يدعم النظام الفريق بدلاً من فرض هيكل غير مناسب عليه.",
-            },
           ],
         },
         "n8n-automations": {
-          title: "أتمتة n8n",
+          title: "أتمتة سير العمل والأنظمة",
           summary:
-            "أتمتة n8n مرنة لربط الأدوات وتدفقات الويب هوك وتنفيذ العمليات بدرجة أعلى من السيطرة.",
+            "أتمتة مترابطة لسير العمل والأنظمة تشمل الـ webhooks والواجهات البرمجية وحركة البيانات وتنفيذ العمليات الداخلية بدرجة أعلى من السيطرة.",
           heroSupportingLine:
-            "مناسبة للأعمال التي تحتاج تكاملاً أعمق ومنطق تدفق أكثر مرونة وحركة بيانات أنظف بين الأنظمة.",
+            "مناسبة للأعمال التي تحتاج تحكماً أعمق في سير العمل وتكاملاً أكثر موثوقية وأنظمة مترابطة تعمل معاً بشكل أفضل.",
           intro:
-            "صُممت أتمتة n8n للتدفقات التي تحتاج سيطرة أكبر مما تسمح به أدوات الأتمتة الأساسية عادة. تستخدم Benyah n8n لربط الأنظمة والتعامل مع الـ webhooks والواجهات البرمجية ونقل البيانات بشكل نظيف وصياغة المنطق حول طريقة عمل النشاط فعلياً.",
+            "أتمتة سير العمل والأنظمة مخصصة للأعمال التي تحتاج أكثر من مجرد أتمتة مهام بسيطة. يمكن لـ Benyah تصميم وتنفيذ أتمتة عبر n8n وتدفقات الـ webhooks والواجهات البرمجية والأنظمة التجارية المترابطة وأتمتة العمليات الداخلية حتى تتحرك البيانات والقرارات والإجراءات بالترتيب الصحيح.",
           capabilities: [
-            "تدفقات مبنية على الـ webhooks والواجهات البرمجية",
-            "منطق مزامنة ونقل البيانات بين الأنظمة",
-            "تفريع مرن وشروط وتسلسل للعمليات",
+            "تدفقات عبر n8n والـ webhooks والواجهات البرمجية",
+            "منطق يربط النماذج والـ CRM والأدوات الداخلية والأنظمة التشغيلية",
+            "أتمتة العمليات الداخلية والتفريع والتنسيق بين الخطوات",
           ],
           outcomes: [
-            "أنظمة أعمال أكثر ترابطاً",
-            "تنفيذ أسرع وأنظف للعمليات",
-            "تعامل يدوي أقل مع البيانات",
+            "أنظمة أكثر ترابطاً وتسليم أنظف بين المراحل",
+            "تنفيذ أسرع للعمليات الداخلية",
+            "حركة يدوية أقل للبيانات والحالات",
           ],
           problems: [
             {
@@ -2052,43 +2216,43 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "يتم نقل المعلومات يدوياً أو بشكل غير متسق بين الأنظمة، مما يسبب تكراراً وبيانات قديمة وأخطاء يمكن تجنبها.",
             },
             {
-              title: "تكاملات هشة مع ازدياد التعقيد",
+              title: "أنظمة متفرقة ومنطق هش مع ازدياد التعقيد",
               description:
-                "يحتاج النشاط إلى أن تعمل أنظمته معاً، لكن الإعداد الحالي لا يدعم عمق الربط أو الـ webhooks أو المنطق المطلوب بشكل موثوق.",
+                "يحتاج النشاط إلى أن تعمل أنظمته معاً، لكن الإعداد الحالي لا يدعم عمق الربط أو الـ webhooks أو أتمتة العمليات الداخلية أو المنطق المطلوب بشكل موثوق.",
             },
           ],
           audience: [
             {
-              title: "الأعمال التي تستخدم عدة أدوات SaaS",
+              title: "الأعمال التي تستخدم عدة أدوات SaaS وأدوات داخلية",
               description:
                 "مناسبة عندما تحتاج النماذج أو الـ CRM أو الأدوات الداخلية أو بقية الأنظمة إلى تكامل أعمق وحركة بيانات أكثر موثوقية.",
             },
             {
-              title: "الفرق التي تعتمد على الـ webhooks أو الواجهات البرمجية أو المنطق المخصص",
+              title: "الفرق التي تعتمد على الـ webhooks أو الواجهات البرمجية أو منطق بين الأنظمة",
               description:
                 "مفيدة عندما يحتاج التدفق إلى صياغة أدق مما تسمح به الأدوات المبنية على قواعد بسيطة.",
             },
             {
-              title: "المشغلون الذين يريدون مرونة بدون حمل أنظمة كبيرة",
+              title: "المشغلون الذين يريدون أتمتة أعمق بدون حمل أنظمة كبيرة",
               description:
                 "الأفضل عندما يريد النشاط أتمتة يمكن تطويرها تدريجياً مع ازدياد تنظيم العملية.",
             },
           ],
           faqs: [
             {
-              question: "لماذا نستخدم n8n بدلاً من أداة أبسط؟",
+              question: "هل هذه الخدمة محصورة في n8n؟",
               answer:
-                "لأنها تمنح مرونة أعلى عندما يحتاج التدفق إلى منطق مخصص أو تنسيق أنظف أو خيارات تكامل أوسع. يتم اختيارها عندما تكون هذه السيطرة الإضافية ذات قيمة فعلية.",
+                "لا. قد يكون n8n جزءاً من التنفيذ، لكن الخدمة مبنية حول نتيجة سير العمل. يمكن لـ Benyah تنظيم تدفقات عبر الـ webhooks والواجهات البرمجية والأنظمة المترابطة وأتمتة العمليات الداخلية بالطريقة الأنسب للاحتياج.",
             },
             {
-              question: "هل يمكن لـ n8n العمل مع الأنظمة الحالية لدينا؟",
+              question: "هل يمكن أن تعمل هذه الخدمة مع الأنظمة الحالية لدينا؟",
               answer:
                 "غالباً نعم، ما دامت هذه الأنظمة توفر نقاط وصول مناسبة مثل الواجهات البرمجية أو الـ webhooks أو الموصلات المدعومة.",
             },
             {
-              question: "هل n8n مناسب فقط للأعمال التقنية؟",
+              question: "متى تكون هذه الخدمة أنسب من أتمتة أبسط؟",
               answer:
-                "لا. المهم أن يُصمم التدفق بوضوح وأن تكون له ملكية تشغيلية صحيحة. الطبقة التقنية يجب أن تخدم العمل لا أن تصبح عبئاً عليه.",
+                "عندما يحتاج التدفق إلى منطق أعمق أو تنسيق أنظف أو تكاملات أقوى أو حركة أكثر موثوقية بين الأنظمة. الهدف ليس زيادة التعقيد، بل تحقيق سيطرة أفضل عندما تحتاج العملية إلى ذلك فعلاً.",
             },
           ],
         },
@@ -2183,7 +2347,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         description:
           "تساعد Benyah الشركات الصغيرة على إعادة النظام إلى الأجزاء التي تنفصل عن بعضها مع الوقت.",
         body:
-          "يمتد العمل عبر المواقع الإلكترونية والأتمتة وتدفقات الحجز وحلول CAFM / CMMS والأنظمة التجارية وأتمتة n8n والأدوات الداخلية. الهدف ليس إضافة التقنية لذاتها، بل بناء أساس أقوى لكيفية تقديم النشاط لنفسه وكيف يدير عمله داخلياً وكيف ينفذ يومياً.",
+          "يمتد العمل عبر المواقع الإلكترونية والأتمتة وتدفقات الحجز والمكالمات الذكية وحلول إدارة المرافق والصيانة وأتمتة سير العمل والأنظمة والأنظمة التجارية والأدوات الداخلية. الهدف ليس إضافة التقنية لذاتها، بل بناء أساس أقوى لكيفية تقديم النشاط لنفسه وكيف يدير عمله داخلياً وكيف ينفذ يومياً.",
         asideEyebrow: "المعنى",
         asideTitle: "يرتبط اسم Benyah بالهيكل والأساس والأنظمة المترابطة.",
         asideDescription:
@@ -2350,12 +2514,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       items: [
         {
-          title: "إعداد تدفق الحجز",
-          sector: "أنظمة الحجز",
+          title: "إعداد لتدفقات الحجز والمكالمات الذكية",
+          sector: "الحجز والمكالمات",
           summary:
-            "إعداد حجز منظم للأعمال الخدمية التي تحتاج أن تعمل المواعيد والتذكيرات والاستعداد الداخلي كمنظومة واحدة.",
+            "إعداد منظم للحجز والتعامل مع المكالمات للأعمال الخدمية التي تحتاج أن تعمل المواعيد والتذكيرات والاستعداد الداخلي كمنظومة واحدة.",
           addressed:
-            "قواعد الجدولة والتأكيدات والتذكيرات وخطوات الإدخال والتسليم من الحجز إلى التنفيذ.",
+            "قواعد الجدولة والتأكيدات والتذكيرات وخطوات الإدخال ودعم المكالمات الذكية عند الحاجة والتسليم من الحجز إلى التنفيذ.",
           outcome:
             "تجربة عميل أوضح وخطوات فائتة أقل واستعداد أفضل قبل تنفيذ الخدمة.",
           scope:
@@ -2386,12 +2550,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             "تنفيذ مركز أو إعادة بناء موقع مع هيكل تحويل واضح.",
         },
         {
-          title: "إعداد تشغيلي لحلول CAFM / CMMS",
-          sector: "CAFM / CMMS",
+          title: "إعداد لإدارة المرافق والصيانة",
+          sector: "إدارة المرافق والصيانة",
           summary:
-            "إعداد منظم للمرافق لمعالجة الأصول وأوامر العمل والسجلات التشغيلية والإشراف اليومي بشكل أوضح.",
+            "إعداد منظم للمرافق والصيانة لمعالجة الأصول وأوامر العمل وسجلات الخدمة وتنسيق المتعهدين والإشراف اليومي بشكل أوضح.",
           addressed:
-            "تدفق الطلبات وهيكلة الأصول وحالات أوامر العمل ورؤية التقارير والتنسيق اليومي لأعمال الصيانة.",
+            "تدفق الطلبات وهيكلة الأصول وحالات أوامر العمل وسجلات الخدمة ورؤية التقارير والتنسيق اليومي لأعمال الصيانة.",
           outcome:
             "سيطرة تشغيلية أفضل وسجلات أنظف ورؤية أوضح عبر أعمال المرافق.",
           scope:
@@ -2410,16 +2574,16 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             "تنفيذ مركز أو إعداد نظام حول عملية داخلية عالية الاحتكاك.",
         },
         {
-          title: "تدفق تكامل عبر n8n",
-          sector: "أتمتة n8n",
+          title: "بناء لأتمتة سير العمل والأنظمة",
+          sector: "أتمتة سير العمل والأنظمة",
           summary:
-            "تدفق مترابط عبر n8n للأعمال التي تحتاج سيطرة أعلى على التكاملات والمنطق وتنفيذ العمليات بين الأنظمة.",
+            "بناء أتمتة مترابط للأعمال التي تحتاج سيطرة أعلى على التكاملات والمنطق وتنفيذ العمليات بين الأنظمة.",
           addressed:
-            "تنسيق الـ webhooks والواجهات البرمجية وحركة البيانات بين الأدوات ومنطق الأتمتة الأعمق من الإعدادات الأساسية.",
+            "تدفقات n8n وتنسيق الـ webhooks والواجهات البرمجية وحركة البيانات بين الأدوات ومنطق الأتمتة الأعمق من الإعدادات الأساسية.",
           outcome:
             "أنظمة أكثر ترابطاً وتدفق بيانات أنظف وتنفيذ أسرع للعمليات.",
           scope:
-            "تدفق تكامل أو بناء أتمتة أعمق باستخدام n8n.",
+            "تدفق تكامل أو بناء أعمق لأتمتة سير العمل.",
         },
       ],
       engagements: {
@@ -2459,11 +2623,122 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         secondaryAction: "استكشف الخدمات",
       },
     },
+    book: {
+      eyebrow: "مكالمة اكتشاف",
+      title: "محادثة أولى مركزة لتوضيح الهيكل والنطاق والخطوة التالية المناسبة.",
+      description:
+        "مكالمة الاكتشاف مع Benyah مخصصة لفهم طريقة عمل النشاط اليوم، وأين توجد نقاط الاحتكاك، وما إذا كانت الخطوة التالية هي موقعاً أو تحسين سير عمل أو إعداد نظام أو بناء تشغيلي أوسع.",
+      supportingLine:
+        "مناسبة للاستفسارات الجادة التي تحتاج وضوحاً قبل التنفيذ.",
+      highlightsLabel: "ما الذي تتوقعه",
+      highlights: [
+        "محادثة عملية حول النشاط، وليست مكالمة بيع نمطية",
+        "مفيدة للمواقع والأتمتة وتدفقات الحجز والمكالمات الذكية والأنظمة التشغيلية والأدوات الداخلية",
+        "الهدف هو وضوح الملاءمة والنطاق المتوقع والخطوة التالية المنطقية",
+      ],
+      heroPrimaryAction: "انتقل إلى الحجز",
+      heroSecondaryAction: "تفضل إرسال استفسار؟",
+      covers: {
+        eyebrow: "ما الذي تغطيه المكالمة",
+        title: "مراجعة عملية للنشاط والمشكلة والنطاق المرجح.",
+        description:
+          "المحادثة مصممة لتوفير قدر كافٍ من الوضوح للطرفين لفهم ما إذا كانت هناك ملاءمة وما الذي يجب أن تكون عليه الخطوة التالية.",
+        items: [
+          {
+            title: "الوضع الحالي",
+            description:
+              "كيف يدير النشاط حالياً الاستفسارات والتنفيذ والمواعيد والأنظمة أو العمليات الداخلية.",
+          },
+          {
+            title: "الاحتكاك التشغيلي",
+            description:
+              "أين تسبب الأعمال اليدوية أو ضعف التسليم أو الأدوات المتفرقة أو غياب الهيكل الواضح تباطؤاً في العمل.",
+          },
+          {
+            title: "نوع الخدمة أو النظام",
+            description:
+              "ما إذا كان الاحتياج يشير إلى موقع أو طبقة أتمتة أو تدفق للحجز والمكالمات الذكية أو إعداد لإدارة المرافق والصيانة أو أداة داخلية.",
+          },
+          {
+            title: "الخطوة التالية المقترحة",
+            description:
+              "ما هي الخطوة العملية الأنسب بعد المكالمة، بما في ذلك ما إذا كان الأنسب مشروعاً مركزاً أو بناء نظام أوسع.",
+          },
+        ],
+      },
+      audience: {
+        eyebrow: "لمن تناسب",
+        title: "الأفضل للأعمال التي لديها احتياج حقيقي على مستوى الأنظمة أو التشغيل.",
+        description:
+          "تكون مكالمة الاكتشاف أكثر فائدة عندما يوجد احتياج واضح يحتاج إلى تعريف أو تحسين أو تنظيم صحيح.",
+        items: [
+          {
+            title: "مشاريع الأتمتة",
+            description:
+              "للأعمال التي تريد تقليل الأعمال الإدارية المتكررة وربط الأدوات الحالية وتثبيت التسليم بين المراحل.",
+          },
+          {
+            title: "المواقع الإلكترونية",
+            description:
+              "للأعمال التي تحتاج موقعاً احترافياً بتموضع أوضح ومؤشرات ثقة أفضل ومسار أقوى لالتقاط الفرص.",
+          },
+          {
+            title: "تدفقات الحجز والمكالمات الذكية",
+            description:
+              "للأعمال التي تحتاج جدولة أكثر سلاسة وتأكيدات وتذكيرات وخطوات إدخال وتسليماً داخلياً أوضح مع دعم للمكالمات الذكية عند الحاجة.",
+          },
+          {
+            title: "إدارة المرافق والصيانة",
+            description:
+              "لعمليات المرافق أو الخدمات التي تحتاج سيطرة أفضل على سجلات الخدمة والطلبات والأصول وأوامر العمل وتنسيق المتعهدين.",
+          },
+          {
+            title: "الأدوات والأنظمة الداخلية",
+            description:
+              "للفرق التي تحتاج رؤية أفضل وتدفق بيانات منظم وبرمجيات تشغيلية مناسبة فعلياً لطبيعة العمل.",
+          },
+        ],
+      },
+      booking: {
+        eyebrow: "الحجز",
+        title: "اختر الخطوة التالية المناسبة.",
+        description:
+          "إذا كان الحجز مفعلاً يمكنك حجز مكالمة الاكتشاف من هنا. وإذا لم يكن مفعلاً بعد فسيبقى نموذج التواصل هو المسار الصحيح ويمكن بدء النقاش من خلاله.",
+        shell: {
+          configuredBadge: "الحجز متاح",
+          configuredTitle: "حدّد موعد المحادثة",
+          configuredDescription:
+            "استخدم منطقة الحجز أدناه لاختيار وقت مناسب لنقاش أولي حول سياق النشاط والملاءمة والنطاق المرجح.",
+          configuredAction: "افتح الحجز في نافذة جديدة",
+          configuredNote:
+            "إذا لم تظهر أداة الحجز المضمنة بشكل صحيح، فاستخدم رابط الحجز المباشر بدلاً من ذلك.",
+          fallbackBadge: "بديل التواصل",
+          fallbackTitle: "الحجز غير مفعّل هنا بعد.",
+          fallbackDescription:
+            "لا يزال بإمكانك إرسال استفسار عبر نموذج التواصل مع الإشارة إلى أنك تفضل مكالمة اكتشاف. بهذه الطريقة يستمر النقاش بدون انتظار تفعيل مزود الحجز.",
+          fallbackPrimaryAction: "اذهب إلى نموذج التواصل",
+          fallbackSecondaryAction: "استكشف الخدمات",
+          fallbackNote:
+            "يمكن التعامل مع طلبات مكالمة الاكتشاف عبر مسار الاستفسار الحالي.",
+        },
+      },
+      reassurance: {
+        eyebrow: "ماذا بعد ذلك",
+        title: "المحادثة الأولى مخصصة للملاءمة والنطاق ووضوح الخطوة التالية.",
+        description:
+          "ليست التزاماً ببدء المشروع فوراً. الهدف هو فهم السياق بشكل صحيح، والتأكد من ملاءمة Benyah، وتحديد الطريق العملي الأنسب للمضي قدماً.",
+        points: [
+          "يكفي وصف مختصر أو سياق عام عن النشاط لبدء المحادثة",
+          "إذا لم تكن مكالمة الاكتشاف هي الخطوة الأولى الأنسب، يمكن لـ Benyah اقتراح مسار أفضل",
+          "يمكن تحديد النطاق والتوقيت وهيكل التنفيذ بشكل أدق بعد المحادثة الأولى",
+        ],
+      },
+    },
     contact: {
       eyebrow: "تواصل",
       title: "ابدأ محادثة منظمة مع Benyah.",
       description:
-        "تواصل بخصوص المواقع أو الأتمتة أو تدفقات الحجز أو الأنظمة التجارية أو حلول CAFM / CMMS أو أتمتة n8n أو هيكل تشغيلي أوسع.",
+        "تواصل بخصوص المواقع أو الأتمتة أو تدفقات الحجز والمكالمات الذكية أو الأنظمة التجارية أو حلول إدارة المرافق والصيانة أو أتمتة سير العمل والأنظمة أو هيكل تشغيلي أوسع.",
       supportingLine:
         "تعمل Benyah عبر الحضور الرقمي وسير العمل والعمليات الداخلية للأعمال التي تحتاج أنظمة أوضح وتنفيذاً أفضل.",
       highlightsLabel: "متى يكون التواصل مناسباً",

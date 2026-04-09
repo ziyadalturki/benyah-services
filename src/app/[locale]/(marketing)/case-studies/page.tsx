@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { sitePaths } from "@/config/site";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
 import { CaseStudyCard } from "@/components/marketing/case-study-card";
 import { PageHero } from "@/components/marketing/page-hero";
@@ -17,8 +20,13 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { isLocale } from "@/i18n/config";
+import { createCtaClickedEvent } from "@/lib/analytics-events";
 import { createPageMetadata } from "@/lib/metadata";
 import { localizedPathname } from "@/lib/routes";
+import {
+  createBreadcrumbJsonLd,
+  createWebPageJsonLd,
+} from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -57,13 +65,39 @@ export default async function CaseStudiesPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          createWebPageJsonLd({
+            locale,
+            pathname: sitePaths.caseStudies,
+            title: content.caseStudies.title,
+            description: content.caseStudies.description,
+            type: "CollectionPage",
+          }),
+          createBreadcrumbJsonLd(locale, [
+            { name: content.navigation[0].label, pathname: sitePaths.home },
+            {
+              name: content.navigation[3].label,
+              pathname: sitePaths.caseStudies,
+            },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={content.caseStudies.eyebrow}
         title={content.caseStudies.title}
         description={content.caseStudies.description}
         primaryAction={{
-          href: localizedPathname(locale, "/contact"),
+          href: localizedPathname(locale, sitePaths.book),
           label: content.ctas.primary,
+          trackingEvent: createCtaClickedEvent({
+            locale,
+            page: "case_studies",
+            placement: "hero_primary",
+            label: content.ctas.primary,
+            destination: "book",
+            ctaType: "primary",
+          }),
         }}
         secondaryAction={{
           href: localizedPathname(locale, "/services"),
@@ -176,20 +210,28 @@ export default async function CaseStudiesPage({
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-            <Link
-              href={localizedPathname(locale, "/contact")}
+            <TrackedLink
+              href={localizedPathname(locale, sitePaths.book)}
+              trackingEvent={createCtaClickedEvent({
+                locale,
+                page: "case_studies",
+                placement: "final_primary",
+                label: content.ctas.primary,
+                destination: "book",
+                ctaType: "primary",
+              })}
               className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
             >
               {content.ctas.primary}
-            </Link>
+            </TrackedLink>
             <Link
-              href={localizedPathname(locale, "/services")}
+              href={localizedPathname(locale, sitePaths.contact)}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "w-full bg-background/80 sm:w-auto",
               )}
             >
-              {content.caseStudies.finalCta.secondaryAction}
+              {content.ctas.contact}
             </Link>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { serviceSlugs } from "@/config/site";
+import { serviceSlugs, sitePaths } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
 import { LeadForm } from "@/components/marketing/lead-form";
 import { PageHero } from "@/components/marketing/page-hero";
@@ -20,6 +21,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { isLocale } from "@/i18n/config";
 import { createPageMetadata } from "@/lib/metadata";
 import { localizedPathname } from "@/lib/routes";
+import {
+  createBreadcrumbJsonLd,
+  createWebPageJsonLd,
+} from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -69,6 +74,21 @@ export default async function ContactPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          createWebPageJsonLd({
+            locale,
+            pathname: sitePaths.contact,
+            title: content.contact.title,
+            description: content.contact.description,
+            type: "ContactPage",
+          }),
+          createBreadcrumbJsonLd(locale, [
+            { name: content.navigation[0].label, pathname: sitePaths.home },
+            { name: content.navigation[4].label, pathname: sitePaths.contact },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={content.contact.eyebrow}
         title={content.contact.title}

@@ -24,13 +24,17 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
             key={value}
             href={replaceLocaleInPathname(pathname, value)}
             aria-label={`${label}: ${localeLabels[value]}`}
+            aria-current={isActive ? "page" : undefined}
+            dir={value === "ar" ? "rtl" : "ltr"}
+            lang={value}
+            title={localeLabels[value]}
             className={`rounded-[var(--radius-pill)] px-3 py-1.5 text-[0.72rem] font-semibold transition-colors ${
               isActive
                 ? "bg-foreground text-background shadow-control"
                 : "text-page-muted hover:text-foreground"
             }`}
           >
-            {value}
+            {value.toUpperCase()}
           </Link>
         );
       })}

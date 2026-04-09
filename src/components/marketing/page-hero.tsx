@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Container } from "@/components/marketing/container";
 import {
@@ -9,11 +8,13 @@ import {
   LeadText,
 } from "@/components/marketing/text";
 import { buttonVariants } from "@/components/ui/button";
+import type { AnalyticsEventDefinition } from "@/lib/analytics-events";
 import { cn } from "@/lib/utils";
 
 type Action = {
   href: string;
   label: string;
+  trackingEvent?: AnalyticsEventDefinition;
 };
 
 type PageHeroProps = {
@@ -51,23 +52,25 @@ export function PageHero({
               <div className="space-y-4 pt-1">
                 <div className="flex flex-col gap-3 sm:flex-row">
                   {primaryAction ? (
-                    <Link
+                    <TrackedLink
                       href={primaryAction.href}
+                      trackingEvent={primaryAction.trackingEvent}
                       className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
                     >
                       {primaryAction.label}
-                    </Link>
+                    </TrackedLink>
                   ) : null}
                   {secondaryAction ? (
-                    <Link
+                    <TrackedLink
                       href={secondaryAction.href}
+                      trackingEvent={secondaryAction.trackingEvent}
                       className={cn(
                         buttonVariants({ variant: "outline", size: "lg" }),
                         "w-full sm:w-auto bg-background/80",
                       )}
                     >
                       {secondaryAction.label}
-                    </Link>
+                    </TrackedLink>
                   ) : null}
                 </div>
                 {supportingLine ? (

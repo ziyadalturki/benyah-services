@@ -1,7 +1,13 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { serviceIcons, serviceSlugs, type ServiceSlug } from "@/config/site";
+import {
+  serviceIcons,
+  serviceSlugs,
+  sitePaths,
+  type ServiceSlug,
+} from "@/config/site";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PageSection } from "@/components/marketing/section";
@@ -17,8 +23,15 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { isLocale } from "@/i18n/config";
+import { createCtaClickedEvent } from "@/lib/analytics-events";
 import { createPageMetadata } from "@/lib/metadata";
 import { localizedPathname } from "@/lib/routes";
+import {
+  createBreadcrumbJsonLd,
+  createFaqJsonLd,
+  createServiceJsonLd,
+  createWebPageJsonLd,
+} from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 export const dynamicParams = false;
@@ -70,13 +83,44 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          createWebPageJsonLd({
+            locale,
+            pathname: `${sitePaths.services}/${slug}`,
+            title: service.title,
+            description: service.summary,
+          }),
+          createBreadcrumbJsonLd(locale, [
+            { name: content.navigation[0].label, pathname: sitePaths.home },
+            { name: content.navigation[1].label, pathname: sitePaths.services },
+            { name: service.title, pathname: `${sitePaths.services}/${slug}` },
+          ]),
+          createServiceJsonLd({
+            locale,
+            pathname: `${sitePaths.services}/${slug}`,
+            name: service.title,
+            description: service.summary,
+          }),
+          createFaqJsonLd(service.faqs),
+        ]}
+      />
       <PageHero
         eyebrow={content.services.eyebrow}
         title={service.title}
         description={service.summary}
         primaryAction={{
-          href: localizedPathname(locale, "/contact"),
+          href: localizedPathname(locale, sitePaths.book),
           label: content.ctas.primary,
+          trackingEvent: createCtaClickedEvent({
+            locale,
+            page: "service_detail",
+            placement: "hero_primary",
+            label: content.ctas.primary,
+            destination: "book",
+            ctaType: "primary",
+            serviceSlug: slug,
+          }),
         }}
         secondaryAction={{
           href: localizedPathname(locale, "/services"),
@@ -309,21 +353,39 @@ export default async function ServiceDetailPage({
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-            <Link
+            <TrackedLink
               href={localizedPathname(locale, "/contact")}
+              trackingEvent={createCtaClickedEvent({
+                locale,
+                page: "service_detail",
+                placement: "final_primary",
+                label: content.ctas.contact,
+                destination: "contact",
+                ctaType: "primary",
+                serviceSlug: slug,
+              })}
               className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
             >
               {content.ctas.contact}
-            </Link>
-            <Link
-              href={localizedPathname(locale, "/services")}
+            </TrackedLink>
+            <TrackedLink
+              href={localizedPathname(locale, sitePaths.book)}
+              trackingEvent={createCtaClickedEvent({
+                locale,
+                page: "service_detail",
+                placement: "final_secondary",
+                label: content.ctas.primary,
+                destination: "book",
+                ctaType: "secondary",
+                serviceSlug: slug,
+              })}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "w-full bg-background/80 sm:w-auto",
               )}
             >
-              {detail.finalCta.secondaryAction}
-            </Link>
+              {content.ctas.primary}
+            </TrackedLink>
           </div>
         </div>
       </PageSection>

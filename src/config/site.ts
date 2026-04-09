@@ -23,6 +23,7 @@ export type ServiceSlug = (typeof serviceSlugs)[number];
 
 export const sitePaths = {
   home: "/",
+  book: "/book",
   services: "/services",
   about: "/about",
   caseStudies: "/case-studies",
@@ -48,6 +49,7 @@ export const serviceIcons: Record<ServiceSlug, LucideIcon> = {
 
 export const staticMarketingPaths = [
   sitePaths.home,
+  sitePaths.book,
   sitePaths.services,
   sitePaths.about,
   sitePaths.caseStudies,
@@ -70,6 +72,20 @@ export function getSiteUrl() {
   }
 
   return envValue.startsWith("http") ? envValue : `https://${envValue}`;
+}
+
+export function getDefaultSocialImageUrl() {
+  const envValue = process.env.BENYAH_OG_IMAGE_URL?.trim();
+
+  if (!envValue) {
+    return null;
+  }
+
+  if (envValue.startsWith("http")) {
+    return envValue;
+  }
+
+  return new URL(envValue.startsWith("/") ? envValue : `/${envValue}`, getSiteUrl()).toString();
 }
 
 export function getOpenGraphLocale(locale: Locale) {

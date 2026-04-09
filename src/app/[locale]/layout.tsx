@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { DocumentLocale } from "@/components/layout/document-locale";
 import { isLocale, localeDirection, locales } from "@/i18n/config";
 
 export const dynamicParams = false;
@@ -22,12 +23,15 @@ export default async function LocaleLayout({
   }
 
   return (
-    <div
-      lang={locale}
-      dir={localeDirection[locale]}
-      className={locale === "ar" ? "locale-ar" : undefined}
-    >
-      {children}
-    </div>
+    <>
+      <DocumentLocale locale={locale} />
+      <div
+        lang={locale}
+        dir={localeDirection[locale]}
+        className={locale === "ar" ? "locale-ar" : undefined}
+      >
+        {children}
+      </div>
+    </>
   );
 }

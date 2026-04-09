@@ -4,6 +4,10 @@ import { useRef, useState, type FormEventHandler } from "react";
 
 import type { Locale } from "@/i18n/config";
 import {
+  createContactFormSubmittedEvent,
+} from "@/lib/analytics-events";
+import { trackAnalyticsEvent } from "@/lib/analytics-client";
+import {
   getContactSubmissionInput,
   type ContactSubmissionErrorResponse,
   type ContactSubmissionField,
@@ -144,6 +148,15 @@ export function LeadForm({
       setStatus("success");
       setStatusMessage(content.statuses.successDescription);
       setFieldErrors({});
+      if (locale) {
+        trackAnalyticsEvent(
+          createContactFormSubmittedEvent({
+            locale,
+            serviceNeeded: submissionInput.serviceNeeded,
+            preferredNextStep: submissionInput.preferredNextStep || null,
+          }),
+        );
+      }
       formRef.current?.reset();
     } catch {
       setStatus("error");
@@ -163,8 +176,8 @@ export function LeadForm({
       <CardContent className="space-y-6">
         {statusCopy ? (
           <div
-            role="status"
-            aria-live="polite"
+            role={status === "error" ? "alert" : "status"}
+            aria-live={status === "error" ? "assertive" : "polite"}
             className={cn(
               "rounded-[var(--radius-control)] border px-4 py-4",
               status === "success"
@@ -203,6 +216,7 @@ export function LeadForm({
                   getFieldError("name") ? getFieldMessageId("name") : undefined
                 }
                 autoComplete="name"
+                dir="auto"
                 placeholder={content.placeholders.name}
                 required
               />
@@ -225,6 +239,7 @@ export function LeadForm({
                     : undefined
                 }
                 autoComplete="organization"
+                dir="auto"
                 placeholder={content.placeholders.company}
                 required
               />
@@ -249,6 +264,7 @@ export function LeadForm({
                     : undefined
                 }
                 autoComplete="email"
+                dir="ltr"
                 placeholder={content.placeholders.email}
                 type="email"
                 inputMode="email"
@@ -273,6 +289,7 @@ export function LeadForm({
                     : undefined
                 }
                 autoComplete="tel"
+                dir="ltr"
                 placeholder={content.placeholders.phone}
                 type="tel"
                 inputMode="tel"
@@ -359,6 +376,7 @@ export function LeadForm({
               }
               placeholder={content.placeholders.brief}
               className="min-h-44"
+              dir="auto"
               minLength={20}
               required
             />

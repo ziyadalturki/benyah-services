@@ -1,11 +1,12 @@
-import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRightIcon } from "lucide-react";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import type { AnalyticsEventDefinition } from "@/lib/analytics-events";
 import { cn } from "@/lib/utils";
 
 type ServiceCardProps = {
@@ -17,6 +18,7 @@ type ServiceCardProps = {
   badgeLabel?: string;
   actionLabel?: string;
   bulletsLabel?: string;
+  trackingEvent?: AnalyticsEventDefinition;
 };
 
 export function ServiceCard({
@@ -28,6 +30,7 @@ export function ServiceCard({
   badgeLabel = "Service",
   actionLabel = "Learn More",
   bulletsLabel,
+  trackingEvent,
 }: ServiceCardProps) {
   return (
     <FadeIn>
@@ -58,13 +61,14 @@ export function ServiceCard({
           ))}
         </CardContent>
         <CardFooter>
-          <Link
+          <TrackedLink
             href={href}
+            trackingEvent={trackingEvent}
             className={cn(buttonVariants({ variant: "ghost", size: "lg" }), "px-0 text-foreground")}
           >
             {actionLabel}
             <ArrowRightIcon className="size-4" />
-          </Link>
+          </TrackedLink>
         </CardFooter>
       </Card>
     </FadeIn>
