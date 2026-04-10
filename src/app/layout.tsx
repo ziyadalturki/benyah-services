@@ -102,7 +102,6 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang={siteConfig.defaultLocale}
       className={`${sans.variable} ${arabic.variable} ${mono.variable} bg-background antialiased`}
       suppressHydrationWarning
     >
