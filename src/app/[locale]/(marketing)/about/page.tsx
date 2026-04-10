@@ -96,8 +96,8 @@ export default async function AboutPage({
           }),
         }}
         secondaryAction={{
-          href: localizedPathname(locale, "/services"),
-          label: content.ctas.secondary,
+          href: localizedPathname(locale, sitePaths.contact),
+          label: content.ctas.contact,
         }}
         supportingLine={content.about.supportingLine}
         supportingLabel={content.about.highlightsLabel}

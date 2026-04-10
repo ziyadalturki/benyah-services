@@ -93,8 +93,8 @@ export default async function HomePage({
           }),
         }}
         secondaryAction={{
-          href: localizedPathname(locale, "/services"),
-          label: content.ctas.secondary,
+          href: localizedPathname(locale, sitePaths.contact),
+          label: content.ctas.contact,
         }}
         supportingLine={content.home.supportingLine}
         supportingLabel={content.home.highlightsLabel}
@@ -233,6 +233,33 @@ export default async function HomePage({
                   <CardTitle className="text-[1.45rem]">
                     {item.title}
                   </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <BodyText>{item.description}</BodyText>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          ))}
+        </div>
+      </PageSection>
+
+      <PageSection containerClassName="space-y-10">
+        <SectionHeading
+          eyebrow={content.home.trust.eyebrow}
+          title={content.home.trust.title}
+          description={content.home.trust.description}
+          className="max-w-4xl"
+        />
+
+        <div className="grid gap-5 lg:grid-cols-3">
+          {content.home.trust.items.map((item, index) => (
+            <FadeIn key={item.title}>
+              <Card
+                tone={index === 1 ? "strong" : "default"}
+                className="h-full"
+              >
+                <CardHeader>
+                  <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <BodyText>{item.description}</BodyText>

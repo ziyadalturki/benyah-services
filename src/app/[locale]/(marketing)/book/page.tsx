@@ -53,6 +53,20 @@ export default async function BookingPage({
 
   const content = getMarketingContent(locale);
   const bookingConfig = getBookingConfig();
+  const isBookingEnabled = bookingConfig.enabled;
+  const fallbackContactHref = `${localizedPathname(
+    locale,
+    `${sitePaths.contact}?preferredNextStep=discovery-call`,
+  )}#lead-form`;
+  const heroTitle = isBookingEnabled
+    ? content.book.title
+    : content.book.booking.shell.fallbackTitle;
+  const heroDescription = isBookingEnabled
+    ? content.book.description
+    : content.book.booking.shell.fallbackDescription;
+  const heroSupportingLine = isBookingEnabled
+    ? content.book.supportingLine
+    : content.book.booking.shell.fallbackNote;
 
   return (
     <>
@@ -72,71 +86,78 @@ export default async function BookingPage({
       />
       <PageHero
         eyebrow={content.book.eyebrow}
-        title={content.book.title}
-        description={content.book.description}
+        title={heroTitle}
+        description={heroDescription}
         primaryAction={{
-          href: "#booking-area",
-          label: content.book.heroPrimaryAction,
+          href: isBookingEnabled ? "#booking-area" : fallbackContactHref,
+          label: isBookingEnabled
+            ? content.book.heroPrimaryAction
+            : content.book.booking.shell.fallbackPrimaryAction,
         }}
         secondaryAction={{
-          href: `${localizedPathname(
-            locale,
-            `${sitePaths.contact}?preferredNextStep=discovery-call`,
-          )}#lead-form`,
-          label: content.book.heroSecondaryAction,
+          href: isBookingEnabled
+            ? fallbackContactHref
+            : localizedPathname(locale, sitePaths.services),
+          label: isBookingEnabled
+            ? content.book.heroSecondaryAction
+            : content.ctas.secondary,
         }}
-        supportingLine={content.book.supportingLine}
+        supportingLine={heroSupportingLine}
         supportingLabel={content.book.highlightsLabel}
         supportingPoints={content.book.highlights}
       />
 
-      <PageSection containerClassName="space-y-10">
-        <SectionHeading
-          eyebrow={content.book.covers.eyebrow}
-          title={content.book.covers.title}
-          description={content.book.covers.description}
-          className="max-w-4xl"
-        />
+      {isBookingEnabled ? (
+        <>
+          <PageSection containerClassName="space-y-10">
+            <SectionHeading
+              eyebrow={content.book.covers.eyebrow}
+              title={content.book.covers.title}
+              description={content.book.covers.description}
+              className="max-w-4xl"
+            />
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {content.book.covers.items.map((item, index) => (
-            <FadeIn key={item.title}>
-              <Card tone={index === 1 ? "strong" : "subtle"} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-[1.35rem]">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <BodyText>{item.description}</BodyText>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-      </PageSection>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {content.book.covers.items.map((item, index) => (
+                <FadeIn key={item.title}>
+                  <Card tone={index === 1 ? "strong" : "subtle"} className="h-full">
+                    <CardHeader>
+                      <CardTitle className="text-[1.35rem]">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <BodyText>{item.description}</BodyText>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
+              ))}
+            </div>
+          </PageSection>
 
-      <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
-        <SectionHeading
-          eyebrow={content.book.audience.eyebrow}
-          title={content.book.audience.title}
-          description={content.book.audience.description}
-          className="max-w-4xl"
-        />
+          <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
+            <SectionHeading
+              eyebrow={content.book.audience.eyebrow}
+              title={content.book.audience.title}
+              description={content.book.audience.description}
+              className="max-w-4xl"
+            />
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {content.book.audience.items.map((item, index) => (
-            <FadeIn key={item.title}>
-              <Card tone={index === 1 ? "strong" : "default"} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <BodyText>{item.description}</BodyText>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-      </PageSection>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {content.book.audience.items.map((item, index) => (
+                <FadeIn key={item.title}>
+                  <Card tone={index === 1 ? "strong" : "default"} className="h-full">
+                    <CardHeader>
+                      <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <BodyText>{item.description}</BodyText>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
+              ))}
+            </div>
+          </PageSection>
+        </>
+      ) : null}
 
       <PageSection
         id="booking-area"
@@ -158,8 +179,8 @@ export default async function BookingPage({
       </PageSection>
 
       <PageSection
-        tone="subtle"
-        divider="top"
+        tone={isBookingEnabled ? "subtle" : "default"}
+        divider={isBookingEnabled ? "top" : "none"}
         containerClassName="grid gap-8 lg:grid-cols-[minmax(0,1.03fr)_minmax(0,0.97fr)] lg:items-start"
       >
         <SectionHeading

@@ -9,6 +9,7 @@ type NavigationItem = {
 type ServiceContent = {
   title: string;
   summary: string;
+  bestWhen: string;
   heroSupportingLine: string;
   intro: string;
   capabilities: string[];
@@ -18,6 +19,11 @@ type ServiceContent = {
   processTitle?: string;
   processDescription?: string;
   processSteps?: HomeProcessStep[];
+  finalCta?: {
+    title: string;
+    description: string;
+    supportingLine: string;
+  };
   faqs: {
     question: string;
     answer: string;
@@ -112,6 +118,9 @@ type MarketingContent = {
     why: HomeSection & {
       items: Principle[];
     };
+    trust: HomeSection & {
+      items: Principle[];
+    };
     selectedWork: HomeSection & {
       noteEyebrow: string;
       noteTitle: string;
@@ -141,6 +150,7 @@ type MarketingContent = {
       serviceBadge: string;
       serviceAction: string;
       serviceSupportLabel: string;
+      bestWhenLabel: string;
       groupServicesLabel: string;
     };
     detail: {
@@ -219,6 +229,7 @@ type MarketingContent = {
     };
     catalog: HomeSection;
     labels: {
+      summaryLabel: string;
       outcomeLabel: string;
       addressedLabel: string;
       scopeLabel: string;
@@ -258,7 +269,7 @@ type MarketingContent = {
         fallbackTitle: string;
         fallbackDescription: string;
         fallbackPrimaryAction: string;
-        fallbackSecondaryAction: string;
+        fallbackSecondaryAction?: string;
         fallbackNote: string;
       };
     };
@@ -277,14 +288,20 @@ type MarketingContent = {
     intro: HomeSection & {
       items: Principle[];
     };
+    callIntent: {
+      badge: string;
+      title: string;
+      description: string;
+      supportingLine: string;
+      primaryAction: string;
+      noteTitle: string;
+      noteDescription: string;
+    };
     form: {
       eyebrow: string;
       title: string;
       description: string;
-      cardTitle: string;
-      cardDescription: string;
       note: string;
-      helperPoints: string[];
       submitLabel: string;
       fields: {
         name: string;
@@ -317,6 +334,8 @@ type MarketingContent = {
       bestFitTitle: string;
       bestFitDescription: string;
       bestFitPoints: string[];
+      nextStepsTitle: string;
+      nextStepsDescription: string;
       points: string[];
     };
     finalCta: HomeSection & {
@@ -354,8 +373,8 @@ export const marketingContent: Record<Locale, MarketingContent> = {
     ],
     ctas: {
       primary: "Request a Discovery Call",
-      secondary: "Explore Services",
-      contact: "Discuss Your Project",
+      secondary: "View Services",
+      contact: "Send an Enquiry",
     },
     footer: {
       strapline:
@@ -378,8 +397,8 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       ],
       labels: {
         serviceBadge: "Service",
-        serviceAction: "Learn More",
-        caseStudyOutcome: "Planned Outcome",
+        serviceAction: "See Service",
+        caseStudyOutcome: "What Improved",
       },
       problem: {
         eyebrow: "Where Businesses Get Stuck",
@@ -474,15 +493,38 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           },
         ],
       },
+      trust: {
+        eyebrow: "How Engagements Run",
+        title: "The work stays clear, scoped, and practical from the start.",
+        description:
+          "Benyah keeps delivery intentionally disciplined so projects stay commercially sensible and usable in daily operations.",
+        items: [
+          {
+            title: "Clear Scope Before Build",
+            description:
+              "The first priority is defining the real pressure point, the right service layer, and what should happen first.",
+          },
+          {
+            title: "Built Around Daily Use",
+            description:
+              "Systems are shaped around the way the team actually works, not around abstract feature lists.",
+          },
+          {
+            title: "One Practical Next Step",
+            description:
+              "Projects can begin narrowly, then expand only where the wider operating picture genuinely needs it.",
+          },
+        ],
+      },
       selectedWork: {
         eyebrow: "Selected Work",
-        title: "A selective record of the systems and workflows we help improve.",
+        title: "A look at the kinds of problems Benyah is brought in to clean up.",
         description:
-          "Case studies will be published carefully as projects are ready to be shared. The focus will be on operational clarity, not inflated storytelling.",
-        noteEyebrow: "Publishing Standard",
-        noteTitle: "Built for long-term fit",
+          "The examples focus on the business situation, the cleanup, and the kind of operating improvement the work supports.",
+        noteEyebrow: "How Work Is Shared",
+        noteTitle: "Named case studies are published selectively",
         noteDescription:
-          "Not every project needs to become a public case study. Benyah will publish selected work that reflects the level of structure, clarity, and execution clients can expect.",
+          "Where a full public story is not appropriate, Benyah shows the pattern of the engagement instead so visitors can still judge fit realistically.",
       },
       finalCta: {
         eyebrow: "Start the Conversation",
@@ -494,36 +536,36 @@ export const marketingContent: Record<Locale, MarketingContent> = {
     },
     services: {
       eyebrow: "Services",
-      title: "Structured services for better business operations.",
+      title: "Services built around how the business actually runs.",
       description:
-        "Benyah helps service businesses and operations-led teams build better structure across digital presence, workflow, and day-to-day operations.",
+        "Each service is designed around a clear business pressure point, then connected back to the wider operating system around it.",
       supportingLine:
-        "Start with the service that matches the pressure point now. Each detail page shows where the service fits and what it helps improve.",
+        "If you already know where the friction sits, start there. If not, the decision cues below will help narrow the right fit.",
       highlightsLabel: "Service Focus",
       highlights: [
         "Customer-facing systems that support trust and conversion",
         "Workflow automation that reduces repeated coordination",
         "Operational systems that improve visibility, control, and growth",
       ],
-      heroSecondaryAction: "Review Service Categories",
+      heroSecondaryAction: "View Services",
       intro: {
         eyebrow: "How Benyah Fits",
         title:
-          "Better structure across the parts of the business that usually evolve separately.",
+          "The right starting point depends on where the business is losing clarity today.",
         description:
-          "The website, the workflow behind it, and the internal systems that support delivery often drift apart over time. Benyah helps bring them back into one clearer operating structure.",
+          "Some businesses need a stronger front end. Others need cleaner recurring workflow, deeper system-to-system logic, or a better internal operating layer. Benyah helps sort those into the right level of project.",
         pointsLabel: "What Better Structure Covers",
         points: [
-          "Digital presence that explains value properly",
-          "Workflow design that reduces manual handoffs",
-          "Operational systems that improve visibility and control",
+          "A clearer path for prospects, clients, and bookings",
+          "More dependable movement between repeated internal steps",
+          "Stronger operational visibility and cleaner internal systems",
         ],
       },
       catalog: {
         eyebrow: "Service Categories",
-        title: "The core services Benyah delivers.",
+        title: "Choose the layer that matches the pressure point.",
         description:
-          "Each category is shaped around a specific business need, then connected back to the wider operating system around it.",
+          "Each service below answers a different kind of problem, from repeated admin to deeper systems logic to internal operating structure.",
       },
       grouping: {
         eyebrow: "How The Services Connect",
@@ -558,9 +600,10 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         ],
       },
       labels: {
-        serviceBadge: "Core Service",
-        serviceAction: "View Service",
+        serviceBadge: "Service",
+        serviceAction: "See Service",
         serviceSupportLabel: "What It Helps With",
+        bestWhenLabel: "Best when",
         groupServicesLabel: "Related Services",
       },
       detail: {
@@ -568,20 +611,20 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         heroSecondaryAction: "All Services",
         overview: {
           eyebrow: "What This Service Is",
-          title: "A practical layer of structure around a specific business need.",
+          title: "How this service changes the working reality of the business.",
           description:
-            "Each service is shaped to solve a real operational issue, strengthen a weak part of the business, or create a more dependable system around daily work.",
+            "The focus is always practical: fix the weak point, clarify the workflow, and leave the business with something more dependable in daily use.",
           capabilitiesLabel: "What Benyah Shapes",
         },
         problems: {
           eyebrow: "Problems It Solves",
-          title: "Built for recurring business friction, not abstract ideas.",
+          title: "Designed around the friction that shows up in real operations.",
           description:
             "The focus is on issues that affect clarity, speed, service quality, and operational control.",
         },
         deliverables: {
           eyebrow: "What Benyah Delivers",
-          title: "Clear scope, structured implementation, and a usable result.",
+          title: "A defined scope, a cleaner setup, and a result the team can actually use.",
           description:
             "Each service is different in form, but the delivery stays practical: a defined scope, a clear system shape, and an outcome that works in daily use.",
           capabilitiesLabel: "Delivery Focus",
@@ -589,7 +632,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         },
         audience: {
           eyebrow: "Who It Is For",
-          title: "Designed for businesses that need stronger structure in a specific area.",
+          title: "Best for businesses that have reached a clear pressure point in this area.",
           description:
             "The strongest fit is usually a business that has outgrown improvised tools, unclear handoffs, or software that no longer matches the way it operates.",
         },
@@ -627,7 +670,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         },
         faq: {
           eyebrow: "FAQ",
-          title: "Common questions before a service engagement begins.",
+          title: "Questions that usually come up before the work starts.",
           description:
             "The right approach depends on the current state of the business, but these answers cover the most common starting points.",
         },
@@ -648,21 +691,23 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         description:
           "Benyah can help identify which service, or combination of services, makes the most sense for the current stage and operating model of the business.",
         supportingLine: "Clear scope before implementation.",
-        secondaryAction: "View Case Studies",
+        secondaryAction: "Send an Enquiry",
       },
       items: {
         automation: {
           title: "Automation Solutions",
           summary:
-            "Practical business automation for recurring admin, approvals, follow-up, and day-to-day handoffs.",
+            "Practical automation for recurring admin, follow-up, approvals, and the repeated steps that should no longer depend on manual chasing.",
+          bestWhen:
+            "Best when one operating flow is still being pushed forward by inboxes, reminders, spreadsheets, and repeated admin.",
           heroSupportingLine:
-            "Best for businesses where repeated operational tasks still live in inboxes, spreadsheets, and memory.",
+            "For businesses where too much of the day still depends on people remembering, chasing, or repeating the same actions.",
           intro:
-            "Automation Solutions focus on the repeated business processes that should run more cleanly every day. Benyah helps businesses structure automations around enquiries, follow-up, internal approvals, reminders, updates, and routine handoffs so the team spends less time chasing the process and more time moving it forward.",
+            "Automation Solutions focus on the repeated processes inside the existing operation. The aim is to remove unnecessary manual handling around enquiries, follow-up, approvals, reminders, updates, and routine handoffs so the team can spend less time pushing the workflow along by hand.",
           capabilities: [
-            "Recurring admin, approval, and follow-up flows",
-            "Internal handoffs, reminders, and status notifications",
-            "Practical automation around the tools already in daily use",
+            "Repeat admin, approvals, and follow-up inside one working process",
+            "Internal reminders, notifications, and handoffs that keep routine work moving",
+            "A light automation layer built around the tools already in use",
           ],
           outcomes: [
             "Less repeated admin and manual chasing",
@@ -754,11 +799,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "No. The aim is the opposite: cleaner process, fewer manual dependencies, and more clarity around what should happen and when.",
             },
           ],
+          finalCta: {
+            title: "If the process is being held together manually, this is usually the right place to start.",
+            description:
+              "Benyah can review the repeated work, identify what should move automatically, and define the smallest practical automation layer that improves the day-to-day operation.",
+            supportingLine: "Start with the repeated friction, not with a larger system than the business needs.",
+          },
         },
         websites: {
           title: "Websites",
           summary:
             "Premium business websites built to communicate clearly, build trust, and turn qualified visitors into enquiries.",
+          bestWhen:
+            "Best when the business is credible in practice but the website is not carrying that standard or guiding the right enquiry properly.",
           heroSupportingLine:
             "Best for businesses that need a stronger digital presence, clearer positioning, and a website that supports conversion properly.",
           intro:
@@ -853,11 +906,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "Both. The right approach depends on whether the current website can be improved structurally or whether the business is better served by rebuilding properly.",
             },
           ],
+          finalCta: {
+            title: "If the website is underselling the business, the next step is to fix that properly.",
+            description:
+              "Benyah can help clarify the positioning, the page structure, and the enquiry path so the site starts supporting the business instead of lagging behind it.",
+            supportingLine: "A stronger first impression should also lead to a clearer next step.",
+          },
         },
         "booking-workflows": {
           title: "Booking & AI Call Workflows",
           summary:
             "Structured booking and AI-assisted call workflows for scheduling, confirmations, reminders, intake, internal handoff, and fewer no-shows.",
+          bestWhen:
+            "Best when appointments, confirmations, reminders, and call handling are affecting conversion, readiness, or daily capacity.",
           heroSupportingLine:
             "Best for businesses where booking quality, call handling, and team readiness directly affect conversion, service quality, and daily capacity.",
           intro:
@@ -952,11 +1013,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "No. Even moderate booking volume can create real friction when the process is inconsistent, manual, or poorly connected to service delivery and internal preparation.",
             },
           ],
+          finalCta: {
+            title: "If booking quality affects how the business sells or delivers, this is a high-value fix.",
+            description:
+              "Benyah can help clean up the path from first contact to confirmed appointment so clients, calls, and internal preparation all move together more reliably.",
+            supportingLine: "The goal is a smoother booking path and a better-prepared team behind it.",
+          },
         },
         "facility-maintenance-management": {
           title: "Facility & Maintenance Management Solutions",
           summary:
             "Structured facility and maintenance systems for work orders, service records, asset visibility, and contractor coordination.",
+          bestWhen:
+            "Best when requests, assets, work orders, and service records need a clearer system than email, calls, and spreadsheets can provide.",
           heroSupportingLine:
             "Best for small to mid-sized facilities and maintenance operations that need better visibility, coordination, and operational control.",
           intro:
@@ -1051,19 +1120,27 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "Yes. It is often better to begin with the highest-friction part of the operation, then expand once the process and record structure are clear.",
             },
           ],
+          finalCta: {
+            title: "If facilities work is hard to track cleanly, the right system layer can change that quickly.",
+            description:
+              "Benyah can help define a management setup around the requests, assets, work orders, and contractor activity that need clearer control.",
+            supportingLine: "Start where the records or coordination are breaking down most visibly.",
+          },
         },
         "workflow-systems-automation": {
           title: "Workflow & Systems Automation",
           summary:
-            "Deeper automation for businesses that need systems, data, and operational logic to work together reliably.",
+            "Deeper automation for businesses that need systems, data, and decision logic to move reliably between several tools or platforms.",
+          bestWhen:
+            "Best when the problem sits between several systems and the business needs cleaner integrations, orchestration, or data movement.",
           heroSupportingLine:
-            "Best for businesses that need deeper workflow control, more reliable integrations, and connected systems that work together properly.",
+            "For businesses that already have several tools in play and now need them to behave like one connected operating flow.",
           intro:
-            "Workflow & Systems Automation is for businesses that need more than repeated task automation. This is where Benyah structures the deeper layer between forms, CRMs, internal tools, operations platforms, and other systems so data, decisions, and actions move in the right order across the whole process.",
+            "Workflow & Systems Automation is for the deeper layer between systems. It is the right fit when forms, CRMs, booking platforms, internal tools, or operations systems all play a role in one process, but the handoff between them is inconsistent, fragile, or too manual.",
           capabilities: [
-            "System-to-system integrations and workflow orchestration",
-            "Webhook, API, and data-sync logic across business tools",
-            "Branching rules, exception handling, and cross-platform process flow",
+            "Cross-system handoffs between forms, CRMs, booking, operations, and internal tools",
+            "Data movement, branching logic, and exception handling across platforms",
+            "Deeper integration where simple task automation is no longer enough",
           ],
           outcomes: [
             "More connected systems and cleaner cross-platform handoffs",
@@ -1155,19 +1232,27 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "When the workflow needs deeper logic, cleaner orchestration, stronger integrations, or more reliable movement between business systems. The aim is not more complexity. It is better control where the process genuinely needs it.",
             },
           ],
+          finalCta: {
+            title: "If several systems need to move together cleanly, this is usually the better fit than simple automation.",
+            description:
+              "Benyah can review the current handoffs, data movement, and logic between tools, then define the integration layer that makes the overall process more dependable.",
+            supportingLine: "Bring the systems into order before layering on more manual workarounds.",
+          },
         },
         "business-systems": {
           title: "Business Systems & Internal Tools",
           summary:
-            "Custom internal systems, dashboards, and operational tools built around the way the business actually runs.",
+            "Custom internal systems, dashboards, and operating tools built around the way the business actually runs day to day.",
+          bestWhen:
+            "Best when the business needs its own internal operating layer, not just better handoffs between generic tools.",
           heroSupportingLine:
-            "Best for businesses that need a better internal operating layer, not just another automation.",
+            "For businesses that have outgrown spreadsheets, patchwork tools, or generic software at the centre of internal operations.",
           intro:
-            "Business Systems & Internal Tools are for situations where the right answer is not another handoff, but a better internal system altogether. Benyah helps define and build structured internal software, dashboards, records, and controls around the workflows, users, and oversight the business actually needs.",
+            "Business Systems & Internal Tools are for situations where the business needs its own stronger internal layer. Instead of adding another workaround, Benyah helps define the records, dashboards, permissions, reporting views, and operating controls that should sit at the centre of the internal workflow.",
           capabilities: [
-            "Custom dashboards, admin portals, and internal workspaces",
-            "Structured records, role-based views, and operational controls",
-            "Data models and reporting built around daily internal work",
+            "Internal dashboards, admin tools, and working views shaped around one real process",
+            "Structured records, permissions, and operational controls",
+            "Reporting and data views built around day-to-day management needs",
           ],
           outcomes: [
             "Stronger internal visibility and control",
@@ -1259,6 +1344,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "Yes. In many cases it is better to extend the current stack with the right internal layer than to replace everything at once.",
             },
           ],
+          finalCta: {
+            title: "If the business needs a stronger internal operating layer, this is where that work begins.",
+            description:
+              "Benyah can help define the records, views, controls, and internal workflow structure the team actually needs instead of forcing more compromise from generic software.",
+            supportingLine: "A better internal system should reduce noise, not create another tool to manage around.",
+          },
         },
       },
     },
@@ -1268,7 +1359,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       description:
         "Benyah is a premium small-business solutions company helping businesses improve digital presence, workflow, and operations through connected systems.",
       supportingLine:
-        "Structure, clear systems, and practical execution for businesses that need the operation behind the brand to work properly.",
+        "For businesses that need the operation behind the brand to work as well as the front end looks.",
       highlightsLabel: "What Benyah Stands For",
       highlights: [
         "Structure before software",
@@ -1407,42 +1498,42 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         description:
           "Benyah can help define the right website, workflow, automation, or system layer based on what the business actually needs now.",
         supportingLine: "Clear scope. Structured thinking. Practical execution.",
-        secondaryAction: "Explore Services",
+        secondaryAction: "Send an Enquiry",
       },
     },
     caseStudies: {
       eyebrow: "Case Studies",
-      title: "Selected work and structured solution examples.",
+      title: "Examples of the situations Benyah is brought in to sort out.",
       description:
-        "This page shows the types of projects Benyah is designed to deliver across digital presence, workflow, and business operations.",
+        "A look at the kinds of business situations that lead to website rebuilds, workflow cleanup, and stronger internal systems.",
       supportingLine:
-        "Detailed project stories are shared selectively, based on project stage, confidentiality, and whether the work is the right fit to publish.",
-      highlightsLabel: "What This Page Shows",
+        "Anonymous where needed, concrete where it matters.",
+      highlightsLabel: "What You’ll See",
       highlights: [
-        "Real solution formats without invented client stories",
-        "Structured examples of the kind of work Benyah delivers",
-        "A clearer view of how projects are typically scoped",
+        "Typical starting points behind the engagement",
+        "What Benyah cleaned up or put in place",
+        "How the project usually takes shape from there",
       ],
       intro: {
-        eyebrow: "How Benyah Approaches Work",
-        title: "Structured solutions, presented with restraint.",
+        eyebrow: "How Work Is Shared",
+        title: "Real operating situations, shared without dressing them up.",
         description:
-          "Benyah focuses on practical work that improves clarity, workflow, and operational control. The purpose of this page is to show the shape of the work without dressing it up as theatre.",
-        asideEyebrow: "Publishing Standard",
-        asideTitle: "Detailed case studies are shared carefully, not theatrically.",
+          "Not every project is something that should be published in full. Where a named story is not appropriate, Benyah shows the business situation, the cleanup, and what changed so visitors can still judge fit properly.",
+        asideEyebrow: "Reading Guide",
+        asideTitle: "Look at the before, the cleanup, and the shape of the engagement.",
         asideDescription:
-          "Some projects are still live, some are confidential, and some are better discussed in a direct conversation. This page is designed to show the type of work Benyah does without inventing details that do not belong in public.",
+          "The examples stay anonymous where needed, but they remain specific enough to show how the work is usually framed and delivered.",
         asidePoints: [
-          "Project examples are shown by solution format, not fake client narrative",
-          "Detailed stories can be shared where the stage and fit are right",
-          "The focus stays on structure, scope, and operational value",
+          "No invented clients, metrics, or testimonials",
+          "Each example starts from a real business problem",
+          "More detailed discussion can happen in a direct conversation",
         ],
       },
       startingPoints: {
-        eyebrow: "Typical Starting Points",
-        title: "The work usually begins with an operational pressure point, not a blank sheet.",
+        eyebrow: "What Usually Brings Clients In",
+        title: "Most engagements begin with an operational problem that is already visible.",
         description:
-          "Before a project is scoped, there is usually a recognisable business situation behind it. These are common starting points Benyah is asked to untangle.",
+          "The brief is rarely the first thing that appears. More often there is an obvious pressure point behind it. These are common examples.",
         items: [
           {
             title: "A strong business with a weak front end",
@@ -1462,95 +1553,96 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         ],
       },
       catalog: {
-        eyebrow: "Selected Work Formats",
-        title: "Project types that reflect the kind of work Benyah delivers.",
+        eyebrow: "Example Engagements",
+        title: "Typical examples of the work Benyah is asked to put in place.",
         description:
-          "These examples are structured by solution format so the page remains useful before a larger public portfolio is in place.",
+          "Each example shows where the business started, what was cleaned up, what improved, and the kind of project that usually followed.",
       },
       labels: {
-        outcomeLabel: "Supports Outcomes Like",
-        addressedLabel: "What Was Addressed",
-        scopeLabel: "Typical Engagement",
+        summaryLabel: "Starting Point",
+        outcomeLabel: "What Improved",
+        addressedLabel: "What Benyah Put In Place",
+        scopeLabel: "Typical Project Shape",
       },
       items: [
         {
           title: "Booking & AI Call Workflow Setup",
           sector: "Booking & Call Workflows",
           summary:
-            "A structured booking and call-handling setup for service businesses where scheduling, reminders, intake, and internal readiness need to work together cleanly.",
+            "A service business was handling bookings, reminders, and incoming calls across several channels with no dependable handoff into delivery.",
           addressed:
-            "Scheduling rules, confirmations, reminder flow, intake steps, AI-assisted call handling where appropriate, and the handoff from booking into delivery.",
+            "Booking rules, confirmations, reminders, intake steps, AI-assisted call handling where it helped, and the internal handoff after each confirmed booking.",
           outcome:
-            "Cleaner client experience, fewer missed steps, and better-prepared service delivery.",
+            "A cleaner booking path, fewer missed steps, and better preparation before service delivery.",
           scope:
-            "Focused implementation or booking workflow improvement.",
+            "Usually a focused workflow build around bookings, calls, and internal readiness.",
         },
         {
           title: "Automation And Handoff System",
           sector: "Workflow Automation",
           summary:
-            "An automation-led setup connecting enquiries, internal actions, updates, and follow-up so work does not stall between teams or tools.",
+            "An operation was depending on manual follow-up and repeated coordination to move work from enquiry into internal action and client updates.",
           addressed:
             "Manual administration, inconsistent handoffs, notification logic, and repeated coordination between systems or team members.",
           outcome:
-            "Less manual coordination, more dependable workflow movement, and clearer visibility into the process.",
+            "Less manual chasing, more dependable movement between steps, and clearer visibility into what was waiting or delayed.",
           scope:
-            "Workflow improvement or multi-step automation build.",
+            "Usually a workflow-improvement project or a focused multi-step automation build.",
         },
         {
           title: "Premium Lead-Generation Website",
           sector: "Websites",
           summary:
-            "A premium website structured to improve first impression, communicate services clearly, and guide qualified visitors toward contact or consultation.",
+            "A credible business had outgrown a generic website that was not explaining the offer properly or guiding serious visitors toward the right next step.",
           addressed:
-            "Weak positioning, generic presentation, unclear page flow, and poor lead capture structure.",
+            "Weak positioning, generic presentation, unclear page flow, and a poor enquiry path.",
           outcome:
-            "Stronger credibility, clearer service communication, and better-quality enquiries.",
+            "Stronger credibility, clearer service messaging, and better-quality enquiries.",
           scope:
-            "Focused implementation or website rebuild with conversion structure.",
+            "Usually a focused site rebuild with clearer positioning and conversion structure.",
         },
         {
           title: "Facility & Maintenance Management Setup",
           sector: "Facility & Maintenance Management",
           summary:
-            "A structured facility and maintenance setup for handling assets, work orders, service records, contractor coordination, and operational oversight more cleanly.",
+            "A facilities or maintenance team needed a cleaner way to manage requests, assets, work orders, service records, and contractor coordination.",
           addressed:
             "Request flow, asset structure, work order status, service records, reporting visibility, and day-to-day coordination across maintenance activity.",
           outcome:
-            "Better operational control, cleaner records, and clearer visibility across facilities work.",
+            "Cleaner records, clearer work status, and better operational oversight across maintenance activity.",
           scope:
-            "System setup or multi-part operational build.",
+            "Usually a system-setup project with phased operational cleanup.",
         },
         {
           title: "Internal Business Tool Or Dashboard",
           sector: "Business Systems",
           summary:
-            "A focused internal system built around a specific workflow, data model, or reporting need that generic software is handling poorly.",
+            "A business had core internal work living in spreadsheets and patchwork tools that were no longer giving managers a clear view of status or workload.",
           addressed:
-            "Patchwork spreadsheets, duplicated data, weak oversight, and internal processes that do not fit off-the-shelf tools.",
+            "Patchwork spreadsheets, duplicated data, weak oversight, and internal processes that did not fit off-the-shelf tools.",
           outcome:
-            "Cleaner internal workflow, better visibility, and stronger administrative efficiency.",
+            "A cleaner internal operating layer, better visibility, and stronger day-to-day control.",
           scope:
-            "Focused implementation or system setup around a high-friction internal process.",
+            "Usually a focused internal-system project around one high-friction process.",
         },
         {
           title: "Workflow & Systems Automation Build",
           sector: "Workflow & Systems Automation",
           summary:
-            "A connected automation build designed for businesses that need more control over integrations, logic, and cross-system execution.",
+            "A business needed several systems to move data and actions between each other more reliably than a simple rule-based setup could support.",
           addressed:
-            "n8n workflows, webhook and API coordination, data movement between tools, and automation logic beyond basic rule-based setups.",
+            "Integration logic, data movement between tools, and the deeper orchestration needed to keep a cross-system workflow running cleanly.",
           outcome:
-            "More connected systems, cleaner data flow, and faster process execution.",
+            "More dependable cross-system execution, cleaner data flow, and fewer brittle handoffs between platforms.",
           scope:
-            "Integration workflow or deeper workflow automation build.",
+            "Usually an integration-focused automation build rather than a simple task automation pass.",
         },
       ],
       engagements: {
         eyebrow: "How Projects Are Scoped",
-        title: "Benyah supports focused work as well as multi-part system builds.",
+        title: "Some projects stay focused. Others open into a wider systems build.",
         description:
-          "Some projects start with a single pressure point. Others require a wider operating structure across several connected areas.",
+          "The right shape depends on whether the pressure point is isolated or tied to several parts of the business at once.",
         items: [
           {
             title: "Focused Implementation",
@@ -1576,28 +1668,28 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       finalCta: {
         eyebrow: "Start the Conversation",
-        title: "If one of these project formats fits the need, the next step is a direct discussion.",
+        title: "If one of these situations feels familiar, the next step is a direct conversation.",
         description:
-          "Benyah can help assess the right level of project, the likely system shape, and where to begin based on the current business setup.",
+          "Benyah can help assess the right project shape, the likely system layer involved, and the best place to begin from the current setup.",
         supportingLine: "Practical scope before implementation.",
-        secondaryAction: "Explore Services",
+        secondaryAction: "Send an Enquiry",
       },
     },
     book: {
       eyebrow: "Discovery Call",
-      title: "Request a discovery call for fit, scope, and the right next step.",
+      title: "Request a discovery call to clarify the need and the right next step.",
       description:
-        "The Benyah discovery call is for understanding how the business works today, where the friction sits, and whether the next step is a website, workflow improvement, system setup, or wider operational build.",
+        "The conversation is there to understand the current setup, the pressure point, and whether the next step should be a website, workflow improvement, system setup, or something wider.",
       supportingLine:
-        "Designed for serious enquiries that need clarity before implementation.",
+        "Best for serious enquiries that need a clear starting point before anything is scoped.",
       highlightsLabel: "What To Expect",
       highlights: [
         "A practical business conversation, not a scripted sales call",
         "Useful for websites, automation projects, operational systems, and internal tooling",
         "The goal is clarity on fit, likely scope, and the most sensible next step",
       ],
-      heroPrimaryAction: "View Request Options",
-      heroSecondaryAction: "Prefer To Send An Enquiry?",
+      heroPrimaryAction: "Request a Discovery Call",
+      heroSecondaryAction: "Send an Enquiry",
       covers: {
         eyebrow: "What The Call Covers",
         title: "A practical review of the business, the problem, and the likely scope.",
@@ -1661,30 +1753,29 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       booking: {
         eyebrow: "Booking",
-        title: "Schedule the call if available, or request it directly.",
+        title: "Choose a time if booking is available, or request the call directly.",
         description:
-          "If a live booking calendar is available, you can reserve a time here. If not, you can still request the discovery call directly through the enquiry flow without losing momentum.",
+          "If a live calendar is available, you can choose a time here. If not, you can still request the call directly through the enquiry flow.",
         shell: {
           configuredBadge: "Booking Ready",
           configuredTitle: "Choose a time for the conversation",
           configuredDescription:
-            "Use the booking area below to reserve a suitable time for an initial discussion around business context, fit, and likely scope.",
+            "Use the booking area below to reserve a suitable time for an initial discussion around the business, the pressure point, and the likely next step.",
           configuredAction: "Open Booking In A New Tab",
           configuredNote:
             "If the embedded schedule does not load cleanly, use the direct booking link instead.",
           fallbackBadge: "Discovery Call Request",
-          fallbackTitle: "Discovery-call requests are handled directly.",
+          fallbackTitle: "Request the call directly.",
           fallbackDescription:
-            "To keep the process intentional, Benyah handles discovery-call requests through the enquiry flow when a live calendar is not published here. Share the business context and note that you want the call.",
-          fallbackPrimaryAction: "Request The Call",
-          fallbackSecondaryAction: "Explore Services",
+            "When a live calendar is not published here, Benyah handles call requests through the enquiry form. Share a short outline of the business situation and the call request can be reviewed from there.",
+          fallbackPrimaryAction: "Request a Discovery Call",
           fallbackNote:
-            "This keeps the process honest: the conversation can still start immediately, and the right next step can be confirmed after the first review.",
+            "The form will open with discovery-call intent already selected.",
         },
       },
       reassurance: {
         eyebrow: "What Happens Next",
-        title: "The first conversation is for fit, scope, and next-step clarity.",
+        title: "The first conversation is simply to clarify fit, scope, and the right way forward.",
         description:
           "It is not a commitment to start a project immediately. The aim is to understand the context properly, confirm whether Benyah is the right fit, and identify the most practical way forward.",
         points: [
@@ -1696,23 +1787,23 @@ export const marketingContent: Record<Locale, MarketingContent> = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Start a structured conversation with Benyah.",
+      title: "Tell us what the business needs.",
       description:
-        "Get in touch about websites, automation, booking & AI call workflows, business systems, facility & maintenance management solutions, workflow & systems automation, or broader operational structure.",
+        "Share the business context, the pressure point, or the project you are considering. Benyah will review it and help define the right next step.",
       supportingLine:
-        "Benyah works across digital presence, workflow, and internal operations for businesses that need clearer systems and better execution.",
+        "Useful for websites, workflow improvement, operational systems, and discovery-call requests.",
       highlightsLabel: "Contact Fit",
       highlights: [
         "New project enquiries and implementation discussions",
         "Workflow improvements and system restructuring",
         "Websites, automation, and operational solutions",
       ],
-      heroPrimaryAction: "Open The Enquiry Form",
+      heroPrimaryAction: "Send an Enquiry",
       intro: {
         eyebrow: "Why Get In Touch",
-        title: "The best conversations usually start with a clear business need.",
+        title: "The clearest enquiries usually start with a real business situation.",
         description:
-          "You do not need a full specification to begin. A short outline of the current setup and the pressure point is enough for a serious first discussion.",
+          "You do not need a full specification. A short outline of the current setup, the pressure point, and the likely direction is enough.",
         items: [
           {
             title: "Project Enquiries",
@@ -1736,21 +1827,24 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           },
         ],
       },
-      form: {
-        eyebrow: "Lead Form",
-        title: "Send an enquiry with enough detail to start the right conversation.",
+      callIntent: {
+        badge: "Discovery Call Request",
+        title: "Use this form to request a discovery call.",
         description:
-          "The form is designed to stay low-friction while giving Benyah enough context to understand the type of support you need.",
-        cardTitle: "What Helps Benyah Assess Fit",
-        cardDescription:
-          "A short practical brief is enough. The aim is to understand the pressure point, the operating context, and what kind of next step would be most useful.",
+          "The form below is already set to discovery-call intent. Share a short outline of the business and what needs discussion, and Benyah will confirm whether a call is the right next step.",
+        supportingLine: "A short brief is enough. The aim is to understand the need before scheduling anything.",
+        primaryAction: "Request a Discovery Call",
+        noteTitle: "What to send",
+        noteDescription:
+          "A few lines on the business, the pressure point, and what you want to talk through are enough to start.",
+      },
+      form: {
+        eyebrow: "Enquiry Form",
+        title: "Share the essentials and Benyah will take it from there.",
+        description:
+          "Keep it brief. The purpose is to understand the situation, not to collect a full specification on the first message.",
         note:
           "Detailed scope, sequencing, and technical decisions can be shaped after the initial conversation.",
-        helperPoints: [
-          "A short summary of the business and current setup",
-          "The main friction point or project objective",
-          "The service area that feels closest to the need today",
-        ],
         submitLabel: "Send Enquiry",
         fields: {
           name: "Name",
@@ -1773,8 +1867,8 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         },
         serviceNotSureLabel: "Not sure yet",
         nextStepOptions: [
-          { value: "contact", label: "Initial Contact" },
-          { value: "discovery-call", label: "Request A Discovery Call" },
+          { value: "contact", label: "Written Enquiry" },
+          { value: "discovery-call", label: "Request a Discovery Call" },
         ],
         statuses: {
           successTitle: "Enquiry received",
@@ -1787,12 +1881,15 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       trust: {
         eyebrow: "What Happens Next",
-        title: "The first message is for fit, context, and the right next step.",
+        title: "The first message is there to clarify direction, not to lock you into a project.",
         description:
-          "Benyah uses the initial enquiry to understand the situation properly, decide whether a short call is the right next step, and shape the scope from there.",
+          "Benyah uses the first enquiry to understand the situation, decide whether a short call is useful, and shape the next step from there.",
         bestFitTitle: "Best Enquiries To Send Here",
         bestFitDescription:
           "The contact form works best when there is a real project, workflow issue, or operational pressure point to discuss.",
+        nextStepsTitle: "After the first message",
+        nextStepsDescription:
+          "Once the situation is clear enough, the next step can be shaped properly, whether that is a short call, a focused project discussion, or a clearer service recommendation.",
         bestFitPoints: [
           "A website or digital presence that no longer matches the business properly",
           "Workflow friction, repeated admin, or disconnected systems slowing delivery",
@@ -1806,12 +1903,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       finalCta: {
         eyebrow: "Ready To Reach Out",
-        title: "If the business needs better structure, send the enquiry and start there.",
+        title: "A clear first message is enough to start the right conversation.",
         description:
-          "Benyah can help define whether the next step is a website, workflow improvement, automation layer, or a broader operational system.",
+          "If the service fit is not fully clear yet, that is fine. Benyah can help identify whether the next step is a call, a focused project discussion, or a broader review of the situation.",
         supportingLine: "Clear thinking before implementation.",
-        primaryAction: "Go To The Form",
-        secondaryAction: "Explore Services",
+        primaryAction: "Send an Enquiry",
+        secondaryAction: "Request a Discovery Call",
       },
     },
     notFound: {
@@ -1841,7 +1938,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
     ctas: {
       primary: "اطلب جلسة أولية",
       secondary: "استعرض الخدمات",
-      contact: "تواصل معنا",
+      contact: "أرسل استفسارك",
     },
     footer: {
       strapline:
@@ -1864,7 +1961,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       ],
       labels: {
         serviceBadge: "خدمة",
-        serviceAction: "تفاصيل الخدمة",
+        serviceAction: "اطّلع على الخدمة",
         caseStudyOutcome: "النتيجة المتوقعة",
       },
       problem: {
@@ -1959,15 +2056,38 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           },
         ],
       },
+      trust: {
+        eyebrow: "كيف تُدار المشاريع",
+        title: "العمل في Benyah واضح من البداية إلى ما بعد التنفيذ.",
+        description:
+          "نحرص على أن يبقى كل مشروع محدد النطاق، عملياً في تنفيذه، ومفيداً في الاستخدام اليومي.",
+        items: [
+          {
+            title: "نحدد النطاق قبل البناء",
+            description:
+              "الأولوية دائماً هي فهم موضع الضغط وتحديد الخدمة أو الطبقة التي تستحق أن تبدأ أولاً.",
+          },
+          {
+            title: "نبني حول طريقة العمل الفعلية",
+            description:
+              "الحلول تُصاغ حول ما يفعله الفريق يومياً، لا حول قائمة خصائص منفصلة عن الواقع.",
+          },
+          {
+            title: "نبدأ بالخطوة العملية الأنسب",
+            description:
+              "قد يبدأ المشروع بحل محدد، ثم يتوسع فقط إذا كانت الصورة التشغيلية تحتاج ذلك فعلاً.",
+          },
+        ],
+      },
       selectedWork: {
         eyebrow: "أعمال مختارة",
-        title: "نماذج من الأعمال التي نساعد من خلالها على ترتيب التشغيل.",
+        title: "نماذج من نوع الأعمال التي نُستدعى لترتيبها.",
         description:
-          "نشارك ما يصلح للنشر بعناية، مع تركيز على قيمة العمل وطريقة التنفيذ لا على المبالغة التسويقية.",
+          "نركز هنا على وضع النشاط، وما الذي جرى ترتيبه، ونوع التحسن الذي دعمه العمل.",
         noteEyebrow: "طريقة العرض",
-        noteTitle: "نشارك ما يخدم الفهم",
+        noteTitle: "نشارك ما يكفي لفهم شكل العمل",
         noteDescription:
-          "ليس كل مشروع مناسباً للنشر. تختار Benyah ما يمكن عرضه بما يعكس مستوى الوضوح والتنفيذ الذي ينتظره العميل.",
+          "حين لا يكون من المناسب نشر قصة مشروع كاملة، نعرض نمط العمل نفسه حتى تبقى الصورة واضحة من دون مبالغة أو اختلاق.",
       },
       finalCta: {
         eyebrow: "الخطوة التالية",
@@ -1979,36 +2099,36 @@ export const marketingContent: Record<Locale, MarketingContent> = {
     },
     services: {
       eyebrow: "الخدمات",
-      title: "خدمات مرتبة حول ما يحتاجه النشاط فعلياً.",
+      title: "خدمات مبنية حول ما يحتاجه النشاط فعلياً.",
       description:
-        "تساعد Benyah الأعمال الخدمية والفرق التي يعتمد نجاحها على التشغيل اليومي على بناء منظومة أوضح للواجهة الرقمية وسير العمل والعمليات الداخلية.",
+        "كل خدمة هنا تعالج موضع ضغط محدداً، ثم تُربط بالصورة التشغيلية الأوسع داخل النشاط.",
       supportingLine:
-        "ابدأ بالخدمة الأقرب إلى موضع الضغط الحالي. صفحات التفاصيل توضح أين تناسب كل خدمة وما الذي تضيفه عملياً.",
+        "إذا كنت تعرف موضع التعطل فابدأ منه. وإن لم تكن الصورة واضحة بعد، فالعناوين المختصرة أدناه ستساعدك على تضييق الاختيار.",
       highlightsLabel: "كيف ننظر إلى الخدمات",
       highlights: [
         "خدمات تواجه العميل وتدعم الثقة والتحويل",
         "أتمتة وسير عمل تقلل التنسيق المتكرر",
         "أنظمة تشغيلية ترفع الرؤية والسيطرة وقابلية التوسع",
       ],
-      heroSecondaryAction: "تصفّح الخدمات",
+      heroSecondaryAction: "استعرض الخدمات",
       intro: {
         eyebrow: "أين تدخل Benyah في الصورة",
         title:
-          "نجمع بين الواجهة الرقمية وسير العمل والتشغيل في منظومة أوضح.",
+          "الخدمة الأنسب تتحدد بحسب موضع التعطل الفعلي داخل النشاط.",
         description:
-          "غالباً ما يتطور الموقع والتدفق الداخلي والأنظمة التشغيلية كلٌ على حدة. دور Benyah هو إعادة ترتيب العلاقة بينها بحيث يصبح النشاط أكثر اتساقاً وأسهل في الإدارة.",
+          "بعض الأعمال تحتاج واجهة أقوى. وبعضها يحتاج سير عمل أنظف، أو ربطاً أعمق بين الأنظمة، أو طبقة تشغيل داخلية أوضح. دور Benyah هو فرز ذلك إلى مستوى المشروع الصحيح.",
         pointsLabel: "ما الذي نرتبه",
         points: [
-          "واجهة رقمية تشرح قيمة النشاط بوضوح",
-          "سير عمل يقلل التعثر والتسليم اليدوي بين المراحل",
-          "أنظمة تشغيلية ترفع الرؤية والسيطرة اليومية",
+          "مسار أوضح للاستفسار والحجز والخطوة التالية",
+          "حركة أنظف بين الخطوات المتكررة داخل التشغيل",
+          "رؤية أقوى وسيطرة أوضح على العمل الداخلي",
         ],
       },
       catalog: {
         eyebrow: "الخدمات",
-        title: "الخدمات الرئيسية في Benyah.",
+        title: "ابدأ بالخدمة الأقرب إلى المشكلة الحالية.",
         description:
-          "كل خدمة هنا مبنية حول احتياج عملي واضح، ثم مربوطة بالصورة الأوسع التي يعمل بها النشاط.",
+          "كل خدمة أدناه تجيب عن نوع مختلف من المشكلات، من الأعمال المتكررة إلى الربط بين الأنظمة إلى بناء طبقة تشغيل داخلية أقوى.",
       },
       grouping: {
         eyebrow: "كيف تلتقي هذه الخدمات",
@@ -2044,8 +2164,9 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       labels: {
         serviceBadge: "الخدمة",
-        serviceAction: "تفاصيل الخدمة",
+        serviceAction: "اطّلع على الخدمة",
         serviceSupportLabel: "تساعدك في",
+        bestWhenLabel: "تكون أنسب عندما",
         groupServicesLabel: "الخدمات المرتبطة",
       },
       detail: {
@@ -2053,14 +2174,14 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         heroSecondaryAction: "كل الخدمات",
         overview: {
           eyebrow: "عن الخدمة",
-          title: "كيف تخدم هذه الخدمة العمل فعلياً.",
+          title: "كيف تنعكس هذه الخدمة على سير العمل فعلياً.",
           description:
             "هنا يتضح موضع هذه الخدمة عملياً، وما الذي تضيفه لهذا الجانب من العمل.",
           capabilitiesLabel: "ما الذي يدخل ضمن الخدمة",
         },
         problems: {
           eyebrow: "متى تظهر الحاجة إليها",
-          title: "قيمتها تظهر عندما يبدأ هذا الجانب في تعطيل العمل.",
+          title: "تظهر أهميتها عندما يبدأ هذا الجانب في تعطيل العمل اليومي.",
           description:
             "المقصود هنا مشكلات عملية تؤثر على السرعة والوضوح وجودة التنفيذ اليومي.",
         },
@@ -2074,7 +2195,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         },
         audience: {
           eyebrow: "لمن تناسب",
-          title: "أنسب للأعمال التي تحتاج معالجة واضحة لهذا الجانب.",
+          title: "أنسب للأعمال التي وصلت إلى نقطة ضغط واضحة في هذا الجانب.",
           description:
             "غالباً تكون الأنسب للأعمال التي تجاوزت الأدوات المرتجلة أو أصبحت طريقة عملها أوضح من أن تخدمها الحلول العامة كما ينبغي.",
         },
@@ -2112,7 +2233,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         },
         faq: {
           eyebrow: "أسئلة متكررة",
-          title: "أسئلة تظهر عادة قبل البدء بهذه الخدمة.",
+          title: "أسئلة تظهر عادة قبل بدء العمل.",
           description:
             "النهج المناسب يعتمد على وضع النشاط، لكن هذه الإجابات تغطي أكثر الأسئلة التي تظهر في البداية.",
         },
@@ -2132,21 +2253,23 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         description:
           "تساعد Benyah على تحديد الخدمة أو المزيج المناسب من الخدمات بحسب مرحلة النشاط وطريقة تشغيله.",
         supportingLine: "وضوح في النطاق قبل البدء.",
-        secondaryAction: "اطّلع على الأعمال المختارة",
+        secondaryAction: "أرسل استفسارك",
       },
       items: {
         automation: {
           title: "حلول الأتمتة",
           summary:
             "أتمتة عملية تقلل الأعمال المتكررة، وتمنع تعطل الخطوات بين المراحل، وتجعل التنفيذ اليومي أكثر انتظاماً.",
+          bestWhen:
+            "تكون أنسب عندما تستهلك الخطوات المتكررة وقت الفريق وتعتمد على التذكير والمتابعة اليدوية.",
           heroSupportingLine:
             "مناسبة للأعمال التي تستنزفها الخطوات المتكررة، والتنسيق اليدوي، والاعتماد الزائد على البريد والذاكرة.",
           intro:
             "تساعد حلول الأتمتة في Benyah على تقليل الأعمال اليدوية غير الضرورية في الاستفسارات، والمتابعة، والتقارير، والتنسيق الداخلي. الفكرة بسيطة: أن تتحرك الخطوات الصحيحة في وقتها، من دون متابعة مرهقة أو اعتماد زائد على الذاكرة.",
           capabilities: [
-            "أتمتة للمتابعة والتذكير والاعتمادات والتحديثات المتكررة",
+            "أتمتة للمتابعة والتذكير والاعتمادات داخل العملية نفسها",
             "تنبيهات وتسليمات داخلية أوضح بين الفريق والمراحل",
-            "تنظيم الأتمتة حول الأدوات المستخدمة يومياً بالفعل",
+            "طبقة أتمتة خفيفة تدعم الأدوات المستخدمة يومياً بالفعل",
           ],
           outcomes: [
             "تنسيق يدوي أقل",
@@ -2238,11 +2361,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "نضبط الإشعارات والاستثناءات ووضوح الحالة بعد دخول التدفق في الاستخدام اليومي.",
             },
           ],
+          finalCta: {
+            title: "إذا كانت العملية تُدار يدوياً أكثر مما ينبغي، فهذه نقطة بداية مناسبة.",
+            description:
+              "تساعد Benyah على تحديد الخطوات التي ينبغي أن تتحرك تلقائياً وبناء طبقة أتمتة عملية تحسن التشغيل اليومي من دون تعقيد زائد.",
+            supportingLine: "ابدأ من الأعمال المتكررة، لا من بناء أكبر من الحاجة.",
+          },
         },
         websites: {
           title: "المواقع الإلكترونية",
           summary:
             "مواقع احترافية تشرح الخدمة بوضوح، وتعطي انطباعاً جدياً، وتدفع الزائر المناسب إلى التواصل.",
+          bestWhen:
+            "تكون أنسب عندما يكون النشاط جيداً في الواقع لكن الموقع لا يعكس مستواه ولا يوجّه الزائر بالشكل الصحيح.",
           heroSupportingLine:
             "مناسبة للأعمال التي تحتاج حضوراً رقمياً أقوى، وتموضعاً أوضح، وموقعاً يخدم التحويل بشكل أفضل.",
           intro:
@@ -2308,11 +2439,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "كلاهما. النهج المناسب يعتمد على ما إذا كان يمكن تحسين الموقع الحالي هيكلياً أو أن النشاط سيكون أفضل بإعادة بناء صحيحة من البداية.",
             },
           ],
+          finalCta: {
+            title: "إذا كان الموقع الحالي يضعف صورة النشاط، فالأفضل معالجته بالشكل الصحيح.",
+            description:
+              "تساعد Benyah على توضيح التموضع، وترتيب الصفحات، وبناء مسار تواصل يدعم النشاط بدلاً من أن يتأخر عنه.",
+            supportingLine: "الموقع الأقوى يجب أن يقود أيضاً إلى خطوة أوضح.",
+          },
         },
         "booking-workflows": {
           title: "تدفقات الحجز والمكالمات الذكية",
           summary:
             "تنظيم الحجز والمكالمات الواردة بحيث تعمل المواعيد والتأكيدات والتذكيرات وتجهيز المعلومات بسلاسة أكبر.",
+          bestWhen:
+            "تكون أنسب عندما تؤثر الجدولة أو المكالمات أو التذكيرات على التحويل أو الجاهزية أو جودة التنفيذ.",
           heroSupportingLine:
             "مناسبة للأعمال التي تؤثر فيها جودة الحجز والتعامل مع المكالمات مباشرة على التحويل وجاهزية الفريق والطاقة اليومية.",
           intro:
@@ -2378,15 +2517,23 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "لا. حتى حجم الحجز المتوسط قد يسبب احتكاكاً حقيقياً عندما تكون العملية غير متسقة أو يدوية أو غير مرتبطة جيداً بالتنفيذ والاستعداد الداخلي.",
             },
           ],
+          finalCta: {
+            title: "إذا كان الحجز أو التعامل مع المكالمات يؤثر على البيع أو التنفيذ، فهذه من أكثر النقاط التي تستحق الترتيب.",
+            description:
+              "تساعد Benyah على تنظيم الطريق من أول تواصل إلى موعد مؤكد واستعداد داخلي أوضح، بحيث يتحرك العميل والفريق بخطوات أنظف.",
+            supportingLine: "النتيجة المطلوبة هي مسار حجز أسلس وفريق أكثر جاهزية خلفه.",
+          },
         },
         "facility-maintenance-management": {
           title: "حلول إدارة المرافق والصيانة",
           summary:
             "أنظمة أوضح لإدارة المرافق والصيانة تغطي أوامر العمل، وسجلات الخدمة، والأصول، وتنسيق المتعهدين.",
+          bestWhen:
+            "تكون أنسب عندما تصبح الطلبات والأصول وأوامر العمل وسجلات الخدمة أكبر من أن تُدار عبر البريد والجداول والمكالمات.",
           heroSupportingLine:
             "مناسبة للأعمال الصغيرة والمتوسطة التي تدير مرافق أو فرق صيانة وتحتاج رؤية أوضح وتنسيقاً أقوى وسيطرة تشغيلية أفضل.",
           intro:
-            "تمنح حلول إدارة المرافق والصيانة الأعمال الصغيرة والمتوسطة طريقة أوضح لإدارة الأصول وأوامر العمل وسجلات الخدمة وتنسيق المتعهدين والتقارير. ويمكن لـ Benyah تنفيذ وهيكلة أنظمة إدارة الصيانة المحوسبة (CMMS) وحلول إدارة المرافق (CAFM) وأدوات إدارة الأصول ومسارات إدارة المتعهدين بما يلائم طريقة التشغيل الفعلية.",
+            "تمنح هذه الخدمة الأعمال الصغيرة والمتوسطة طريقة أوضح لإدارة الأصول وأوامر العمل وسجلات الخدمة وتنسيق المتعهدين والتقارير. الهدف هو أن تصبح أعمال المرافق أو الصيانة أسهل في المتابعة والإشراف، وأن تنتقل من المعالجة المتفرقة إلى نظام أوضح في الاستخدام اليومي.",
           capabilities: [
             "هيكلة أنظمة المرافق والصيانة للأصول والمواقع وسجلات الخدمة",
             "تدفقات أوامر العمل والطلبات وتنسيق المتعهدين",
@@ -2477,19 +2624,27 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "نحسن وضوح الاستخدام اليومي ورؤية الحالة والتقارير التشغيلية التي يحتاجها المسؤولون فعلاً.",
             },
           ],
+          finalCta: {
+            title: "إذا كانت أعمال المرافق أو الصيانة صعبة المتابعة بشكل نظيف، فطبقة الإدارة المناسبة تغيّر ذلك بسرعة.",
+            description:
+              "تساعد Benyah على تعريف النظام الأنسب حول الطلبات والأصول وأوامر العمل وتنسيق المتعهدين حتى يصبح التشغيل أوضح وأسهل في المتابعة.",
+            supportingLine: "ابدأ من الموضع الذي تنهار فيه السجلات أو التنسيقات أكثر من غيره.",
+          },
         },
         "workflow-systems-automation": {
           title: "أتمتة سير العمل والأنظمة",
           summary:
             "ربط أدق بين الأنظمة عندما تحتاج الخطوات والبيانات أن تنتقل تلقائياً بين أكثر من منصة بصورة موثوقة.",
+          bestWhen:
+            "تكون أنسب عندما تكون المشكلة بين عدة أنظمة وتحتاج العملية إلى ربط أعمق أو حركة بيانات أوضح بين الأدوات.",
           heroSupportingLine:
             "للأعمال التي تعددت أدواتها وأصبحت تحتاج ربطاً أعمق وتنسيقاً أدق بين الأنظمة.",
           intro:
-            "تأتي هذه الخدمة حين لا يعود الربط البسيط بين الخطوات كافياً. هنا تعمل Benyah على ترتيب العلاقة بين النماذج والأنظمة الداخلية وبرامج التشغيل المختلفة حتى تنتقل البيانات والإجراءات بين المراحل بصورة مستقرة. وتدخل أدوات مثل n8n وwebhooks والواجهات البرمجية عندما يحتاج العمل فعلاً إلى هذا المستوى من الربط.",
+            "تأتي هذه الخدمة حين لا يعود الربط البسيط بين الخطوات كافياً. هنا تعمل Benyah على ترتيب العلاقة بين النماذج والأنظمة الداخلية وبرامج التشغيل المختلفة حتى تنتقل البيانات والإجراءات بين المراحل بصورة مستقرة، ويصبح ما بين الأنظمة أوضح وأقل عرضة للتعطل.",
           capabilities: [
-            "ربط بين النماذج والأنظمة الداخلية وبرامج التشغيل المختلفة",
+            "ربط أوضح بين النماذج والأنظمة الداخلية وبرامج التشغيل المختلفة",
             "تنظيم حركة البيانات والإجراءات بين أكثر من نظام",
-            "تكاملات أعمق عبر n8n وwebhooks والواجهات البرمجية عند الحاجة",
+            "طبقة تكامل أعمق حين لا تكفي الأتمتة البسيطة بين الخطوات",
           ],
           outcomes: [
             "أنظمة أكثر ترابطاً وتسليم أنظف بين المراحل",
@@ -2552,6 +2707,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "عندما يحتاج التدفق إلى منطق أعمق، أو تكاملات أقوى، أو حركة أكثر موثوقية بين الأنظمة. الهدف ليس زيادة التعقيد، بل ترتيب ما يحتاج فعلاً إلى هذا المستوى من الربط.",
             },
           ],
+          finalCta: {
+            title: "إذا كانت عدة أنظمة تحتاج أن تعمل كمسار واحد، فهذه الخدمة غالباً أنسب من الأتمتة الأبسط.",
+            description:
+              "تساعد Benyah على مراجعة حركة البيانات والمنطق بين الأدوات، ثم تعريف طبقة الربط التي تجعل العملية أكثر ثباتاً واعتمادية.",
+            supportingLine: "رتّب العلاقة بين الأنظمة قبل إضافة مزيد من الحلول اليدوية المؤقتة.",
+          },
           processTitle: "مرحلة تكامل أعمق للأنظمة التي يجب أن تتحرك معاً بثبات.",
           processDescription:
             "يتشكل هذا العمل حول الأنظمة المعنية والمنطق بينها ومستوى الاعتمادية الذي يحتاجه التشغيل فعلياً.",
@@ -2566,7 +2727,7 @@ export const marketingContent: Record<Locale, MarketingContent> = {
               step: "02",
               title: "تصميم بنية الأتمتة",
               description:
-                "نحدد منطق الـ webhooks والواجهات البرمجية والتحويلات والتفرعات والاستثناءات التي يحتاجها التدفق الحقيقي.",
+                "نحدد منطق الربط والتحويلات والتفرعات والاستثناءات التي يحتاجها التدفق الحقيقي، ونستخدم n8n أو الـ webhooks أو الواجهات البرمجية عندما تكون هي الوسيلة الأنسب.",
             },
             {
               step: "03",
@@ -2586,14 +2747,16 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           title: "أنظمة الأعمال والأدوات الداخلية",
           summary:
             "أنظمة داخلية ولوحات تشغيل وأدوات عمل مبنية حول الطريقة التي يدير بها النشاط عملياته فعلياً.",
+          bestWhen:
+            "تكون أنسب عندما يحتاج النشاط إلى طبقة تشغيل داخلية خاصة به، لا مجرد تحسين التسليم بين أدوات عامة.",
           heroSupportingLine:
             "مناسبة للأعمال التي لم تعد عملياتها الداخلية الأساسية تلائم الجداول أو البرامج العامة أو الأدوات المجمعة.",
           intro:
             "هذه الخدمة مخصصة للأعمال التي لم تعد تحتاج مجرد أتمتة بين الخطوات، بل تحتاج نظاماً داخلياً أوضح بحد ذاته. تساعد Benyah على تصميم وبناء أنظمة داخلية ولوحات تشغيل وسجلات وصلاحيات عمل تناسب البيانات والخطوات والإشراف الذي يحتاجه النشاط فعلياً.",
           capabilities: [
-            "لوحات تشغيل وأدوات إدارية ومساحات عمل داخلية",
+            "لوحات تشغيل وأدوات إدارية مبنية حول عملية داخلية حقيقية",
             "سجلات منظمة وصلاحيات ورؤية بحسب الأدوار",
-            "نماذج بيانات وتقارير مبنية حول العمل الداخلي اليومي",
+            "تقارير ونماذج بيانات تدعم الإدارة اليومية بوضوح أكبر",
           ],
           outcomes: [
             "رؤية داخلية أقوى وسيطرة أوضح",
@@ -2656,6 +2819,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
                 "نعم. في كثير من الحالات يكون الأفضل إضافة الطبقة الداخلية المناسبة فوق المنظومة الحالية بدلاً من استبدال كل شيء دفعة واحدة.",
             },
           ],
+          finalCta: {
+            title: "إذا كان النشاط يحتاج طبقة تشغيل داخلية أوضح، فهذه هي البداية الصحيحة لذلك.",
+            description:
+              "تساعد Benyah على تعريف السجلات والرؤى والصلاحيات والأدوات الداخلية التي يحتاجها الفريق فعلاً بدلاً من الاستمرار في التنازل لصالح أدوات عامة لا تناسب العمل.",
+            supportingLine: "النظام الداخلي الأفضل يجب أن يخفف الضوضاء، لا أن يضيف أداة جديدة يصعب الالتفاف حولها.",
+          },
           processTitle: "مرحلة بناء داخلي تبدأ من نموذج التشغيل الفعلي للنشاط.",
           processDescription:
             "الهدف هو تعريف أصغر نظام قوي يمنح النشاط رؤية أفضل وسجلات أنظف وسيطرة داخلية أوضح.",
@@ -2830,42 +2999,42 @@ export const marketingContent: Record<Locale, MarketingContent> = {
         description:
           "تساعد Benyah على تحديد ما إذا كانت البداية الأنسب من الموقع، أو سير العمل، أو الأتمتة، أو النظام الداخلي بحسب ما يحتاجه النشاط الآن.",
         supportingLine: "وضوح في البداية. تنفيذ عملي. مستوى احترافي.",
-        secondaryAction: "استعرض الخدمات",
+        secondaryAction: "أرسل استفسارك",
       },
     },
     caseStudies: {
       eyebrow: "أعمال مختارة",
-      title: "نماذج من نوع الأعمال التي تتولاها Benyah.",
+      title: "نماذج من الأعمال التي تلجأ فيها الشركات إلى Benyah لترتيب التشغيل.",
       description:
-        "نستعرض هنا أمثلة على نوع المشاريع التي تنفذها Benyah عبر المواقع وسير العمل والأنظمة التشغيلية.",
+        "نماذج مختصرة لحالات عملية تبدأ من موقع ضعيف أو سير عمل مرتبك أو نظام داخلي غير واضح، ثم تُعاد صياغتها بشكل أنظف وأوضح.",
       supportingLine:
-        "عندما يكون من المناسب مشاركة تفاصيل أوسع من ناحية السرية ومرحلة المشروع، يمكن عرضها في نقاش مباشر.",
-      highlightsLabel: "في هذه الصفحة",
+        "تُعرض باختصار وبلا أسماء عند الحاجة، مع الحفاظ على الفائدة العملية.",
+      highlightsLabel: "ما الذي ستجده هنا",
       highlights: [
-        "نماذج عمل حقيقية من دون قصص عملاء مختلقة",
-        "أمثلة توضح طبيعة المشاريع التي تنفذها Benyah",
-        "صورة أوضح لطريقة صياغة المشاريع ونطاقها",
+        "كيف يبدأ الاحتياج عادة",
+        "ما الذي جرى ترتيبه أو بناؤه",
+        "إلى أي شكل يميل المشروع غالباً بعد ذلك",
       ],
       intro: {
-        eyebrow: "كيف نعرض أعمالنا",
-        title: "نعرض نوع العمل كما هو، بلا مبالغة.",
+        eyebrow: "كيف نعرض هذه النماذج",
+        title: "نعرض أصل المشكلة وطبيعة المعالجة بشكل مباشر.",
         description:
-          "تركز Benyah على العمل الذي يحسن الوضوح وسير العمل والسيطرة التشغيلية. والغرض من هذه الصفحة هو إعطاء صورة صادقة عن نوع العمل، لا صناعة رواية تسويقية.",
-        asideEyebrow: "ما الذي ننشره",
-        asideTitle: "نشارك التفاصيل بقدر ما يناسب المشروع.",
+          "ليست كل المشاريع قابلة للنشر بتفاصيلها الكاملة. وعندما لا يكون ذلك مناسباً، تعرض Benyah الحالة كما بدأت، وما الذي جرى ترتيبه، وما الذي تحسن فعلياً.",
+        asideEyebrow: "طريقة القراءة",
+        asideTitle: "ابدأ من نقطة البداية، ثم انظر إلى ما تغيّر.",
         asideDescription:
-          "بعض المشاريع ما تزال قيد التنفيذ، وبعضها يدخل ضمن أعمال لا يناسب نشر تفاصيلها، وبعضها يُشرح بصورة أفضل في نقاش مباشر. لذلك صيغت هذه الصفحة لتوضح نوع الأعمال التي تنفذها Benyah من دون مبالغة أو تفاصيل لا ينبغي نشرها.",
+          "المهم هنا أن تكون الصورة كافية لتقدير مستوى الفهم والتنفيذ، من غير مبالغة أو قصص مصطنعة.",
         asidePoints: [
-          "نستعرض المشروع من زاوية نوع الحل، لا من زاوية قصة عميل مختلقة",
-          "يمكن مشاركة التفاصيل حين تكون المرحلة وطبيعة المشروع تسمح بذلك",
-          "يبقى التركيز على طريقة التنفيذ والقيمة العملية",
+          "لا أسماء عملاء مختلقة ولا نتائج مفبركة",
+          "كل مثال يبدأ من وضع تشغيلي حقيقي",
+          "التفاصيل الأوسع تُناقش عند الحاجة في تواصل مباشر",
         ],
       },
       startingPoints: {
-        eyebrow: "من أين يبدأ العمل عادة",
-        title: "غالباً يبدأ المشروع من مشكلة واضحة في التشغيل، لا من صفحة بيضاء.",
+        eyebrow: "ما الذي يقود عادة إلى التعاقد",
+        title: "غالباً لا يبدأ العمل من طلب عام، بل من مشكلة واضحة في التشغيل أو الواجهة.",
         description:
-          "قبل تحديد نطاق أي مشروع، تكون هناك عادة مشكلة عملية واضحة تقف خلف الطلب. هذه بعض الحالات التي تبدأ منها المشاريع في Benyah.",
+          "قبل تحديد نطاق المشروع تكون هناك عادة نقطة ضغط واضحة. وهذه بعض الحالات التي تتكرر في الأعمال التي تصل إلى Benyah.",
         items: [
           {
             title: "نشاط جيد بواجهة رقمية أضعف من مستواه",
@@ -2886,94 +3055,95 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       catalog: {
         eyebrow: "نماذج المشاريع",
-        title: "أمثلة تعكس شكل الأعمال التي تنفذها Benyah.",
+        title: "نماذج توضح كيف يبدو العمل فعلياً عند التنفيذ.",
         description:
-          "صيغت هذه الأمثلة بحسب نوع الحل حتى تبقى الصفحة مفيدة حتى قبل اتساع الأعمال المنشورة علناً.",
+          "كل نموذج يوضح نقطة البداية، وما الذي جرى ترتيبه، وما الذي تحسن، وشكل المشروع الذي ينشأ غالباً في مثل هذه الحالات.",
       },
       labels: {
-        outcomeLabel: "النتيجة المتوقعة",
-        addressedLabel: "ما الذي جرى ترتيبه",
-        scopeLabel: "شكل المشروع",
+        summaryLabel: "نقطة البداية",
+        outcomeLabel: "ما الذي تحسن",
+        addressedLabel: "ما الذي نفذته Benyah",
+        scopeLabel: "شكل المشروع غالباً",
       },
       items: [
         {
           title: "إعداد لتدفقات الحجز والمكالمات الذكية",
           sector: "الحجز والمكالمات",
           summary:
-            "إعداد منظم للحجز والتعامل مع المكالمات للأعمال الخدمية التي تحتاج أن تعمل المواعيد والتذكيرات والاستعداد الداخلي كمنظومة واحدة.",
+            "نشاط خدمي كانت فيه المواعيد والمكالمات والتذكيرات والتحضير الداخلي تسير عبر قنوات متفرقة من دون تسليم واضح بين الخطوات.",
           addressed:
-            "قواعد الجدولة والتأكيدات والتذكيرات وخطوات الإدخال ودعم المكالمات الذكية عند الحاجة والتسليم من الحجز إلى التنفيذ.",
+            "قواعد الحجز والتأكيدات والتذكيرات وخطوات الإدخال والتسليم من الموعد أو المكالمة إلى التنفيذ، مع دعم للمكالمات الذكية عند الحاجة.",
           outcome:
-            "تجربة عميل أوضح وخطوات فائتة أقل واستعداد أفضل قبل تنفيذ الخدمة.",
+            "تجربة حجز أوضح، وخطوات فائتة أقل، واستعداد أفضل قبل تقديم الخدمة.",
           scope:
-            "مشروع محدد أو تحسين لتدفق الحجز.",
+            "غالباً مشروع مركز حول الحجز والمكالمات والاستعداد الداخلي.",
         },
         {
           title: "نظام أتمتة وتسليم بين المراحل",
           sector: "أتمتة سير العمل",
           summary:
-            "إعداد تشغيلي يربط الاستفسارات والخطوات الداخلية والتحديثات والمتابعة حتى لا يتعطل العمل بين الفرق أو الأنظمة.",
+            "نشاط كان يعتمد على المتابعة اليدوية المتكررة حتى ينتقل العمل من الاستفسار إلى التنفيذ والتحديثات الداخلية.",
           addressed:
-            "الإدارة اليدوية والتسليم غير المتسق ومنطق الإشعارات والتنسيق المتكرر بين الأنظمة أو أعضاء الفريق.",
+            "الأعمال الإدارية المتكررة، والتسليم غير المتسق، ومنطق الإشعارات، والتنسيق المتكرر بين الأنظمة أو أعضاء الفريق.",
           outcome:
-            "تنسيق يدوي أقل وتدفق أكثر اعتمادية ورؤية أوضح للحالة التشغيلية.",
+            "تنسيق يدوي أقل، وتدفق أكثر اعتمادية، ورؤية أوضح لما ينتظر أو يتعطل.",
           scope:
-            "تحسين لسير العمل أو بناء أتمتة متعددة المراحل.",
+            "غالباً تحسين لسير العمل أو بناء أتمتة متعددة المراحل.",
         },
         {
           title: "موقع احترافي لتوليد الفرص",
           sector: "المواقع الإلكترونية",
           summary:
-            "موقع احترافي منظم لتحسين الانطباع الأول وشرح الخدمات بوضوح وتوجيه الزائر المناسب نحو التواصل أو الاستشارة.",
+            "نشاط موثوق في الواقع، لكن موقعه لم يعد يشرح العرض جيداً ولا يقود الزائر المناسب إلى خطوة تواصل واضحة.",
           addressed:
-            "ضعف التموضع والحضور العام وغير الواضح ومسار الصفحات الضعيف وهيكل التحويل غير الفعّال.",
+            "التموضع غير الواضح، ومسار الصفحات الضعيف، وهيكل التحويل الذي لا يدعم استفساراً جاداً.",
           outcome:
-            "مصداقية أقوى وشرح أوضح للخدمات واستفسارات أفضل جودة.",
+            "مصداقية أقوى، وشرح أوضح للخدمات، واستفسارات أفضل جودة.",
           scope:
-            "مشروع محدد أو إعادة بناء موقع بهيكل تحويل أوضح.",
+            "غالباً إعادة بناء موقع بهيكل أوضح ورسالة أقوى.",
         },
         {
           title: "إعداد لإدارة المرافق والصيانة",
           sector: "إدارة المرافق والصيانة",
           summary:
-            "إعداد منظم للمرافق والصيانة لمعالجة الأصول وأوامر العمل وسجلات الخدمة وتنسيق المتعهدين والإشراف اليومي بشكل أوضح.",
+            "تشغيل مرافق أو صيانة كان يعتمد على طلبات متفرقة وسجلات غير مكتملة ورؤية محدودة للأصول وأوامر العمل.",
           addressed:
-            "تدفق الطلبات وهيكلة الأصول وحالات أوامر العمل وسجلات الخدمة ورؤية التقارير والتنسيق اليومي لأعمال الصيانة.",
+            "تدفق الطلبات، وهيكلة الأصول، وحالات أوامر العمل، وسجلات الخدمة، ورؤية التقارير، وتنسيق المتعهدين.",
           outcome:
-            "سيطرة تشغيلية أفضل وسجلات أنظف ورؤية أوضح عبر أعمال المرافق.",
+            "سيطرة تشغيلية أفضل، وسجلات أنظف، ورؤية أوضح عبر أعمال المرافق والصيانة.",
           scope:
-            "إعداد نظام أو بناء تشغيلي متعدد الأجزاء.",
+            "غالباً إعداد نظام مع تحسينات تشغيلية على مراحل.",
         },
         {
           title: "أداة داخلية أو لوحة تشغيل",
           sector: "أنظمة الأعمال",
           summary:
-            "نظام داخلي مركز مبني حول تدفق محدد أو نموذج بيانات أو حاجة تقريرية لا تخدمها البرمجيات الجاهزة جيداً.",
+            "نشاط كانت عملياته الداخلية الأساسية موزعة بين جداول وأدوات مجمعة لا تعطي الإدارة رؤية واضحة للحالة أو الحمولة.",
           addressed:
-            "الجداول المجمعة وتكرار البيانات وضعف الإشراف والعمليات الداخلية التي لا تلائم الأدوات الجاهزة.",
+            "الجداول المجمعة، وتكرار البيانات، وضعف الإشراف، والعمليات الداخلية التي لا تخدمها الأدوات الجاهزة جيداً.",
           outcome:
-            "تدفق داخلي أنظف ورؤية أفضل وكفاءة إدارية أعلى.",
+            "تدفق داخلي أنظف، ورؤية أفضل، وكفاءة إدارية أعلى.",
           scope:
-            "مشروع محدد أو إعداد نظام حول عملية داخلية عالية الاحتكاك.",
+            "غالباً مشروع مركز حول عملية داخلية عالية الاحتكاك أو لوحة تشغيل أساسية.",
         },
         {
           title: "بناء لأتمتة سير العمل والأنظمة",
           sector: "أتمتة سير العمل والأنظمة",
           summary:
-            "بناء أتمتة مترابط للأعمال التي تحتاج سيطرة أعلى على التكاملات والمنطق وتنفيذ العمليات بين الأنظمة.",
+            "نشاط كانت بياناته وخطواته تنتقل بين عدة أنظمة بصورة هشة أو يدوية، وأصبح يحتاج ربطاً أعمق من الأتمتة البسيطة.",
           addressed:
-            "تدفقات n8n وتنسيق الـ webhooks والواجهات البرمجية وحركة البيانات بين الأدوات ومنطق الأتمتة الأعمق من الإعدادات الأساسية.",
+            "منطق الربط بين الأنظمة، وحركة البيانات، والتحديثات، والاستثناءات، وطبقة التكامل الأعمق التي تحفظ التدفق من التعطل.",
           outcome:
-            "أنظمة أكثر ترابطاً وتدفق بيانات أنظف وتنفيذ أسرع للعمليات.",
+            "أنظمة أكثر ترابطاً، وتدفق بيانات أنظف، وتنفيذ أكثر ثباتاً بين الأدوات.",
           scope:
-            "تنفيذ تكامل أو بناء أعمق لأتمتة سير العمل.",
+            "غالباً مشروع تكامل أو بناء أعمق لطبقة الربط بين الأنظمة.",
         },
       ],
       engagements: {
         eyebrow: "كيف يُحدد نطاق المشاريع",
-        title: "قد يبدأ العمل من احتياج محدد، وقد يمتد إلى أكثر من جانب داخل النشاط.",
+        title: "بعض المشاريع يبقى محدداً، وبعضها يفتح ملفاً تشغيلياً أوسع.",
         description:
-          "بعض المشاريع تبدأ من نقطة تعطل واحدة، وأخرى تحتاج إلى معالجة أوسع عبر أكثر من جانب داخل النشاط.",
+          "شكل المشروع يتحدد بحسب موضع الضغط: هل هو جزء واحد يحتاج ترتيباً واضحاً، أم أكثر من طبقة تحتاج أن تعمل معاً.",
         items: [
           {
             title: "تنفيذ محدد النطاق",
@@ -2999,28 +3169,28 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       finalCta: {
         eyebrow: "الخطوة التالية",
-        title: "إذا كان أحد هذه النماذج قريباً من احتياجك، فابدأ بنقاش مباشر.",
+        title: "إذا كان أحد هذه النماذج قريباً من وضعك، فابدأ بتواصل مباشر.",
         description:
-          "تساعد Benyah على تحديد مستوى المشروع المناسب، ونوع الحل الأقرب، وأفضل نقطة بداية بحسب وضع النشاط الحالي.",
+          "تساعد Benyah على تقدير شكل المشروع الأقرب، ونوع الحل الأنسب، ونقطة البداية العملية بحسب وضع النشاط الحالي.",
         supportingLine: "فهم أوضح قبل التنفيذ.",
-        secondaryAction: "استعرض الخدمات",
+        secondaryAction: "أرسل استفسارك",
       },
     },
     book: {
       eyebrow: "جلسة أولية",
-      title: "اطلب جلسة أولية لفهم احتياج النشاط وتحديد الخطوة التالية.",
+      title: "اطلب جلسة أولية لتوضيح الاحتياج وتحديد الخطوة الأنسب.",
       description:
-        "هذه الجلسة مخصصة لفهم طريقة عمل النشاط اليوم، وأين توجد نقاط التعطل، وما إذا كانت البداية الأنسب موقعاً أو تحسيناً في سير العمل أو إعداد نظام أو معالجة تشغيلية أوسع.",
+        "الهدف من الجلسة هو فهم الوضع الحالي، ونقطة الضغط، وما إذا كانت البداية الأنسب موقعاً أو تحسيناً في سير العمل أو نظاماً أوضح للتشغيل.",
       supportingLine:
-        "مناسبة للاستفسارات الجادة التي تحتاج وضوحاً قبل البدء.",
-      highlightsLabel: "ما الذي ستخرج به",
+        "مناسبة للاستفسارات الجادة التي تحتاج وضوحاً قبل تحديد النطاق.",
+      highlightsLabel: "ما الذي تتوقعه",
       highlights: [
         "محادثة عملية حول النشاط، لا مكالمة بيع نمطية",
         "مفيدة للمواقع والأتمتة وتدفقات الحجز والمكالمات والأنظمة التشغيلية والأدوات الداخلية",
         "الهدف هو الخروج بصورة أوضح عن الاحتياج والخطوة التالية",
       ],
-      heroPrimaryAction: "استعرض خيارات الجلسة",
-      heroSecondaryAction: "أو أرسل استفساراً",
+      heroPrimaryAction: "اطلب جلسة أولية",
+      heroSecondaryAction: "أرسل استفسارك",
       covers: {
         eyebrow: "ما الذي تتناوله الجلسة",
         title: "مراجعة سريعة للوضع الحالي وما يحتاجه النشاط.",
@@ -3084,9 +3254,9 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       booking: {
         eyebrow: "الحجز",
-        title: "اختر الوقت المناسب إن كان التقويم متاحاً، أو اطلب الجلسة مباشرة.",
+        title: "اختر الوقت المناسب إن كان التقويم متاحاً، أو اطلب جلسة أولية مباشرة.",
         description:
-          "إذا كان تقويم الحجز المباشر متاحاً، يمكنك اختيار موعد من هنا. وإذا لم يكن منشوراً حالياً، يمكنك طلب الجلسة مباشرة عبر نموذج التواصل من دون أن يتوقف النقاش.",
+          "إذا كان تقويم الحجز المباشر متاحاً يمكنك اختيار الموعد من هنا. وإذا لم يكن منشوراً حالياً، يمكنك طلب الجلسة مباشرة عبر نموذج التواصل.",
         shell: {
           configuredBadge: "التقويم متاح",
           configuredTitle: "حدّد موعد الجلسة",
@@ -3098,18 +3268,17 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           fallbackBadge: "طلب جلسة أولية",
           fallbackTitle: "يمكن طلب الجلسة مباشرة.",
           fallbackDescription:
-            "لإبقاء المسار واضحاً وعملياً، تُدار طلبات الجلسة الأولية عبر نموذج التواصل عندما لا يكون التقويم المباشر منشوراً هنا. يكفي أن ترسل نبذة مختصرة عن النشاط وتذكر أنك تفضل الجلسة.",
-          fallbackPrimaryAction: "اطلب الجلسة",
-          fallbackSecondaryAction: "استعرض الخدمات",
+            "إذا لم يكن التقويم المباشر منشوراً هنا، يمكنك طلب الجلسة عبر نموذج التواصل. يكفي ملخص قصير عن النشاط والموضوع الذي تريد مناقشته.",
+          fallbackPrimaryAction: "اطلب جلسة أولية",
           fallbackNote:
-            "بهذا يبقى المسار واضحاً وصادقاً: يبدأ النقاش فوراً، وتُحدد الخطوة التالية بعد المراجعة الأولى.",
+            "سينتقل بك الزر مباشرة إلى نموذج التواصل مع اختيار الجلسة الأولية مسبقاً.",
         },
       },
       reassurance: {
         eyebrow: "ماذا بعد ذلك",
-        title: "هذه الجلسة مخصصة لفهم الاحتياج وتحديد الخطوة التالية.",
+        title: "الغرض من الجلسة هو فهم الاحتياج وتحديد الخطوة التالية، لا إلزامك بمشروع من أول تواصل.",
         description:
-          "ليست التزاماً ببدء المشروع فوراً. الهدف هو فهم السياق بشكل صحيح، ومعرفة ما إذا كانت Benyah هي الجهة المناسبة، وتحديد الطريق العملي الأنسب للمضي قدماً.",
+          "الهدف هو فهم السياق بشكل صحيح، ومعرفة ما إذا كانت Benyah هي الجهة المناسبة، وتحديد الطريق العملي الأنسب للمضي قدماً.",
         points: [
           "يكفي وصف مختصر أو سياق عام عن النشاط لبدء النقاش",
           "إذا لم تكن الجلسة الأولية هي الخطوة الأولى الأنسب، يمكن لـ Benyah اقتراح مسار أفضل",
@@ -3123,19 +3292,19 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       description:
         "إذا كنت تبحث عن موقع أقوى، أو سير عمل أوضح، أو نظام يدعم التشغيل اليومي، فابدأ من هنا.",
       supportingLine:
-        "يكفي وصف مختصر لما يحتاجه النشاط حالياً، وسنحدّد معك الطريق الأنسب للبدء.",
+        "يكفي وصف مختصر للوضع الحالي ونقطة الضغط لنحدد معك الطريق الأنسب للبدء.",
       highlightsLabel: "متى يكون التواصل مناسباً",
       highlights: [
         "استفسارات المشاريع الجديدة ومناقشات التنفيذ",
         "تحسينات سير العمل وإعادة ترتيب الأنظمة",
         "المواقع والأتمتة والحلول التشغيلية",
       ],
-      heroPrimaryAction: "اذهب إلى النموذج",
+      heroPrimaryAction: "أرسل استفسارك",
       intro: {
         eyebrow: "متى يكون الوقت مناسباً للتواصل",
-        title: "أفضل النقاشات تبدأ من احتياج عملي واضح.",
+        title: "أفضل الرسائل تبدأ من وضع عملي واضح.",
         description:
-          "لا تحتاج إلى مواصفات كاملة للبدء. يكفي ملخص مختصر عن الوضع الحالي ونقطة الضغط لبدء نقاش جاد.",
+          "لا تحتاج إلى مواصفات كاملة. يكفي ملخص مختصر عن الوضع الحالي ونقطة الضغط والاتجاه الذي تفكر فيه.",
         items: [
           {
             title: "استفسارات المشاريع",
@@ -3159,21 +3328,24 @@ export const marketingContent: Record<Locale, MarketingContent> = {
           },
         ],
       },
+      callIntent: {
+        badge: "طلب جلسة أولية",
+        title: "استخدم هذا النموذج لطلب جلسة أولية.",
+        description:
+          "النموذج أدناه مضبوط مسبقاً على طلب جلسة أولية. أرسل نبذة مختصرة عن النشاط والموضوع الذي تريد مناقشته، وسنراجع ما إذا كانت الجلسة هي الخطوة التالية الأنسب.",
+        supportingLine: "يكفي ملخص قصير. الهدف هو فهم الاحتياج قبل تحديد موعد أو مسار التنفيذ.",
+        primaryAction: "اطلب جلسة أولية",
+        noteTitle: "ما الذي يكفي لإرساله",
+        noteDescription:
+          "بضع سطور عن النشاط ونقطة الضغط والموضوع الذي تريد مناقشته تكفي للبدء.",
+      },
       form: {
         eyebrow: "نموذج التواصل",
-        title: "أرسل نبذة مختصرة لنبدأ من النقطة الصحيحة.",
+        title: "أرسل الأساسيات لنبدأ من النقطة الصحيحة.",
         description:
-          "صُمم النموذج ليبقى مختصراً، مع إعطاء Benyah ما يكفي من السياق لفهم نوع الدعم المطلوب.",
-        cardTitle: "ما الذي يكفي لإرساله",
-        cardDescription:
-          "يكفي وصف عملي مختصر. الهدف هو فهم الاحتياج، لا جمع مواصفات كاملة من أول رسالة.",
+          "أبقِ الرسالة مختصرة. المطلوب هنا فهم الوضع، لا جمع مواصفات كاملة من أول تواصل.",
         note:
           "يمكن تحديد النطاق التفصيلي وتسلسل التنفيذ والقرارات التقنية بعد النقاش الأول.",
-        helperPoints: [
-          "نبذة مختصرة عن النشاط والوضع الحالي",
-          "أبرز نقطة ضغط أو الهدف من المشروع",
-          "الخدمة الأقرب إلى الاحتياج في هذه المرحلة",
-        ],
         submitLabel: "إرسال الاستفسار",
         fields: {
           name: "الاسم",
@@ -3208,14 +3380,17 @@ export const marketingContent: Record<Locale, MarketingContent> = {
             "حدث ما قاطع عملية الإرسال. يرجى مراجعة النموذج والمحاولة مرة أخرى.",
         },
       },
-      trust: {
+        trust: {
         eyebrow: "ماذا بعد ذلك",
-        title: "الرسالة الأولى تكفي لبدء النقاش بالشكل الصحيح.",
+        title: "الرسالة الأولى هدفها توضيح الاتجاه، لا حسم كل شيء من البداية.",
         description:
           "تستخدم Benyah الاستفسار الأول لفهم الوضع بشكل صحيح، وتحديد ما إذا كانت جلسة قصيرة هي الخطوة التالية الأنسب، ثم صياغة النطاق من هناك.",
         bestFitTitle: "أنسب أنواع الاستفسارات لهذا النموذج",
         bestFitDescription:
           "يعمل نموذج التواصل بأفضل صورة عندما تكون هناك حاجة فعلية في مشروع أو تشغيل تحتاج إلى نقاش واضح.",
+        nextStepsTitle: "بعد إرسال الرسالة",
+        nextStepsDescription:
+          "عندما تتضح الصورة الأولى، يصبح من الأسهل تحديد ما إذا كانت الخطوة التالية جلسة أولية أو نقاش مشروع أو توصية أوضح بالخدمة المناسبة.",
         bestFitPoints: [
           "موقع أو حضور رقمي لم يعد يعكس مستوى النشاط كما ينبغي",
           "احتكاك في سير العمل أو أعمال متكررة أو أنظمة منفصلة تبطئ التنفيذ",
@@ -3229,12 +3404,12 @@ export const marketingContent: Record<Locale, MarketingContent> = {
       },
       finalCta: {
         eyebrow: "جاهز للبداية",
-        title: "إذا كان النشاط يحتاج إلى ترتيب أوضح، فأرسل الاستفسار وابدأ من هناك.",
+        title: "رسالة أولى واضحة تكفي لتبدأ المحادثة الصحيحة.",
         description:
-          "تساعد Benyah على تحديد ما إذا كانت الخطوة التالية موقعاً، أو تحسيناً في سير العمل، أو حلاً للأتمتة، أو نظاماً تشغيلياً أوسع.",
+          "إذا لم تكن الخدمة المناسبة واضحة بالكامل بعد، فهذا طبيعي. تساعد Benyah على تحديد ما إذا كانت الخطوة التالية جلسة أولية أو نقاش مشروع محدد أو مراجعة أوسع للوضع الحالي.",
         supportingLine: "وضوح قبل التنفيذ.",
-        primaryAction: "اذهب إلى النموذج",
-        secondaryAction: "استعرض الخدمات",
+        primaryAction: "أرسل استفسارك",
+        secondaryAction: "اطلب جلسة أولية",
       },
     },
     notFound: {

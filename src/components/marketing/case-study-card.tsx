@@ -9,6 +9,7 @@ type CaseStudyCardProps = {
   addressed?: string;
   outcome: string;
   scope?: string;
+  summaryLabel?: string;
   addressedLabel?: string;
   outcomeLabel?: string;
   scopeLabel?: string;
@@ -21,6 +22,7 @@ export function CaseStudyCard({
   addressed,
   outcome,
   scope,
+  summaryLabel,
   addressedLabel = "What Was Addressed",
   outcomeLabel = "Planned Outcome",
   scopeLabel = "Typical Engagement",
@@ -35,7 +37,14 @@ export function CaseStudyCard({
           <CardTitle className="text-[1.65rem]">{title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
-          <p className="ui-body">{summary}</p>
+          {summaryLabel ? (
+            <div className="surface-muted px-4 py-4">
+              <p className="ui-label">{summaryLabel}</p>
+              <p className="mt-3 text-sm leading-7 text-foreground">{summary}</p>
+            </div>
+          ) : (
+            <p className="ui-body">{summary}</p>
+          )}
           {addressed ? (
             <div className="surface-muted px-4 py-4">
               <p className="ui-label">{addressedLabel}</p>

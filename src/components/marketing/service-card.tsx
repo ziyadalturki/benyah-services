@@ -12,24 +12,28 @@ import { cn } from "@/lib/utils";
 type ServiceCardProps = {
   title: string;
   summary: string;
+  bestWhen?: string;
   href: string;
   icon: LucideIcon;
   bullets: string[];
   badgeLabel?: string;
   actionLabel?: string;
   bulletsLabel?: string;
+  bestWhenLabel?: string;
   trackingEvent?: AnalyticsEventDefinition;
 };
 
 export function ServiceCard({
   title,
   summary,
+  bestWhen,
   href,
   icon: Icon,
   bullets,
   badgeLabel = "Service",
   actionLabel = "Learn More",
   bulletsLabel,
+  bestWhenLabel = "Best when",
   trackingEvent,
 }: ServiceCardProps) {
   return (
@@ -48,6 +52,12 @@ export function ServiceCard({
           </div>
         </CardHeader>
         <CardContent className="space-y-3">
+          {bestWhen ? (
+            <div className="surface-muted px-4 py-4">
+              <p className="ui-label text-page-muted">{bestWhenLabel}</p>
+              <p className="mt-3 text-sm leading-7 text-foreground">{bestWhen}</p>
+            </div>
+          ) : null}
           {bulletsLabel ? (
             <p className="ui-label text-page-muted">{bulletsLabel}</p>
           ) : null}
@@ -64,10 +74,11 @@ export function ServiceCard({
           <TrackedLink
             href={href}
             trackingEvent={trackingEvent}
+            aria-label={`${actionLabel}: ${title}`}
             className={cn(buttonVariants({ variant: "ghost", size: "lg" }), "px-0 text-foreground")}
           >
             {actionLabel}
-            <ArrowRightIcon className="size-4" />
+            <ArrowRightIcon aria-hidden="true" className="size-4" />
           </TrackedLink>
         </CardFooter>
       </Card>

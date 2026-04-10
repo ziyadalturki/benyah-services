@@ -108,8 +108,8 @@ export default async function ServicesPage({
           }),
         }}
         secondaryAction={{
-          href: "#services-grid",
-          label: content.services.heroSecondaryAction,
+          href: localizedPathname(locale, sitePaths.contact),
+          label: content.ctas.contact,
         }}
         supportingLine={content.services.supportingLine}
         supportingLabel={content.services.highlightsLabel}
@@ -162,12 +162,14 @@ export default async function ServicesPage({
                 key={slug}
                 title={service.title}
                 summary={service.summary}
+                bestWhen={service.bestWhen}
                 bullets={service.capabilities}
                 href={getServiceDetailHref(locale, slug)}
                 icon={serviceIcons[slug]}
                 badgeLabel={content.services.labels.serviceBadge}
                 actionLabel={content.services.labels.serviceAction}
                 bulletsLabel={content.services.labels.serviceSupportLabel}
+                bestWhenLabel={content.services.labels.bestWhenLabel}
                 trackingEvent={createServiceDetailSelectedEvent({
                   locale,
                   source: "services_overview",
@@ -253,13 +255,13 @@ export default async function ServicesPage({
               {content.ctas.primary}
             </TrackedLink>
             <Link
-              href={localizedPathname(locale, "/case-studies")}
+              href={localizedPathname(locale, sitePaths.contact)}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "w-full bg-background/80 sm:w-auto",
               )}
             >
-              {content.services.finalCta.secondaryAction}
+              {content.ctas.contact}
             </Link>
           </div>
         </div>

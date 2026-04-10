@@ -28,7 +28,7 @@ export type BookingShellContent = {
   fallbackTitle: string;
   fallbackDescription: string;
   fallbackPrimaryAction: string;
-  fallbackSecondaryAction: string;
+  fallbackSecondaryAction?: string;
   fallbackNote: string;
 };
 
@@ -72,15 +72,17 @@ export function BookingShell({
             >
               {content.fallbackPrimaryAction}
             </Link>
-            <Link
-              href={servicesHref}
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "w-full bg-background/80 sm:w-auto",
-              )}
-            >
-              {content.fallbackSecondaryAction}
-            </Link>
+            {content.fallbackSecondaryAction ? (
+              <Link
+                href={servicesHref}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "w-full bg-background/80 sm:w-auto",
+                )}
+              >
+                {content.fallbackSecondaryAction}
+              </Link>
+            ) : null}
           </CardFooter>
         </Card>
       </FadeIn>

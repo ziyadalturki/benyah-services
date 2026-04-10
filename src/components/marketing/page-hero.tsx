@@ -50,7 +50,11 @@ export function PageHero({
             </div>
             {(primaryAction || secondaryAction) && (
               <div className="space-y-4 pt-1">
-                <div className="flex flex-col gap-3 sm:flex-row">
+                <div
+                  role="group"
+                  aria-label={title}
+                  className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+                >
                   {primaryAction ? (
                     <TrackedLink
                       href={primaryAction.href}

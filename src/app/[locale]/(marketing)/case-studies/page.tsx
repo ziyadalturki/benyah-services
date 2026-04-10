@@ -100,47 +100,48 @@ export default async function CaseStudiesPage({
           }),
         }}
         secondaryAction={{
-          href: localizedPathname(locale, "/services"),
-          label: content.ctas.secondary,
+          href: localizedPathname(locale, sitePaths.contact),
+          label: content.ctas.contact,
         }}
         supportingLine={content.caseStudies.supportingLine}
         supportingLabel={content.caseStudies.highlightsLabel}
         supportingPoints={content.caseStudies.highlights}
       />
 
-      <PageSection containerClassName="grid gap-8 lg:grid-cols-[minmax(0,1.03fr)_minmax(0,0.97fr)] lg:items-start">
-        <SectionHeading
-          eyebrow={content.caseStudies.intro.eyebrow}
-          title={content.caseStudies.intro.title}
-          description={content.caseStudies.intro.description}
-          className="max-w-4xl"
-        />
+      <PageSection containerClassName="space-y-6">
+        <div className="surface-panel grid gap-6 px-6 py-7 sm:px-8 sm:py-8 lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] lg:items-start">
+          <div className="space-y-4">
+            <Eyebrow>{content.caseStudies.intro.eyebrow}</Eyebrow>
+            <SectionTitle className="max-w-3xl">
+              {content.caseStudies.intro.title}
+            </SectionTitle>
+            <BodyText className="max-w-2xl sm:text-[1.01rem]">
+              {content.caseStudies.intro.description}
+            </BodyText>
+          </div>
 
-        <FadeIn>
-          <Card tone="strong" className="h-full">
-            <CardHeader className="space-y-4">
-              <Badge variant="accent" className="w-fit">
-                {content.caseStudies.intro.asideEyebrow}
-              </Badge>
-              <CardTitle className="text-[1.65rem]">
+          <div className="space-y-4">
+            <Badge variant="accent" className="w-fit">
+              {content.caseStudies.intro.asideEyebrow}
+            </Badge>
+            <div className="space-y-3">
+              <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
                 {content.caseStudies.intro.asideTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-5">
+              </p>
               <BodyText>{content.caseStudies.intro.asideDescription}</BodyText>
-              <div className="space-y-3">
-                {content.caseStudies.intro.asidePoints.map((point) => (
-                  <div
-                    key={point}
-                    className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
-                  >
-                    {point}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </FadeIn>
+            </div>
+            <div className="space-y-3">
+              {content.caseStudies.intro.asidePoints.map((point) => (
+                <div
+                  key={point}
+                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
+                >
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </PageSection>
 
       <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
@@ -185,6 +186,7 @@ export default async function CaseStudiesPage({
               title={item.title}
               sector={item.sector}
               summary={item.summary}
+              summaryLabel={content.caseStudies.labels.summaryLabel}
               addressed={item.addressed}
               outcome={item.outcome}
               scope={item.scope}

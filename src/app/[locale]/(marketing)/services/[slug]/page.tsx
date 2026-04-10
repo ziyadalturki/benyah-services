@@ -76,6 +76,11 @@ export default async function ServiceDetailPage({
   const service = content.services.items[slug];
   const detail = content.services.detail;
   const Icon = serviceIcons[slug];
+  const contactHref = localizedPathname(
+    locale,
+    `${sitePaths.contact}?service=${slug}`,
+  );
+  const finalCta = service.finalCta ?? detail.finalCta;
 
   return (
     <>
@@ -119,8 +124,8 @@ export default async function ServiceDetailPage({
           }),
         }}
         secondaryAction={{
-          href: localizedPathname(locale, "/services"),
-          label: detail.heroSecondaryAction,
+          href: contactHref,
+          label: content.ctas.contact,
         }}
         supportingLine={service.heroSupportingLine}
         supportingLabel={detail.heroPanelLabel}
@@ -155,6 +160,12 @@ export default async function ServiceDetailPage({
               </div>
             </CardHeader>
             <CardContent className="space-y-3">
+              <div className="surface-muted px-4 py-3.5 text-sm leading-7 text-foreground">
+                <p className="ui-label text-page-muted">
+                  {content.services.labels.bestWhenLabel}
+                </p>
+                <p className="mt-3">{service.bestWhen}</p>
+              </div>
               <p className="ui-label text-page-muted">
                 {detail.overview.capabilitiesLabel}
               </p>
@@ -340,12 +351,12 @@ export default async function ServiceDetailPage({
           <div className="space-y-4">
             <Eyebrow>{detail.finalCta.eyebrow}</Eyebrow>
             <SectionTitle className="max-w-3xl">
-              {detail.finalCta.title}
+              {finalCta.title}
             </SectionTitle>
             <BodyText className="max-w-2xl sm:text-[1.02rem]">
-              {detail.finalCta.description}
+              {finalCta.description}
             </BodyText>
-            <CaptionText>{detail.finalCta.supportingLine}</CaptionText>
+            <CaptionText>{finalCta.supportingLine}</CaptionText>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
@@ -365,7 +376,7 @@ export default async function ServiceDetailPage({
               {content.ctas.primary}
             </TrackedLink>
             <TrackedLink
-              href={localizedPathname(locale, sitePaths.contact)}
+              href={contactHref}
               trackingEvent={createCtaClickedEvent({
                 locale,
                 page: "service_detail",

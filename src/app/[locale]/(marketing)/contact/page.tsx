@@ -81,6 +81,20 @@ export default async function ContactPage({
         ? nextStepQuery
         : undefined,
   };
+  const isDiscoveryCallIntent =
+    initialValues.preferredNextStep === "discovery-call";
+  const heroTitle = isDiscoveryCallIntent
+    ? content.contact.callIntent.title
+    : content.contact.title;
+  const heroDescription = isDiscoveryCallIntent
+    ? content.contact.callIntent.description
+    : content.contact.description;
+  const heroSupportingLine = isDiscoveryCallIntent
+    ? content.contact.callIntent.supportingLine
+    : content.contact.supportingLine;
+  const heroPrimaryAction = isDiscoveryCallIntent
+    ? content.contact.callIntent.primaryAction
+    : content.contact.heroPrimaryAction;
 
   const serviceOptions = [
     ...serviceSlugs.map((slug) => ({
@@ -112,17 +126,17 @@ export default async function ContactPage({
       />
       <PageHero
         eyebrow={content.contact.eyebrow}
-        title={content.contact.title}
-        description={content.contact.description}
+        title={heroTitle}
+        description={heroDescription}
         primaryAction={{
           href: "#lead-form",
-          label: content.contact.heroPrimaryAction,
+          label: heroPrimaryAction,
         }}
         secondaryAction={{
           href: localizedPathname(locale, "/services"),
           label: content.ctas.secondary,
         }}
-        supportingLine={content.contact.supportingLine}
+        supportingLine={heroSupportingLine}
         supportingLabel={content.contact.highlightsLabel}
         supportingPoints={content.contact.highlights}
       />
@@ -159,7 +173,7 @@ export default async function ContactPage({
         className="scroll-mt-24"
         tone="subtle"
         divider="both"
-        containerClassName="space-y-10"
+        containerClassName="space-y-8"
       >
         <SectionHeading
           eyebrow={content.contact.form.eyebrow}
@@ -168,7 +182,24 @@ export default async function ContactPage({
           className="max-w-4xl"
         />
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:items-start">
+        {isDiscoveryCallIntent ? (
+          <FadeIn>
+            <div className="surface-panel max-w-4xl space-y-4 px-6 py-6 sm:px-7">
+              <Badge variant="accent" className="w-fit">
+                {content.contact.callIntent.badge}
+              </Badge>
+              <div className="space-y-3">
+                <p className="text-[1.12rem] font-semibold leading-tight text-foreground">
+                  {content.contact.callIntent.noteTitle}
+                </p>
+                <BodyText>{content.contact.callIntent.noteDescription}</BodyText>
+                <CaptionText>{content.contact.callIntent.supportingLine}</CaptionText>
+              </div>
+            </div>
+          </FadeIn>
+        ) : null}
+
+        <div className="max-w-5xl">
           <LeadForm
             content={content.contact.form}
             serviceOptions={serviceOptions}
@@ -176,33 +207,6 @@ export default async function ContactPage({
             showHeader={false}
             defaultValues={initialValues}
           />
-
-          <FadeIn>
-            <Card tone="subtle" className="h-full">
-              <CardHeader className="space-y-4">
-                <Badge variant="accent" className="w-fit">
-                  {content.contact.form.eyebrow}
-                </Badge>
-                <CardTitle className="text-[1.6rem]">
-                  {content.contact.form.cardTitle}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-5">
-                <BodyText>{content.contact.form.cardDescription}</BodyText>
-                <div className="space-y-3">
-                  {content.contact.form.helperPoints.map((point) => (
-                    <div
-                      key={point}
-                      className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
-                    >
-                      {point}
-                    </div>
-                  ))}
-                </div>
-                <CaptionText>{content.contact.form.note}</CaptionText>
-              </CardContent>
-            </Card>
-          </FadeIn>
         </div>
       </PageSection>
 
@@ -216,10 +220,10 @@ export default async function ContactPage({
 
         <div className="grid gap-5 lg:grid-cols-2">
           <div className="surface-panel px-6 py-7 sm:px-7">
-            <p className="ui-label">{content.contact.trust.bestFitTitle}</p>
-            <BodyText className="mt-4">
-              {content.contact.trust.bestFitDescription}
-            </BodyText>
+            <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
+              {content.contact.trust.bestFitTitle}
+            </p>
+            <BodyText className="mt-4">{content.contact.trust.bestFitDescription}</BodyText>
             <div className="mt-5 space-y-3">
               {content.contact.trust.bestFitPoints.map((point) => (
                 <div
@@ -233,7 +237,12 @@ export default async function ContactPage({
           </div>
 
           <div className="surface-panel px-6 py-7 sm:px-7">
-            <p className="ui-label">{content.contact.trust.eyebrow}</p>
+            <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
+              {content.contact.trust.nextStepsTitle}
+            </p>
+            <BodyText className="mt-4">
+              {content.contact.trust.nextStepsDescription}
+            </BodyText>
             <div className="mt-4 space-y-3">
               {content.contact.trust.points.map((point) => (
                 <div
@@ -266,16 +275,27 @@ export default async function ContactPage({
               href="#lead-form"
               className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
             >
-              {content.contact.finalCta.primaryAction}
+              {isDiscoveryCallIntent
+                ? content.contact.callIntent.primaryAction
+                : content.contact.finalCta.primaryAction}
             </Link>
             <Link
-              href={localizedPathname(locale, "/services")}
+              href={
+                isDiscoveryCallIntent
+                  ? localizedPathname(locale, "/services")
+                  : localizedPathname(
+                      locale,
+                      `${sitePaths.book}`,
+                    )
+              }
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "w-full bg-background/80 sm:w-auto",
               )}
             >
-              {content.contact.finalCta.secondaryAction}
+              {isDiscoveryCallIntent
+                ? content.ctas.secondary
+                : content.ctas.primary}
             </Link>
           </div>
         </div>
