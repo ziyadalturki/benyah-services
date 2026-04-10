@@ -1,11 +1,11 @@
 import type { ContactSubmissionPayload } from "@/lib/contact-submission";
-
-const DEFAULT_TIMEOUT_MS = 8000;
+import { getContactWebhookEnv } from "@/lib/env";
 
 type ContactWebhookConfig = {
   url: string | null;
   bearerToken: string | null;
   timeoutMs: number;
+  usingLegacyTokenAlias: boolean;
 };
 
 export type ContactWebhookResult =
@@ -17,26 +17,10 @@ export type ContactWebhookResult =
       reason: "invalid_url" | "network_error" | "non_ok_response" | "timeout";
     };
 
-function getWebhookTimeoutMs() {
-  const rawValue = process.env.BENYAH_CONTACT_WEBHOOK_TIMEOUT_MS;
-  const numericValue = rawValue ? Number.parseInt(rawValue, 10) : Number.NaN;
-
-  if (!Number.isFinite(numericValue) || numericValue < 1000) {
-    return DEFAULT_TIMEOUT_MS;
-  }
-
-  return numericValue;
-}
+let hasWarnedAboutLegacyWebhookToken = false;
 
 function getContactWebhookConfig(): ContactWebhookConfig {
-  return {
-    url: process.env.BENYAH_CONTACT_WEBHOOK_URL?.trim() || null,
-    bearerToken:
-      process.env.BENYAH_CONTACT_WEBHOOK_BEARER_TOKEN?.trim() ||
-      process.env.BENYAH_CONTACT_WEBHOOK_TOKEN?.trim() ||
-      null,
-    timeoutMs: getWebhookTimeoutMs(),
-  };
+  return getContactWebhookEnv();
 }
 
 function getWebhookLabel(url: string) {
@@ -99,6 +83,13 @@ export async function deliverContactSubmissionToWebhook(
   payload: ContactSubmissionPayload,
 ): Promise<ContactWebhookResult> {
   const config = getContactWebhookConfig();
+
+  if (config.usingLegacyTokenAlias && !hasWarnedAboutLegacyWebhookToken) {
+    hasWarnedAboutLegacyWebhookToken = true;
+    console.warn(
+      "[contact] Using legacy BENYAH_CONTACT_WEBHOOK_TOKEN. Prefer BENYAH_CONTACT_WEBHOOK_BEARER_TOKEN.",
+    );
+  }
 
   if (!config.url) {
     return { status: "skipped" };

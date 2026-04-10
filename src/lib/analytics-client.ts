@@ -6,32 +6,9 @@ import type {
   AnalyticsEventDefinition,
   AnalyticsEventProperties,
 } from "@/lib/analytics-events";
+import { getAnalyticsEnv } from "@/lib/env";
 
-type AnalyticsProvider = "none" | "vercel";
-
-function readBoolean(value: string | undefined, fallback = false) {
-  if (!value) {
-    return fallback;
-  }
-
-  return value.toLowerCase() === "true";
-}
-
-function readProvider(value: string | undefined): AnalyticsProvider {
-  if (!value) {
-    return "vercel";
-  }
-
-  return value.toLowerCase() === "vercel" ? "vercel" : "none";
-}
-
-export const analyticsConfig = {
-  enabled: readBoolean(
-    process.env.NEXT_PUBLIC_ANALYTICS_ENABLED,
-    process.env.NODE_ENV === "production",
-  ),
-  provider: readProvider(process.env.NEXT_PUBLIC_ANALYTICS_PROVIDER),
-};
+export const analyticsConfig = getAnalyticsEnv();
 
 function normalizeProperties(properties: AnalyticsEventProperties) {
   return Object.fromEntries(

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { defaultLocale, locales, type Locale } from "@/i18n/config";
+import { getDefaultSocialImageEnv, getResolvedSiteUrl } from "@/lib/env";
 
 export const serviceSlugs = [
   "automation",
@@ -92,18 +93,11 @@ export function getCanonicalServiceSlug(value: string) {
 }
 
 export function getSiteUrl() {
-  const envValue =
-    process.env.NEXT_PUBLIC_SITE_URL ?? process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-  if (!envValue) {
-    return "https://www.benyah.co";
-  }
-
-  return envValue.startsWith("http") ? envValue : `https://${envValue}`;
+  return getResolvedSiteUrl();
 }
 
 export function getDefaultSocialImageUrl() {
-  const envValue = process.env.BENYAH_OG_IMAGE_URL?.trim();
+  const envValue = getDefaultSocialImageEnv();
 
   if (!envValue) {
     return null;

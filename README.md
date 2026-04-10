@@ -51,8 +51,16 @@ src/
 - `src/app/sitemap.ts` and `src/app/robots.ts` are already set up for SEO.
 - Set `NEXT_PUBLIC_SITE_URL` in production for canonical URLs and sitemap generation.
 
+## Environment
+
+- Copy `.env.example` to `.env.local` for local work.
+- `NEXT_PUBLIC_SITE_URL` is the main production variable to set.
+- Booking and contact webhook variables are optional and can stay empty until those flows are connected.
+- `BENYAH_CONTACT_WEBHOOK_TOKEN` is supported only as a legacy alias. Prefer `BENYAH_CONTACT_WEBHOOK_BEARER_TOKEN`.
+
 ## Deploying to Vercel
 
 1. Import the repository into Vercel.
 2. Set `NEXT_PUBLIC_SITE_URL` to your production domain.
-3. Deploy with the default Next.js build command.
+3. Add booking or contact webhook variables only if you want those integrations live.
+4. Deploy with the default Next.js build command.
