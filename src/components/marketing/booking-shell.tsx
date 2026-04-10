@@ -57,7 +57,7 @@ export function BookingShell({
             <Badge variant="accent" className="w-fit">
               {content.fallbackBadge}
             </Badge>
-            <CardTitle className="text-[1.7rem]">{content.fallbackTitle}</CardTitle>
+            <CardTitle className="text-[1.6rem]">{content.fallbackTitle}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             <BodyText>{content.fallbackDescription}</BodyText>
@@ -77,7 +77,7 @@ export function BookingShell({
                 href={servicesHref}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "w-full bg-background/80 sm:w-auto",
+                  "w-full bg-page-surface-strong/90 sm:w-auto",
                 )}
               >
                 {content.fallbackSecondaryAction}
@@ -98,7 +98,7 @@ export function BookingShell({
               {content.configuredBadge}
             </Badge>
             <div className="space-y-3">
-              <CardTitle className="text-[1.7rem]">
+              <CardTitle className="text-[1.6rem]">
                 {content.configuredTitle}
               </CardTitle>
               {config.provider ? (
@@ -136,7 +136,7 @@ export function BookingShell({
             {content.configuredBadge}
           </Badge>
           <div className="space-y-3">
-            <CardTitle className="text-[1.7rem]">{content.configuredTitle}</CardTitle>
+            <CardTitle className="text-[1.6rem]">{content.configuredTitle}</CardTitle>
             {config.provider ? <CaptionText>{config.provider}</CaptionText> : null}
           </div>
         </CardHeader>
@@ -160,7 +160,7 @@ export function BookingShell({
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "w-full bg-background/80 sm:w-auto",
+              "w-full bg-page-surface-strong/90 sm:w-auto",
             )}
           >
             <span>{content.configuredAction}</span>

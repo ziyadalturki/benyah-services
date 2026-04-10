@@ -123,7 +123,7 @@ export default async function AboutPage({
               <Badge variant="accent" className="w-fit">
                 {content.about.overview.asideEyebrow}
               </Badge>
-              <CardTitle className="text-[1.65rem]">
+              <CardTitle className="text-[1.55rem]">
                 {content.about.overview.asideTitle}
               </CardTitle>
             </CardHeader>
@@ -286,7 +286,7 @@ export default async function AboutPage({
               href={localizedPathname(locale, sitePaths.contact)}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "w-full bg-background/80 sm:w-auto",
+                "w-full bg-page-surface-strong/90 sm:w-auto",
               )}
             >
               {content.ctas.contact}

@@ -35,7 +35,7 @@ export function FormField({
   ...props
 }: FormFieldProps) {
   return (
-    <div className={cn("space-y-3", className)} {...props}>
+    <div className={cn("space-y-2.5", className)} {...props}>
       <FieldLabel htmlFor={htmlFor}>{label}</FieldLabel>
       {children}
       {error ? (

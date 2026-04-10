@@ -15,7 +15,7 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
   const pathname = usePathname() ?? `/${locale}`;
 
   return (
-    <div className="inline-flex items-center rounded-[var(--radius-pill)] border border-page-line/80 bg-page-surface-strong p-1 shadow-control">
+    <div className="inline-flex items-center rounded-[var(--radius-pill)] border border-page-line/75 bg-page-surface-strong p-1 shadow-control">
       {locales.map((value) => {
         const isActive = value === locale;
 
@@ -28,10 +28,10 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
             dir={value === "ar" ? "rtl" : "ltr"}
             lang={value}
             title={localeLabels[value]}
-            className={`rounded-[var(--radius-pill)] px-3 py-1.5 text-[0.72rem] font-semibold transition-colors ${
+            className={`rounded-[var(--radius-pill)] px-3 py-1.5 text-[0.72rem] font-semibold tracking-[0.01em] transition-[background-color,color,box-shadow] ${
               isActive
                 ? "bg-foreground text-background shadow-control"
-                : "text-page-muted hover:text-foreground"
+                : "text-page-muted hover:bg-page-surface hover:text-foreground"
             }`}
           >
             {value.toUpperCase()}

@@ -34,7 +34,7 @@ export function CaseStudyCard({
           <Badge variant="secondary" className="w-fit">
             {sector}
           </Badge>
-          <CardTitle className="text-[1.65rem]">{title}</CardTitle>
+          <CardTitle className="text-[1.55rem]">{title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
           {summaryLabel ? (
@@ -56,7 +56,7 @@ export function CaseStudyCard({
             <p className="mt-3 text-sm leading-7 text-foreground">{outcome}</p>
           </div>
           {scope ? (
-            <div className="border-t border-page-line/70 pt-1">
+            <div className="border-t border-page-line/65 pt-2">
               <p className="ui-label text-page-muted">{scopeLabel}</p>
               <p className="mt-3 text-sm leading-7 text-page-muted">{scope}</p>
             </div>

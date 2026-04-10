@@ -19,7 +19,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-3xl space-y-4",
+        "max-w-3xl space-y-3.5",
         align === "center" && "mx-auto text-center",
         className,
       )}
@@ -27,7 +27,7 @@ export function SectionHeading({
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
       <SectionTitle>{title}</SectionTitle>
       {description ? (
-        <BodyText className="max-w-2xl sm:text-[1.02rem]">{description}</BodyText>
+        <BodyText className="max-w-2xl sm:text-[1.01rem]">{description}</BodyText>
       ) : null}
     </div>
   );

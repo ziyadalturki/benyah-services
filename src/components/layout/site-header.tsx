@@ -39,7 +39,7 @@ export function SiteHeader({
   navigation,
 }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-page-line/80 bg-[rgba(247,246,242,0.88)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-page-line/75 bg-[rgba(247,246,242,0.9)] backdrop-blur-xl">
       <Container className="flex h-[5.35rem] items-center justify-between gap-6">
         <SiteLogo locale={locale} />
         <nav
@@ -50,7 +50,7 @@ export function SiteHeader({
             <Link
               key={item.href}
               href={localizedPathname(locale, item.href)}
-              className="relative text-[0.92rem] font-medium text-page-muted transition-colors after:absolute after:-bottom-1 after:start-0 after:h-px after:w-0 after:bg-accent after:transition-all hover:text-foreground hover:after:w-full"
+              className="relative text-[0.92rem] font-medium tracking-[-0.01em] text-page-muted transition-colors after:absolute after:-bottom-1 after:start-0 after:h-px after:w-0 after:bg-accent after:transition-all hover:text-foreground hover:after:w-full"
             >
               {item.label}
             </Link>

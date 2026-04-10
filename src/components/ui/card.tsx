@@ -13,11 +13,11 @@ const cardVariants = cva(
         strong: "surface-panel",
       },
       size: {
-        default: "gap-5 py-5",
-        sm: "gap-4 py-4",
+        default: "gap-6 py-6",
+        sm: "gap-5 py-5",
       },
       interactive: {
-        true: "hover:-translate-y-0.5 hover:border-foreground/10 hover:shadow-panel",
+        true: "hover:-translate-y-0.5 hover:border-foreground/8 hover:shadow-panel",
         false: "",
       },
     },
@@ -57,7 +57,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-header"
       className={cn(
-        "group/card-header @container/card-header grid auto-rows-min items-start gap-2 px-6 group-data-[size=sm]/card:px-5 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-5 group-data-[size=sm]/card:[.border-b]:pb-4",
+        "group/card-header @container/card-header grid auto-rows-min items-start gap-2.5 px-6 group-data-[size=sm]/card:px-5 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-5 group-data-[size=sm]/card:[.border-b]:pb-4",
         className
       )}
       {...props}
@@ -70,7 +70,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
     <h3
       data-slot="card-title"
       className={cn(
-        "font-heading text-xl leading-[1.12] font-semibold tracking-[-0.04em] group-data-[size=sm]/card:text-lg",
+        "font-heading text-[1.28rem] leading-[1.14] font-semibold tracking-[-0.035em] group-data-[size=sm]/card:text-[1.12rem]",
         className
       )}
       {...props}
@@ -116,7 +116,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-footer"
       className={cn(
-        "flex items-center border-t border-page-line/70 bg-page-surface/55 px-6 py-5 group-data-[size=sm]/card:px-5 group-data-[size=sm]/card:py-4",
+        "flex items-center border-t border-page-line/65 bg-page-surface/42 px-6 py-5 group-data-[size=sm]/card:px-5 group-data-[size=sm]/card:py-4",
         className
       )}
       {...props}

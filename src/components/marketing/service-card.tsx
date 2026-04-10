@@ -41,13 +41,13 @@ export function ServiceCard({
       <Card interactive className="h-full">
         <CardHeader className="space-y-5">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex size-[3.25rem] items-center justify-center rounded-[calc(var(--radius-control)+0.15rem)] border border-page-line/80 bg-page-accent-surface">
-              <Icon className="size-5 text-ink" />
+            <div className="flex size-[3.15rem] items-center justify-center rounded-[calc(var(--radius-control)+0.15rem)] border border-page-line/75 bg-page-surface-strong">
+              <Icon className="size-5 text-foreground" />
             </div>
             <Badge variant="accent">{badgeLabel}</Badge>
           </div>
           <div className="space-y-3">
-            <CardTitle className="text-[1.65rem]">{title}</CardTitle>
+            <CardTitle className="text-[1.55rem]">{title}</CardTitle>
             <p className="ui-body">{summary}</p>
           </div>
         </CardHeader>
@@ -64,7 +64,7 @@ export function ServiceCard({
           {bullets.map((item) => (
             <div
               key={item}
-              className="surface-muted px-4 py-3.5 text-sm text-page-muted"
+              className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
             >
               {item}
             </div>
@@ -75,7 +75,10 @@ export function ServiceCard({
             href={href}
             trackingEvent={trackingEvent}
             aria-label={`${actionLabel}: ${title}`}
-            className={cn(buttonVariants({ variant: "ghost", size: "lg" }), "px-0 text-foreground")}
+            className={cn(
+              buttonVariants({ variant: "link", size: "sm" }),
+              "h-auto px-0 py-0 text-[0.92rem] text-foreground no-underline hover:no-underline",
+            )}
           >
             {actionLabel}
             <ArrowRightIcon aria-hidden="true" className="size-4" />

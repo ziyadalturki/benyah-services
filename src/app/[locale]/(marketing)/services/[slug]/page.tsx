@@ -388,7 +388,7 @@ export default async function ServiceDetailPage({
               })}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "w-full bg-background/80 sm:w-auto",
+                "w-full bg-page-surface-strong/90 sm:w-auto",
               )}
             >
               {content.ctas.contact}

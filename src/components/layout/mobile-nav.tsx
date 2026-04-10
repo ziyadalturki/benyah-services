@@ -60,10 +60,10 @@ export function MobileNav({
       >
         <MenuIcon className="size-4" />
       </SheetTrigger>
-      <SheetContent
-        side={locale === "ar" ? "left" : "right"}
-        closeLabel={closeNavigationLabel}
-        className="w-[86%] border-page-line/80 bg-[rgba(248,250,252,0.98)] shadow-panel sm:max-w-sm"
+        <SheetContent
+          side={locale === "ar" ? "left" : "right"}
+          closeLabel={closeNavigationLabel}
+        className="w-[86%] border-page-line/75 bg-[rgba(248,250,252,0.98)] shadow-panel sm:max-w-sm"
       >
         <SheetHeader className="space-y-4 border-b border-page-line/70 px-6 py-5">
           <SiteLogo locale={locale} />
@@ -78,7 +78,7 @@ export function MobileNav({
               <Link
                 key={item.href}
                 href={localizedPathname(locale, item.href)}
-                className="rounded-[var(--radius-control)] px-4 py-3 text-[0.96rem] font-medium text-foreground transition-colors hover:bg-page-surface"
+                className="rounded-[var(--radius-control)] px-4 py-3 text-[0.96rem] font-medium tracking-[-0.01em] text-foreground transition-colors hover:bg-page-surface"
               >
                 {item.label}
               </Link>

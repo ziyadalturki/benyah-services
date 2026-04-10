@@ -50,12 +50,12 @@ export const metadata: Metadata = {
         sizes: "any",
       },
     ],
-    shortcut: "/icon.svg",
-    other: [
+    shortcut: "/favicon.ico",
+    apple: [
       {
-        rel: "mask-icon",
-        url: "/icon.svg",
-        color: "#162127",
+        url: "/apple-icon.png",
+        sizes: "180x180",
+        type: "image/png",
       },
     ],
   },

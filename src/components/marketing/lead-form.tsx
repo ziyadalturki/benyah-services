@@ -182,8 +182,8 @@ export function LeadForm({
   return (
     <Card tone="strong" className="h-full">
       {showHeader ? (
-        <CardHeader className="space-y-3">
-          <CardTitle className="text-[1.7rem]">{content.title}</CardTitle>
+        <CardHeader className="space-y-3.5">
+          <CardTitle className="text-[1.6rem]">{content.title}</CardTitle>
           <BodyText>{content.description}</BodyText>
         </CardHeader>
       ) : null}
@@ -401,7 +401,7 @@ export function LeadForm({
             />
           </FormField>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 border-t border-page-line/65 pt-5 sm:flex-row sm:items-center sm:justify-between">
             <CaptionText className="max-w-md">{content.note}</CaptionText>
             <Button
               type="submit"

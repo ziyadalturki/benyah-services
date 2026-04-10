@@ -27,7 +27,7 @@ export function SiteFooter({
   note,
 }: SiteFooterProps) {
   return (
-    <footer className="border-t border-page-line/80 bg-[rgba(248,250,252,0.72)]">
+    <footer className="border-t border-page-line/75 bg-[rgba(248,250,252,0.76)]">
       <Container className="grid gap-10 py-14 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)]">
         <div className="space-y-5">
           <SiteLogo locale={locale} variant="footer" />
@@ -40,7 +40,7 @@ export function SiteFooter({
               <Link
                 key={item.href}
                 href={localizedPathname(locale, item.href)}
-                className="text-[0.96rem] font-medium text-foreground transition-colors hover:text-page-muted"
+                className="text-[0.96rem] font-medium tracking-[-0.01em] text-foreground transition-colors hover:text-page-muted"
               >
                 {item.label}
               </Link>

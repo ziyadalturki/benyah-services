@@ -39,27 +39,30 @@ export function PageHero({
   supportingPoints,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-page-line/70">
+    <section className="relative overflow-hidden border-b border-page-line/65">
       <Container className="section-space-hero">
-        <FadeIn className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:items-end xl:gap-16">
-          <div className="space-y-7">
+        <FadeIn className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_23.5rem] lg:items-end xl:gap-16">
+          <div className="space-y-8">
             {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-            <div className="space-y-5">
+            <div className="space-y-[1.125rem]">
               <DisplayTitle className="max-w-5xl">{title}</DisplayTitle>
-              <LeadText className="max-w-2xl sm:text-[1.12rem]">{description}</LeadText>
+              <LeadText className="max-w-2xl sm:text-[1.1rem]">{description}</LeadText>
             </div>
             {(primaryAction || secondaryAction) && (
-              <div className="space-y-4 pt-1">
+              <div className="space-y-4 pt-1.5">
                 <div
                   role="group"
-                  aria-label={title}
-                  className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+                  aria-label={`Actions for ${title}`}
+                  className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3.5"
                 >
                   {primaryAction ? (
                     <TrackedLink
                       href={primaryAction.href}
                       trackingEvent={primaryAction.trackingEvent}
-                      className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
+                      className={cn(
+                        buttonVariants({ size: "lg" }),
+                        "w-full justify-center sm:w-auto",
+                      )}
                     >
                       {primaryAction.label}
                     </TrackedLink>
@@ -70,7 +73,7 @@ export function PageHero({
                       trackingEvent={secondaryAction.trackingEvent}
                       className={cn(
                         buttonVariants({ variant: "outline", size: "lg" }),
-                        "w-full sm:w-auto bg-background/80",
+                        "w-full justify-center bg-page-surface-strong/90 sm:w-auto",
                       )}
                     >
                       {secondaryAction.label}
@@ -84,7 +87,7 @@ export function PageHero({
             )}
           </div>
           {supportingPoints?.length ? (
-            <div className="surface-panel px-6 py-7 sm:px-7">
+            <div className="surface-panel px-6 py-7 sm:px-7 lg:px-8">
               <p className="ui-label">{supportingLabel}</p>
               <ul className="mt-5 space-y-4">
                 {supportingPoints.map((point) => (
