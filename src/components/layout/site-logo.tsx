@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 import type { Locale } from "@/i18n/config";
@@ -20,12 +19,13 @@ const homeLabels: Record<Locale, string> = {
   ar: "الصفحة الرئيسية لـ Benyah",
 };
 
+const logoViewBox = "430 400 650 720";
 const logoSizes = {
   header: {
-    frameClassName: "h-[3.75rem] w-[3.75rem] sm:h-[4.25rem] sm:w-[4.25rem]",
+    frameClassName: "h-[4rem] w-[3.625rem] sm:h-[4.5rem] sm:w-[4.125rem]",
   },
   footer: {
-    frameClassName: "h-[5.5rem] w-[5.5rem] sm:h-[6.5rem] sm:w-[6.5rem]",
+    frameClassName: "h-[5.75rem] w-[5.1875rem] sm:h-[6.5rem] sm:w-[5.875rem]",
   },
 } as const;
 
@@ -47,16 +47,23 @@ export function SiteLogo({
           size.frameClassName,
         )}
       >
-        <img
-          src="/brand/benyah-logo-cropped.svg"
-          alt={altTexts[locale]}
-          width={646}
-          height={646}
-          loading="eager"
-          decoding="async"
-          draggable={false}
-          className="block h-full w-full select-none object-contain object-center"
-        />
+        <svg
+          viewBox={logoViewBox}
+          role="img"
+          aria-label={altTexts[locale]}
+          focusable="false"
+          className="block h-full w-full select-none"
+        >
+          <title>{altTexts[locale]}</title>
+          <image
+            href="/brand/benyah-logo.svg"
+            x="0"
+            y="0"
+            width="1500"
+            height="1500"
+            preserveAspectRatio="xMidYMid meet"
+          />
+        </svg>
       </span>
     </Link>
   );
