@@ -1098,162 +1098,160 @@ export const marketingContentOverrides = {
     },
     caseStudies: {
       eyebrow: "Selected Work",
-      title: "The kinds of business problems Benyah is usually asked to clean up.",
+      title: "Examples of the kinds of business problems Benyah helps solve.",
       description:
-        "These examples are anonymized and focused on the real business situation, what was tightened, and the kind of improvement the work supported.",
+        "A practical look at the types of projects Benyah takes on — shown in anonymized form where needed, with the focus on what was happening before, what was put in place, and what improved after.",
       supportingLine:
-        "The names are not always public. The business problem and the shape of the work still are.",
-      highlightsLabel: "What The Examples Show",
+        "Shown in anonymized form where needed, but still clear enough to judge the type of work and the likely fit.",
+      highlightsLabel: "How To Read The Examples",
       highlights: [
-        "Where the work was getting stuck",
-        "What Benyah cleaned up",
-        "What kind of improvement the work supported",
+        "What was happening before",
+        "What Benyah put in place",
+        "What improved after",
       ],
       intro: {
-        eyebrow: "How To Read These",
-        title: "Each example is there to show the working pattern, not the performance of a polished case-study page.",
+        eyebrow: "What These Examples Are Meant To Show",
+        title: "What these examples are meant to show",
         description:
-          "The point is to show what usually brings a client in, what gets cleaned up, and what kind of business improvement the work is meant to support.",
-        asideEyebrow: "Shared Carefully",
-        asideTitle: "Enough detail to judge fit realistically",
+          "These examples are not written as glossy client stories. They are here to show the kind of business situations Benyah is typically brought into, what usually needs to be fixed first, and how the work is often shaped in practice.",
+        asideEyebrow: "Reference",
+        asideTitle: "Used as practical guidance",
         asideDescription:
-          "Where a named public story is not appropriate, the example still shows the starting problem, the cleanup, and the typical shape of the engagement.",
+          "The examples stay anonymized where needed, but the operational pattern stays clear enough to understand the likely fit.",
         asidePoints: [
           "Business situation first",
-          "Cleanup and operating change second",
-          "No invented metrics or dressed-up theatre",
+          "Practical solution shape second",
+          "Operational improvement third",
         ],
       },
       startingPoints: {
-        eyebrow: "What Usually Brings Clients In",
-        title: "Most projects start because one part of the business is already creating drag.",
+        eyebrow: "Best Fit",
+        title: "These examples are most relevant if your business is dealing with",
         description:
-          "These are common starting points for the kind of work Benyah is typically asked to handle.",
+          "The pattern usually feels familiar before the right service or project path becomes obvious.",
         items: [
           {
-            title: "The front end looks weaker than the business",
+            title: "Weak digital presence or unclear enquiry flow",
             description:
-              "The site, the enquiry path, or the booking flow is creating friction before the real conversation even begins.",
+              "Your website, messaging, or lead path is not making it easy for the right customer to take the next step.",
           },
           {
-            title: "Recurring work depends on too much manual effort",
+            title: "Messy booking or call handling",
             description:
-              "The business is spending too much time chasing, checking, and stitching together routine work that should move more cleanly.",
+              "Appointments, reminders, intake, or first-contact handling are creating dropped opportunities and extra admin.",
           },
           {
-            title: "The internal operation is harder to manage than it should be",
+            title: "Repetitive admin and disconnected workflows",
             description:
-              "Reporting, requests, records, or maintenance activity are spread across tools that no longer give the team enough control.",
+              "Important recurring work still depends on manual follow-up, repeated entry, and tools that do not move together cleanly.",
+          },
+          {
+            title: "Weak internal visibility",
+            description:
+              "The team does not have a reliable day-to-day view of status, ownership, or internal progress.",
+          },
+          {
+            title: "Maintenance or facility operations that need more structure",
+            description:
+              "Service activity, work orders, records, or contractor coordination are difficult to manage consistently.",
           },
         ],
       },
       catalog: {
-        eyebrow: "Examples",
-        title: "Typical engagement shapes.",
+        eyebrow: "Example Project Patterns",
+        title: "Five common project patterns Benyah is brought in to sort out.",
         description:
-          "Each example below shows the kind of starting situation, the cleanup Benyah carried out, and the operational improvement the work was intended to support.",
+          "Each example shows the business type, the situation before, what Benyah put in place, what improved, and how the work usually starts.",
       },
       labels: {
-        summaryLabel: "Business situation",
-        addressedLabel: "What was cleaned up",
+        summaryLabel: "Situation before",
+        addressedLabel: "What Benyah put in place",
         outcomeLabel: "What improved",
-        scopeLabel: "Typical shape",
+        scopeLabel: "Typical project shape",
       },
       items: [
         {
-          title: "Appointment flow cleanup",
+          title: "Websites & Lead Capture",
+          sector: "Service business",
+          summary:
+            "The website looked weak, services were unclear, and enquiries depended too much on referrals or manual follow-up.",
+          addressed:
+            "A clearer website structure, stronger service presentation, better lead-capture flow, and clearer calls to action were put in place.",
+          outcome:
+            "The business gained a stronger first impression, an easier enquiry path, and a more credible digital presence.",
+          scope:
+            "Usually starts with clarifying the offer, tightening service structure, and rebuilding the site around trust and lead capture.",
+        },
+        {
+          title: "Booking & AI Call Workflows",
           sector: "Appointment-based business",
           summary:
-            "Missed calls, inconsistent intake, and follow-up were creating dropped opportunities and too much manual coordination around appointments.",
+            "Bookings, reminders, and call follow-up were inconsistent, which created missed opportunities and extra manual coordination.",
           addressed:
-            "A booking workflow with reminders, intake logic, and AI-assisted call handling was put in place around the first customer touchpoints.",
+            "A cleaner booking flow, reminder logic, intake structure, and AI-assisted call handling were put in place where needed.",
           outcome:
-            "The customer journey became cleaner, follow-up became easier to manage, and less time was lost to manual coordination.",
+            "The customer journey became smoother, fewer steps were missed, and the team spent less time chasing manual follow-up.",
           scope:
-            "Usually a focused booking and call-flow project, sometimes connected to the website or enquiry path as well.",
+            "Usually starts with reviewing the current booking path, missed-call points, and how the team handles enquiries after first contact.",
         },
         {
-          title: "Internal visibility reset",
+          title: "Business Process Automation",
           sector: "Operational small business",
           summary:
-            "Tracking was spreadsheet-heavy, follow-up was uneven, and the team did not have a clear daily view of status across the work.",
+            "Important admin work still depended on manual follow-up, repeated data entry, and disconnected tools.",
           addressed:
-            "An internal dashboard and structured status workflow were introduced around the records, ownership, and follow-up the team needed.",
+            "Workflow automation, cleaner handoffs, notifications, and more reliable task movement across tools were put in place.",
           outcome:
-            "Follow-up became easier, ownership became clearer, and reporting became more useful for day-to-day management.",
+            "The business reduced repetitive admin, improved follow-up speed, and gained more dependable day-to-day execution.",
           scope:
-            "Usually a focused internal tool or dashboard build, sometimes preceded by a short scoping step.",
+            "Usually starts with identifying the highest-friction recurring workflow and automating that first before expanding further.",
         },
         {
-          title: "Maintenance workflow cleanup",
-          sector: "Facility or maintenance-heavy operation",
+          title: "Internal Systems, Dashboards & Portals",
+          sector: "Growing business with internal coordination issues",
           summary:
-            "Service requests, contractor coordination, and maintenance records were difficult to follow cleanly from start to finish.",
+            "Spreadsheets were no longer enough, internal status visibility was weak, and the team lacked a clear system for tracking day-to-day work.",
           addressed:
-            "A structured maintenance workflow and clearer operational records were put in place around requests, status, and service activity.",
+            "An internal dashboard, structured tracking flow, and a clearer internal operating layer were built around the work.",
           outcome:
-            "Day-to-day control improved and the team gained a more reliable view of service activity.",
+            "The team gained better visibility, clearer ownership, and stronger internal control.",
           scope:
-            "Usually a phased operations setup, starting with the highest-friction area first.",
+            "Usually starts with a scoping step to define what the team actually needs before building the first internal system phase.",
         },
         {
-          title: "Internal operations portal",
-          sector: "Internal Systems, Dashboards & Portals",
+          title: "Facility & Maintenance Management Solutions",
+          sector: "Facility- or maintenance-heavy operation",
           summary:
-            "Core internal work was spread across spreadsheets and disconnected tools, leaving managers without a clear day-to-day view.",
+            "Work orders, service records, contractor coordination, or operational visibility were difficult to manage consistently.",
           addressed:
-            "A more structured internal workspace was defined around records, views, permissions, and the operating logic the team actually needed.",
+            "A more structured maintenance workflow, clearer records, and better operational visibility were put in place around service activity.",
           outcome:
-            "Internal visibility improved, work became easier to track, and the business gained a clearer management layer around daily operations.",
+            "The operation gained better day-to-day control, cleaner coordination, and stronger reporting clarity.",
           scope:
-            "Usually a structured scoping step followed by a focused internal build, especially when several user roles or reporting needs are involved.",
-        },
-        {
-          title: "Maintenance operations structure",
-          sector: "Facility & Maintenance Management Solutions",
-          summary:
-            "Work orders, service records, asset details, and contractor activity were difficult to track cleanly in one reliable flow.",
-          addressed:
-            "The operation was reorganized around clearer request handling, records, status tracking, asset visibility, and contractor coordination.",
-          outcome:
-            "Oversight improved, records became easier to trust, and the team gained more control over daily maintenance activity.",
-          scope:
-            "Usually a phased management setup, sometimes starting with one high-friction area before expanding further.",
+            "Usually starts with reviewing the current process and defining the right operational structure before rollout.",
         },
       ],
       engagements: {
-        eyebrow: "How The Work Is Scoped",
-        title: "Projects do not all start at the same size.",
+        eyebrow: "How Projects Usually Start",
+        title: "How this kind of work usually starts",
         description:
-          "The right commercial path depends on how clear the need already is and how many connected parts the project touches.",
+          "Some projects are already clear enough to move straight to proposal. More complex or multi-part work often starts with a structured scoping step first, so the implementation can be shaped properly.",
         items: [
           {
-            title: "Focused implementation",
-            description:
-              "Used when the need is already clear enough to move directly into a contained proposal and delivery scope.",
+            title: "Straight to proposal",
+            description: "Used when the need is already clear, contained, and ready to price directly.",
           },
           {
             title: "Structured scoping step",
-            description:
-              "Used when the project is broader, still needs shaping, or crosses several service layers that should be clarified first.",
-          },
-          {
-            title: "Phased delivery",
-            description:
-              "Used when the business benefits from bringing one pressure point under control first, then expanding from there.",
-          },
-          {
-            title: "Support after launch",
-            description:
-              "Available where the live work benefits from further refinement, optimization, or operational support.",
+            description: "Used when the work is broader, more connected, or needs shaping before implementation.",
           },
         ],
       },
       finalCta: {
-        title: "If the business situation sounds familiar, the next step is a short focused conversation.",
+        title: "If the situation feels familiar, the next step is a short first conversation.",
         description:
-          "Benyah can review the current pressure point, show which service is the better fit, and recommend whether the work should move straight to proposal or begin with scoping first.",
-        supportingLine: "Practical examples first. Clear recommendation next.",
+          "Benyah can review the situation, point to the right service, and recommend whether the next step should be a direct proposal or a structured scoping step.",
+        supportingLine: "Practical fit first. Clear next step after.",
       },
     },
     book: {
@@ -2563,162 +2561,160 @@ export const marketingContentOverrides = {
     },
     caseStudies: {
       eyebrow: "أعمال مختارة",
-      title: "أمثلة على نوع المشاكل اللي نُطلب عادة علشان نرتبها.",
+      title: "أمثلة على نوع المشاكل اللي تساعد Benyah في ترتيبها.",
       description:
-        "هذه أمثلة مختصرة ومجهولة الاسم تركّز على بداية الوضع، والشغل اللي انعمل، والفرق اللي كان مطلوباً يتحقق بعده.",
+        "هنا تشوف أمثلة مختصرة على نوع المشاريع اللي ندخل فيها عادة. وإذا ما كان مناسب نذكر اسم العميل، نعرض المشكلة نفسها، وش انعمل فيها، ووش تغيّر بعدها.",
       supportingLine:
-        "مو كل مشروع مناسب للنشر باسمه، لكن نوع المشكلة وشكل الشغل يظل واضحاً بما يكفي لتقييم الملاءمة.",
-      highlightsLabel: "وش توضح الأمثلة",
+        "الفكرة مو اسم العميل. الفكرة نوع المشكلة، شكل الشغل، والنتيجة اللي كان مطلوب تتحقق.",
+      highlightsLabel: "وش بتشوف هنا",
       highlights: [
-        "وين كان التعطيل الحقيقي",
-        "وش اللي انضبط في الشغل",
-        "وش الفرق المتوقع بعد التنفيذ",
+        "قبل: كيف كان الوضع في البداية",
+        "اللي انعمل: وش انبنى أو انضبط",
+        "النتيجة: وش صار أوضح وأسهل بعده",
       ],
       intro: {
-        eyebrow: "كيف تقرأ هالأمثلة",
-        title: "المهم هنا نمط الشغل، مو شكل دراسة الحالة.",
+        eyebrow: "وش بتوضح لك هالأمثلة",
+        title: "هذي الأمثلة تعطيك صورة عملية عن نوع الشغل اللي نرتبه عادة.",
         description:
-          "المقصد إنك تشوف نوع الموقف اللي يجيب العميل، ونوع التنظيف اللي يصير، وشكل التحسن اللي يدعمه المشروع بعده.",
-        asideEyebrow: "عرض واضح",
-        asideTitle: "تفاصيل كافية لتقييم الملاءمة بشكل واقعي",
+          "مو قصص دعائية ولا صفحة بورتفوليو متكلفة. الهدف منها يوضح نوع المشاكل اللي نشتغل عليها، وين يكون الخلل في البداية، وكيف نمشي في الحل بشكل عملي.",
+        asideEyebrow: "مرجع عملي",
+        asideTitle: "لما تحتاج تقرأ نوع الشغل بشكل أوضح",
         asideDescription:
-          "إذا ما كان مناسب نذكر اسم العميل، نوضح على الأقل بداية الوضع، والشغل اللي انعمل، وشكل المشروع المعتاد.",
+          "تبقى الأمثلة مجهولة إذا احتاج الوضع، لكن طريقة العمل وشكل المشروع يظلون واضحين بما يكفي لتقييم الملاءمة.",
         asidePoints: [
-          "الوضع التجاري أولاً",
-          "الشغل اللي انعمل ثانياً",
-          "من غير أرقام مختلقة ولا مبالغة",
+          "نوع المشكلة أولاً",
+          "وش انعمل فيها ثانياً",
+          "الفرق العملي بعدها ثالثاً",
         ],
       },
       startingPoints: {
-        eyebrow: "من وين تبدأ أغلب المشاريع",
-        title: "غالباً المشروع يبدأ لأن فيه جزء من الشغل صار يسبب ثقلاً واضحاً.",
+        eyebrow: "متى تكون هالأمثلة أقرب لوضعكم",
+        title: "هالأمثلة تفيدك أكثر إذا كان عندكم",
         description:
-          "هذه أكثر البدايات شيوعاً في نوع الأعمال اللي تُطلب من Benyah عادة.",
+          "غالباً المشروع يبدأ من مشكلة واضحة في واحد من هذي الجوانب.",
         items: [
           {
-            title: "الواجهة أضعف من مستوى الشركة",
+            title: "حضور رقمي ضعيف أو طريق استفسارات مو واضح",
             description:
-              "الموقع، أو طريق التواصل، أو الحجز يعطي صورة أضعف من مستوى الشغل الحقيقي داخل الشركة.",
+              "الموقع أو طريقة طلب الخدمة ما تساعد العميل يفهم العرض بسرعة أو يتخذ الخطوة الجاية بسهولة.",
           },
           {
-            title: "أعمال متكررة تستهلك وقتاً أكثر من اللازم",
+            title: "الحجز أو استقبال المكالمات فيه ارتباك",
             description:
-              "الفريق يضيع وقته في المتابعة، والتحقق، ونسخ البيانات، وربط شغل متكرر المفروض يكون أهدأ من هذا.",
+              "المواعيد، التذكيرات، الإدخال، أو أول تواصل مع العميل يحتاجون ضبط أوضح من الحالي.",
           },
           {
-            title: "التشغيل الداخلي أصعب في الإدارة من المفروض",
+            title: "الأعمال المتكررة تستهلك وقتاً لأن الأدوات غير مترابطة",
             description:
-              "التقارير، أو الطلبات، أو السجلات، أو أعمال الصيانة موزعة بشكل يقلل الوضوح والسيطرة اليومية.",
+              "الفريق يكرر نفس الخطوات اليدوية أو يعيد إدخال البيانات أو يلاحق الشغل بين أكثر من أداة.",
+          },
+          {
+            title: "الصورة الداخلية ضعيفة والمتابعة اليومية مو واضحة",
+            description:
+              "الملكية، الحالة، والتقدم داخل الشغل ما تظهر بشكل يكفي للإدارة أو للفريق.",
+          },
+          {
+            title: "الصيانة أو تشغيل المرافق يحتاج تنظيم أوضح",
+            description:
+              "طلبات الخدمة، السجلات، أو متابعة المتعهدين تحتاج طريقة أهدأ وأوضح في الإدارة.",
           },
         ],
       },
       catalog: {
         eyebrow: "أمثلة عملية",
-        title: "أشكال متكررة من الأعمال اللي نرتبها.",
+        title: "خمس صور متكررة من الأعمال اللي نُطلب عادة عليها.",
         description:
-          "كل مثال تحت يوضح لك بداية الوضع، والشغل اللي انعمل، ونوع التحسن اللي كان المشروع يخدمه.",
+          "كل مثال يوضح نوع النشاط، كيف كان الوضع قبل، وش انعمل، ووش تغيّر بعده، وكيف يبدأ المشروع غالباً.",
       },
       labels: {
-        summaryLabel: "بداية الوضع",
-        addressedLabel: "الشغل اللي انعمل",
-        outcomeLabel: "اللي تحسن",
-        scopeLabel: "شكل المشروع غالباً",
+        summaryLabel: "قبل",
+        addressedLabel: "اللي انعمل",
+        outcomeLabel: "النتيجة",
+        scopeLabel: "غالباً يبدأ المشروع من",
       },
       items: [
         {
-          title: "ترتيب مسار الحجز من أول اتصال",
+          title: "المواقع وتجهيز مسار الاستفسارات",
+          sector: "نشاط خدمي",
+          summary:
+            "الموقع كان أضعف من مستوى الشركة، والخدمات ما كانت واضحة، والاستفسارات تعتمد أكثر من اللازم على المعارف أو المتابعة اليدوية.",
+          addressed:
+            "انعمل هيكل أوضح للموقع، وطريقة عرض أقوى للخدمات، ومسار أفضل لالتقاط الاستفسارات، ونداءات واضحة لاتخاذ الخطوة التالية.",
+          outcome:
+            "صار الانطباع الأول أقوى، وطريق الاستفسار أسهل، والحضور الرقمي أقدر على إقناع العميل.",
+          scope:
+            "غالباً نبدأ بتوضيح العرض، وترتيب الخدمات بشكل أوضح، ثم إعادة بناء الموقع حول الثقة والاستفسارات.",
+        },
+        {
+          title: "الحجز والمكالمات الذكية",
           sector: "نشاط يعتمد على المواعيد",
           summary:
-            "المكالمات الفائتة، وخطوات الإدخال غير الواضحة، والمتابعة المتقطعة كانت تضيع فرصاً وتزيد الجهد اليدوي على الفريق.",
+            "الحجوزات، والتذكيرات، والمتابعة بعد المكالمة ما كانت ثابتة، وهذا كان يضيع فرصاً ويزيد التنسيق اليدوي.",
           addressed:
-            "انعمل مسار حجز أوضح مع تذكيرات، وخطوات إدخال مرتبة، وتعامل أذكى مع المكالمات في البداية.",
+            "انعمل مسار حجز أوضح، ومنطق للتذكيرات، وترتيب لخطوات الإدخال، ومعالجة ذكية للمكالمات عند الحاجة.",
           outcome:
-            "صار الطريق على العميل أوضح، والمتابعة أسهل، والجهد اليدوي أقل في تنسيق المواعيد.",
+            "صار طريق العميل أهدأ، والخطوات الفائتة أقل، والاعتماد على المتابعة اليدوية أخف على الفريق.",
           scope:
-            "غالباً مشروع مركز على الحجز والمكالمات، وأحياناً يرتبط أيضاً بالموقع أو مسار الاستفسارات.",
+            "غالباً نراجع مسار الحجز الحالي، ونقاط المكالمات الفائتة، وكيف يتعامل الفريق مع الاستفسارات بعد أول تواصل.",
         },
         {
-          title: "ترتيب المتابعة الداخلية بشكل أوضح",
+          title: "أتمتة الأعمال اليومية",
           sector: "شركة تشغيلية صغيرة",
           summary:
-            "المتابعة كانت ماشية على جداول كثيرة، والصورة اليومية ما كانت واضحة، وكل شيء يعتمد على اجتهاد الفريق في الملاحقة.",
+            "أعمال إدارية مهمة كانت ما زالت تمشي بالمتابعة اليدوية، وتكرار إدخال البيانات، وأدوات ما تتكلم مع بعض بشكل مريح.",
           addressed:
-            "انعملت لوحة متابعة داخلية ومسار حالة أوضح يربط المسؤوليات، والمتابعة، ووضع كل مهمة بشكل أسهل.",
+            "انعملت أتمتة لمسارات العمل، وربط أوضح بين الخطوات، وتنبيهات أفضل، وحركة أكثر ثباتاً للمهام بين الأدوات.",
           outcome:
-            "صارت المتابعة أسهل، والمسؤولية أوضح، والتقارير اليومية أنفع للإدارة.",
+            "خف الضغط من الأعمال المتكررة، وصارت المتابعة أسرع، والتنفيذ اليومي أهدأ وأكثر اعتمادية.",
           scope:
-            "غالباً أداة داخلية أو لوحة متابعة مركزة، وأحياناً تسبقها خطوة تعريف قصيرة إذا كان الاستخدام أوسع.",
+            "غالباً نبدأ بأكثر مسار متكرر يستهلك وقتاً ونضبطه أول، وبعدها نوسع إذا احتاج الشغل.",
         },
         {
-          title: "تنظيم أعمال الصيانة والمتابعة الميدانية",
+          title: "الأنظمة الداخلية ولوحات المتابعة والبوابات",
+          sector: "شركة نامية عندها ضغط في التنسيق الداخلي",
+          summary:
+            "الجداول ما عادت تكفي، والصورة الداخلية للحالة كانت ضعيفة، والفريق ما عنده طريقة واضحة لإدارة الشغل اليومي.",
+          addressed:
+            "انعملت لوحة داخلية، ومسار متابعة أوضح، وطبقة تشغيل داخلية أنسب لطبيعة الشغل اليومي.",
+          outcome:
+            "صارت الرؤية أوضح، والمسؤوليات أبين، والسيطرة الداخلية على الشغل أقوى.",
+          scope:
+            "غالباً يبدأ بخطوة تعريف واضحة للاحتياج قبل بناء أول مرحلة من النظام الداخلي.",
+        },
+        {
+          title: "تنظيم أعمال الصيانة والمرافق",
           sector: "تشغيل يعتمد على الصيانة أو المرافق",
           summary:
-            "طلبات الخدمة، وتنسيق المتعهدين، وسجلات الصيانة كانت متعبة في المتابعة وما تعطي صورة واضحة من البداية للنهاية.",
+            "أوامر العمل، وسجلات الخدمة، والتنسيق مع المتعهدين، أو وضوح التشغيل اليومي كانت صعبة في الإدارة بشكل ثابت.",
           addressed:
-            "انعمل مسار صيانة أوضح مع سجلات تشغيلية مرتبة، وحالات متابعة مفهومة، وتنظيم أفضل لحركة الطلبات والخدمة.",
+            "انعمل مسار صيانة أوضح، وسجلات مرتبة أكثر، ورؤية تشغيلية أفضل حول حركة الخدمة والمتابعة.",
           outcome:
-            "صار التحكم اليومي أقوى، ومتابعة الخدمة أوضح، والرؤية على الشغل الميداني أهدأ وأكثر موثوقية.",
+            "صار التحكم اليومي أفضل، والتنسيق أنظف، ووضوح التقارير أقوى للإدارة.",
           scope:
-            "غالباً يبدأ من أكثر جزء مربك في التشغيل، ثم يتوسع بعد ضبطه إذا كان لذلك قيمة.",
-        },
-        {
-          title: "بوابة أو لوحة متابعة للشغل الداخلي",
-          sector: "الأنظمة الداخلية ولوحات المتابعة والبوابات",
-          summary:
-            "الشغل الداخلي كان موزعاً بين جداول وأدوات متفرقة، من غير مركز واضح للمتابعة اليومية أو التقارير.",
-          addressed:
-            "تم تعريف مساحة داخلية أوضح حول السجلات، والواجهات، والصلاحيات، والتقارير، وطريقة المتابعة اليومية.",
-          outcome:
-            "صارت الصورة أوضح للإدارة، والمتابعة أسهل، والسيطرة على الشغل اليومي أقوى.",
-          scope:
-            "غالباً يبدأ بتعريف نطاق مرتب ثم بناء داخلي مركز، خصوصاً إذا كان الاستخدام موزعاً على أكثر من دور أو فريق.",
-        },
-        {
-          title: "ترتيب تشغيل الصيانة والمرافق",
-          sector: "حلول إدارة المرافق والصيانة",
-          summary:
-            "أوامر العمل، وسجلات الخدمة، ومعلومات الأصول، وعمل المتعهدين كانت متعبة في المتابعة ولا تعطي رؤية يومية واضحة.",
-          addressed:
-            "تم تنظيم الطلبات، والسجلات، والمتابعة، والحالات، ومعلومات الأصول، وطريقة التنسيق مع المتعهدين بشكل أوضح.",
-          outcome:
-            "زادت القدرة على المتابعة اليومية، وصارت السجلات أوثق، وصار التحكم في التشغيل أسهل.",
-          scope:
-            "غالباً إعداد مرحلي يبدأ من أكثر نقطة مربكة في التشغيل، ثم يتوسع بعد ضبطها إذا احتاج الوضع.",
+            "غالباً نبدأ بمراجعة المسار الحالي وتحديد طريقة العمل الأنسب قبل التعميم.",
         },
       ],
       engagements: {
-        eyebrow: "كيف نحدد شكل المشروع",
-        title: "المشاريع ما تبدأ كلها بنفس الحجم.",
+        eyebrow: "كيف تبدأ هالنوعية من المشاريع غالباً",
+        title: "كيف تبدأ هالنوعية من المشاريع غالباً",
         description:
-          "شكل البداية يعتمد على وضوح الاحتياج من الآن، وعلى عدد الأجزاء اللي يمسها المشروع داخل الشركة.",
+          "بعض الأعمال تكون واضحة من البداية ونقدر ننتقل فيها مباشرة للعرض. وإذا كان الموضوع أوسع أو فيه أكثر من مسار، فعادة نبدأ بخطوة تنظيمية واضحة قبل التنفيذ.",
         items: [
           {
-            title: "تنفيذ مركز",
-            description:
-              "إذا كان الاحتياج واضحاً ومحدداً، نقدر نمشي مباشرة في عرض سعر ونطاق واضح للتنفيذ.",
+            title: "عرض مباشر",
+            description: "إذا كان الاحتياج واضحاً ومحدداً من البداية.",
           },
           {
-            title: "خطوة تعريف نطاق",
-            description:
-              "إذا كان المشروع أوسع أو يحتاج ضبطاً قبل التنفيذ، نرتب الصورة أولاً بخطوة قصيرة ومباشرة.",
-          },
-          {
-            title: "تنفيذ على مراحل",
-            description:
-              "أحياناً الأفضل نرتب أكثر نقطة تضغط على الشركة أولاً، ثم نوسّع بعدها إذا كان لذلك قيمة.",
-          },
-          {
-            title: "دعم بعد الإطلاق",
-            description:
-              "إذا احتاج الشغل تحسيناً أو ضبطاً بعد الإطلاق، نكمل عليه بالشكل اللي يخدم التشغيل فعلاً.",
+            title: "خطوة تنظيمية أولاً",
+            description: "إذا كان الموضوع أوسع أو يحتاج ترتيب قبل التنفيذ.",
           },
         ],
       },
       finalCta: {
-        title: "إذا الوضع قريب من شركتك، فالخطوة التالية نقاش أول واضح ومباشر.",
+        title: "إذا قريب لك هالنوع من المشاكل، فالخطوة الجاية تكون محادثة أولية قصيرة.",
         description:
-          "نراجع معك نقطة الضغط الحالية، ونوضح أقرب خدمة، ونحدد هل المشروع جاهز لعرض سعر أو يحتاج تعريف نطاق أولاً.",
-        supportingLine: "أمثلة عملية أولاً، وبعدها توصية واضحة ومباشرة.",
+          "نراجع معك الوضع، ونوضح أقرب خدمة، ونحدد هل الأنسب عرض مباشر أو خطوة تعريف قبل التنفيذ.",
+        supportingLine: "تقييم عملي أولاً، وبعده خطوة واضحة.",
       },
     },
     book: {

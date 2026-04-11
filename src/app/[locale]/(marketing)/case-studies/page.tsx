@@ -9,16 +9,8 @@ import { CaseStudyCard } from "@/components/marketing/case-study-card";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PageSection } from "@/components/marketing/section";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import {
-  BodyText,
-  CaptionText,
-  Eyebrow,
-  SectionTitle,
-} from "@/components/marketing/text";
-import { FadeIn } from "@/components/motion/fade-in";
-import { Badge } from "@/components/ui/badge";
+import { CaptionText } from "@/components/marketing/text";
 import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { isLocale } from "@/i18n/config";
 import { createCtaClickedEvent } from "@/lib/analytics-events";
 import { createPageMetadata } from "@/lib/metadata";
@@ -109,69 +101,17 @@ export default async function CaseStudiesPage({
       />
 
       <PageSection containerClassName="space-y-6">
-        <div className="surface-panel grid gap-6 px-6 py-7 sm:px-8 sm:py-8 lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] lg:items-start">
-          <div className="space-y-4">
-            <Eyebrow>{content.caseStudies.intro.eyebrow}</Eyebrow>
-            <SectionTitle className="max-w-3xl">
-              {content.caseStudies.intro.title}
-            </SectionTitle>
-            <BodyText className="max-w-2xl sm:text-[1.01rem]">
-              {content.caseStudies.intro.description}
-            </BodyText>
-          </div>
-
-          <div className="space-y-4">
-            <Badge variant="accent" className="w-fit">
-              {content.caseStudies.intro.asideEyebrow}
-            </Badge>
-            <div className="space-y-3">
-              <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
-                {content.caseStudies.intro.asideTitle}
-              </p>
-              <BodyText>{content.caseStudies.intro.asideDescription}</BodyText>
-            </div>
-            <div className="space-y-3">
-              {content.caseStudies.intro.asidePoints.map((point) => (
-                <div
-                  key={point}
-                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
-                >
-                  {point}
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="surface-panel px-6 py-7 sm:px-8 sm:py-8">
+          <SectionHeading
+            eyebrow={content.caseStudies.intro.eyebrow}
+            title={content.caseStudies.intro.title}
+            description={content.caseStudies.intro.description}
+            className="max-w-4xl"
+          />
         </div>
       </PageSection>
 
       <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
-        <SectionHeading
-          eyebrow={content.caseStudies.startingPoints.eyebrow}
-          title={content.caseStudies.startingPoints.title}
-          description={content.caseStudies.startingPoints.description}
-          className="max-w-4xl"
-        />
-
-        <div className="grid gap-5 lg:grid-cols-3">
-          {content.caseStudies.startingPoints.items.map((item, index) => (
-            <FadeIn key={item.title}>
-              <Card
-                tone={index === 1 ? "strong" : "default"}
-                className="h-full"
-              >
-                <CardHeader>
-                  <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <BodyText>{item.description}</BodyText>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection containerClassName="space-y-10">
         <SectionHeading
           eyebrow={content.caseStudies.catalog.eyebrow}
           title={content.caseStudies.catalog.title}
@@ -179,7 +119,7 @@ export default async function CaseStudiesPage({
           className="max-w-4xl"
         />
 
-        <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-2">
           {content.caseStudies.items.map((item) => (
             <CaseStudyCard
               key={item.title}
@@ -198,29 +138,38 @@ export default async function CaseStudiesPage({
         </div>
       </PageSection>
 
+      <PageSection containerClassName="space-y-6">
+        <div className="surface-panel px-6 py-7 sm:px-8 sm:py-8">
+          <SectionHeading
+            eyebrow={content.caseStudies.engagements.eyebrow}
+            title={content.caseStudies.engagements.title}
+            description={content.caseStudies.engagements.description}
+            className="max-w-4xl"
+          />
+        </div>
+      </PageSection>
+
       <PageSection containerClassName="space-y-10">
         <SectionHeading
-          eyebrow={content.caseStudies.engagements.eyebrow}
-          title={content.caseStudies.engagements.title}
-          description={content.caseStudies.engagements.description}
+          eyebrow={content.caseStudies.startingPoints.eyebrow}
+          title={content.caseStudies.startingPoints.title}
+          description={content.caseStudies.startingPoints.description}
           className="max-w-4xl"
         />
 
-        <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
-          {content.caseStudies.engagements.items.map((item, index) => (
-            <FadeIn key={item.title}>
-              <Card
-                tone={index === 1 ? "strong" : "default"}
-                className="h-full"
-              >
-                <CardHeader>
-                  <CardTitle className="text-[1.35rem]">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <BodyText>{item.description}</BodyText>
-                </CardContent>
-              </Card>
-            </FadeIn>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {content.caseStudies.startingPoints.items.map((item) => (
+            <div
+              key={item.title}
+              className="surface-muted h-full px-4 py-4"
+            >
+              <p className="text-sm font-semibold leading-6 text-foreground">
+                {item.title}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-page-muted">
+                {item.description}
+              </p>
+            </div>
           ))}
         </div>
       </PageSection>
@@ -228,13 +177,12 @@ export default async function CaseStudiesPage({
       <PageSection divider="top" containerClassName="space-y-6">
         <div className="surface-panel grid gap-8 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div className="space-y-4">
-            <Eyebrow>{content.caseStudies.finalCta.eyebrow}</Eyebrow>
-            <SectionTitle className="max-w-3xl">
-              {content.caseStudies.finalCta.title}
-            </SectionTitle>
-            <BodyText className="max-w-2xl sm:text-[1.02rem]">
-              {content.caseStudies.finalCta.description}
-            </BodyText>
+            <SectionHeading
+              eyebrow={content.caseStudies.finalCta.eyebrow}
+              title={content.caseStudies.finalCta.title}
+              description={content.caseStudies.finalCta.description}
+              className="max-w-3xl"
+            />
             <CaptionText>{content.caseStudies.finalCta.supportingLine}</CaptionText>
           </div>
 
