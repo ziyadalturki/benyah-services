@@ -25,6 +25,10 @@ type FaqItem = {
   answer: string;
 };
 
+function getLocalizedBrandName(locale: Locale) {
+  return locale === "ar" ? "بِنيّة" : siteConfig.name;
+}
+
 function getAbsoluteUrl(locale: Locale, pathname: string = "/") {
   return new URL(localizedPathname(locale, pathname), getSiteUrl()).toString();
 }
@@ -35,12 +39,12 @@ function getOrganizationId() {
   return url.toString();
 }
 
-export function createOrganizationJsonLd(description: string) {
+export function createOrganizationJsonLd(locale: Locale, description: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": getOrganizationId(),
-    name: siteConfig.name,
+    name: getLocalizedBrandName(locale),
     url: getSiteUrl(),
     description,
   };
@@ -56,7 +60,7 @@ export function createWebsiteJsonLd(
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${websiteUrl}#website`,
-    name: siteConfig.name,
+    name: getLocalizedBrandName(locale),
     url: websiteUrl,
     description,
     inLanguage: locale,
@@ -135,7 +139,7 @@ export function createServiceJsonLd({
     },
     brand: {
       "@type": "Brand",
-      name: siteConfig.name,
+      name: getLocalizedBrandName(locale),
     },
   };
 }

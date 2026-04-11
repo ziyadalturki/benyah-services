@@ -12,12 +12,12 @@ type SiteLogoProps = {
 
 const altTexts: Record<Locale, string> = {
   en: "Benyah logo",
-  ar: "شعار Benyah",
+  ar: "شعار بِنيّة",
 };
 
 const homeLabels: Record<Locale, string> = {
   en: "Benyah home",
-  ar: "الصفحة الرئيسية لـ Benyah",
+  ar: "الصفحة الرئيسية لـ بِنيّة",
 };
 
 const logoSizes = {

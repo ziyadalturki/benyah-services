@@ -28,7 +28,7 @@ export default async function MarketingLayout({
     <div className="flex min-h-screen flex-col">
       <JsonLd
         data={[
-          createOrganizationJsonLd(content.meta.description),
+          createOrganizationJsonLd(locale, content.meta.description),
           createWebsiteJsonLd(locale, content.meta.description),
         ]}
       />

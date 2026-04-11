@@ -21,6 +21,10 @@ function normalizeMetadataText(value: string) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function getLocalizedBrandName(locale: Locale) {
+  return locale === "ar" ? "بِنيّة" : siteConfig.name;
+}
+
 export function getLocalizedAbsoluteUrl(locale: Locale, pathname: string = "/") {
   return new URL(localizedPathname(locale, pathname), getSiteUrl());
 }
@@ -45,10 +49,16 @@ export function createPageMetadata({
   const alternateLocales = locales
     .filter((value) => value !== locale)
     .map((value) => getOpenGraphLocale(value));
+  const localizedBrandName = getLocalizedBrandName(locale);
+  const metadataTitle =
+    locale === "ar"
+      ? { absolute: `${normalizedTitle} | ${localizedBrandName}` }
+      : normalizedTitle;
 
   return {
-    title: normalizedTitle,
+    title: metadataTitle,
     description: normalizedDescription,
+    applicationName: localizedBrandName,
     category: "business",
     alternates: {
       canonical: canonicalUrl.toString(),
@@ -70,14 +80,17 @@ export function createPageMetadata({
       url: canonicalUrl,
       title: normalizedTitle,
       description: normalizedDescription,
-      siteName: siteConfig.name,
+      siteName: localizedBrandName,
       locale: getOpenGraphLocale(locale),
       alternateLocale: alternateLocales,
       images: socialImage
         ? [
             {
               url: socialImage,
-              alt: `${siteConfig.name} social preview`,
+              alt:
+                locale === "ar"
+                  ? `معاينة اجتماعية لـ ${localizedBrandName}`
+                  : `${localizedBrandName} social preview`,
             },
           ]
         : undefined,
