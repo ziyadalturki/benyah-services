@@ -5,6 +5,7 @@ import { sitePaths } from "@/config/site";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
+import { FounderSpotlight } from "@/components/marketing/founder-spotlight";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PageSection } from "@/components/marketing/section";
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -61,6 +62,7 @@ export default async function AboutPage({
   }
 
   const content = getMarketingContent(locale);
+  const founderContent = content.about.founder!;
 
   return (
     <>
@@ -145,6 +147,19 @@ export default async function AboutPage({
       </PageSection>
 
       <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
+        <FounderSpotlight
+          eyebrow={founderContent.eyebrow}
+          title={founderContent.title}
+          description={founderContent.description}
+          secondaryDescription={founderContent.secondaryDescription}
+          points={founderContent.points}
+          imageAlt={founderContent.imageAlt}
+          name={founderContent.name}
+          role={founderContent.role}
+        />
+      </PageSection>
+
+      <PageSection containerClassName="space-y-10">
         <SectionHeading
           eyebrow={content.about.beliefs.eyebrow}
           title={content.about.beliefs.title}

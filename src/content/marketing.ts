@@ -60,6 +60,18 @@ type HomeProcessStep = {
   description: string;
 };
 
+type FounderSpotlightContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  points: string[];
+  imageAlt: string;
+  ctaLabel?: string;
+  name?: string;
+  role?: string;
+  secondaryDescription?: string;
+};
+
 type HomeSection = {
   eyebrow: string;
   title: string;
@@ -106,6 +118,9 @@ type MarketingContent = {
     highlightsLabel: string;
     highlights: string[];
     coreServices?: HomeSection;
+    founder?: FounderSpotlightContent & {
+      ctaLabel: string;
+    };
     labels: {
       serviceBadge: string;
       serviceAction: string;
@@ -194,6 +209,11 @@ type MarketingContent = {
     supportingLine: string;
     highlightsLabel: string;
     highlights: string[];
+    founder?: FounderSpotlightContent & {
+      name: string;
+      role: string;
+      secondaryDescription: string;
+    };
     overview: HomeSection & {
       body: string;
       asideEyebrow: string;
@@ -338,6 +358,7 @@ type MarketingContent = {
       };
     };
     trust: HomeSection & {
+      reassurance?: HomeSection;
       bestFitTitle: string;
       bestFitDescription: string;
       bestFitPoints: string[];

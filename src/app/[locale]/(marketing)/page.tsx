@@ -6,6 +6,7 @@ import { TrackedLink } from "@/components/analytics/tracked-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
 import { CaseStudyCard } from "@/components/marketing/case-study-card";
+import { FounderSpotlight } from "@/components/marketing/founder-spotlight";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PageSection } from "@/components/marketing/section";
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -64,7 +65,8 @@ export default async function HomePage({
   }
 
   const content = getMarketingContent(locale);
-  const featuredCaseStudies = content.caseStudies.items.slice(0, 2);
+  const founderContent = content.home.founder!;
+  const featuredCaseStudies = content.caseStudies.items.slice(0, 3);
   const coreServicesSection = content.home.coreServices ?? {
     eyebrow: content.services.catalog.eyebrow,
     title: content.services.catalog.title,
@@ -189,40 +191,6 @@ export default async function HomePage({
         </div>
       </PageSection>
 
-      <PageSection containerClassName="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start">
-        <SectionHeading
-          eyebrow={content.home.process.eyebrow}
-          title={content.home.process.title}
-          description={content.home.process.description}
-        />
-
-        <div className="grid gap-5 md:grid-cols-2">
-          {content.home.process.steps.map((step, index) => (
-            <FadeIn key={step.step}>
-              <Card
-                tone={index === 1 ? "strong" : "default"}
-                className="h-full"
-              >
-                <CardHeader className="space-y-4">
-                  <Badge
-                    variant={index === 1 ? "accent" : "secondary"}
-                    className="w-fit"
-                  >
-                    {step.step}
-                  </Badge>
-                  <CardTitle className="text-[1.45rem]">
-                    {step.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <BodyText>{step.description}</BodyText>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-      </PageSection>
-
       <PageSection tone="subtle" containerClassName="space-y-10">
         <SectionHeading
           eyebrow={content.home.why.eyebrow}
@@ -252,25 +220,73 @@ export default async function HomePage({
       </PageSection>
 
       <PageSection containerClassName="space-y-10">
-        <SectionHeading
-          eyebrow={content.home.trust.eyebrow}
-          title={content.home.trust.title}
-          description={content.home.trust.description}
-          className="max-w-4xl"
+        <FounderSpotlight
+          eyebrow={founderContent.eyebrow}
+          title={founderContent.title}
+          description={founderContent.description}
+          points={founderContent.points}
+          imageAlt={founderContent.imageAlt}
+          ctaHref={localizedPathname(locale, sitePaths.about)}
+          ctaLabel={founderContent.ctaLabel}
         />
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          {content.home.trust.items.map((item, index) => (
-            <FadeIn key={item.title}>
+        <div className="space-y-8 border-t border-page-line/65 pt-8 sm:pt-10">
+          <SectionHeading
+            eyebrow={content.home.trust.eyebrow}
+            title={content.home.trust.title}
+            description={content.home.trust.description}
+            className="max-w-4xl"
+          />
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {content.home.trust.items.map((item, index) => (
+              <FadeIn key={item.title}>
+                <Card
+                  tone={index === 1 ? "strong" : "default"}
+                  className="h-full"
+                >
+                  <CardHeader>
+                    <CardTitle className="text-[1.35rem]">
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <BodyText>{item.description}</BodyText>
+                  </CardContent>
+                </Card>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </PageSection>
+
+      <PageSection containerClassName="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start">
+        <SectionHeading
+          eyebrow={content.home.process.eyebrow}
+          title={content.home.process.title}
+          description={content.home.process.description}
+        />
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {content.home.process.steps.map((step, index) => (
+            <FadeIn key={step.step}>
               <Card
                 tone={index === 1 ? "strong" : "default"}
                 className="h-full"
               >
-                <CardHeader>
-                  <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
+                <CardHeader className="space-y-4">
+                  <Badge
+                    variant={index === 1 ? "accent" : "secondary"}
+                    className="w-fit"
+                  >
+                    {step.step}
+                  </Badge>
+                  <CardTitle className="text-[1.45rem]">
+                    {step.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <BodyText>{item.description}</BodyText>
+                  <BodyText>{step.description}</BodyText>
                 </CardContent>
               </Card>
             </FadeIn>
@@ -308,15 +324,18 @@ export default async function HomePage({
           </Card>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {featuredCaseStudies.map((item) => (
             <CaseStudyCard
               key={item.title}
               title={item.title}
               sector={item.sector}
               summary={item.summary}
+              summaryLabel={content.caseStudies.labels.summaryLabel}
+              addressed={item.addressed}
+              addressedLabel={content.caseStudies.labels.addressedLabel}
               outcome={item.outcome}
-              outcomeLabel={content.home.labels.caseStudyOutcome}
+              outcomeLabel={content.caseStudies.labels.outcomeLabel}
             />
           ))}
         </div>

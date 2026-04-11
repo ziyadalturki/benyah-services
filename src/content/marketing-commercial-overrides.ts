@@ -143,37 +143,55 @@ export const marketingContentOverrides = {
           },
         ],
       },
+      founder: {
+        eyebrow: "Founder-led",
+        title: "Built with an operations mindset, not generic agency thinking.",
+        description:
+          "Benyah is led by Ziyad Alturki, bringing an engineering and operations background to websites, workflows, internal systems, and service-heavy business processes. The focus is not just on how things look, but on how they work in day-to-day operations.",
+        points: [
+          "Engineering and operations perspective",
+          "Structured scoping before implementation",
+          "Bilingual delivery for Saudi-facing businesses",
+        ],
+        ctaLabel: "Learn more about Benyah",
+        imageAlt: "Ziyad Alturki, founder of Benyah",
+      },
       trust: {
         eyebrow: "How Benyah Works",
-        title: "Clear recommendations, practical scope, and support where it adds value.",
+        title: "A clear working method matters as much as the build itself.",
         description:
-          "The work stays commercially clear from the start so the business understands what is being solved, how the project begins, and what support can look like after launch.",
+          "The work stays grounded in scope, day-to-day usefulness, and practical follow-through from the start.",
         items: [
           {
-            title: "The right starting point before the bigger build",
+            title: "Clear scope before build",
             description:
-              "Benyah recommends the service and project shape that fits the pressure point instead of inflating the scope too early.",
+              "The project starts with a focused scope the business can understand, approve, and work from confidently.",
           },
           {
-            title: "Proposal or scoping step depending on clarity",
+            title: "Systems designed for daily use",
             description:
-              "Projects that are already clear may move straight to proposal. More involved work may begin with structured scoping first.",
+              "The output should support the way the team actually works, not create extra admin around it.",
           },
           {
-            title: "Support and optimization after launch",
+            title: "Practical implementation, not abstract advice",
             description:
-              "Once the core work is live, Benyah can continue refining the parts that benefit from ongoing attention.",
+              "The goal is live, useful improvement inside the business, not a layer of theory that never becomes operational.",
+          },
+          {
+            title: "Support and refinement after launch when needed",
+            description:
+              "Where the live work benefits from follow-up, Benyah can continue after launch in a focused way.",
           },
         ],
       },
       selectedWork: {
-        title: "A practical look at the kinds of problems Benyah is usually hired to clean up.",
+        title: "A practical look at the kinds of business problems Benyah is usually hired to sort out.",
         description:
-          "The examples focus on the business situation, what was tightened, and what kind of improvement the work supported.",
-        noteEyebrow: "How Examples Are Shared",
-        noteTitle: "Clear enough to judge fit, even when the client stays private",
+          "These examples are shared as real project patterns: what the business was dealing with, what Benyah put in place, and what improved after the work.",
+        noteEyebrow: "Example Project Patterns",
+        noteTitle: "Anonymous where needed, concrete where it matters",
         noteDescription:
-          "Where a named public story is not appropriate, the example still shows the business situation, the cleanup, and the typical shape of the work.",
+          "Not every project is published by client name. The business situation, the cleanup, and the shape of the work can still be shown clearly enough to judge fit.",
       },
       finalCta: {
         eyebrow: "Next Step",
@@ -952,30 +970,47 @@ export const marketingContentOverrides = {
           "Support the work after launch where it genuinely needs it",
         ],
       },
-      beliefs: {
-        title: "What Benyah believes about this kind of work.",
+      founder: {
+        eyebrow: "Founder",
+        title: "Benyah is founder-led and built around practical operational thinking.",
+        name: "Ziyad Alturki",
+        role: "Founder, Benyah",
         description:
-          "The strongest projects are usually the ones that stay commercially clear, tightly scoped, and rooted in the way the business actually operates.",
+          "Benyah is led by Ziyad Alturki, bringing an engineering and operations mindset to websites, workflows, internal systems, and service-heavy business processes.",
+        secondaryDescription:
+          "The business was built around a simple idea: many companies do not just need better tools. They need clearer structure, stronger workflows, and systems that support day-to-day execution.",
+        points: [
+          "Engineering and operations perspective",
+          "Structured scoping before implementation",
+          "Practical systems built for real business use",
+        ],
+        imageAlt: "Ziyad Alturki, founder of Benyah",
+      },
+      beliefs: {
+        eyebrow: "How Benyah Works",
+        title: "Delivery stays clear, practical, and built around real use.",
+        description:
+          "The method matters as much as the output. Benyah keeps the work grounded in scope, daily usefulness, and sensible follow-through.",
         items: [
           {
-            title: "Real business pressure matters more than feature lists",
+            title: "Clear scope before build",
             description:
-              "The starting point is the cost of the problem in the business, not a technology wishlist.",
+              "The work starts with a clear shared view of what is being solved and what the project includes.",
           },
           {
-            title: "Connected thinking beats isolated fixes",
+            title: "Systems designed for daily use",
             description:
-              "A website, a booking flow, and an internal workflow should not behave like unrelated projects if they affect the same business outcome.",
+              "The output should fit the real pace of the team, not add unnecessary process around it.",
           },
           {
-            title: "Clear scope is part of premium delivery",
+            title: "Practical implementation, not abstract advice",
             description:
-              "The work should feel deliberate, understandable, and commercially sensible from the first conversation onward.",
+              "The goal is useful live improvement inside the business, not recommendations that stay theoretical.",
           },
           {
-            title: "Support after launch should be available, not assumed",
+            title: "Support and refinement after launch when needed",
             description:
-              "Some projects need a clean handover. Others benefit from ongoing refinement. Benyah supports whichever is the better fit.",
+              "Some projects need a clean handover. Others benefit from follow-up support once the core work is live.",
           },
         ],
       },
@@ -1126,40 +1161,40 @@ export const marketingContentOverrides = {
       },
       items: [
         {
-          title: "Lead-generation website reset",
-          sector: "Websites & Lead Capture",
+          title: "Appointment flow cleanup",
+          sector: "Appointment-based business",
           summary:
-            "A service business had a credible offer, but the website still felt generic, unclear, and too weak to support better enquiries.",
+            "Missed calls, inconsistent intake, and follow-up were creating dropped opportunities and too much manual coordination around appointments.",
           addressed:
-            "The commercial story, page structure, trust cues, and enquiry path were rebuilt around how the business actually needed to sell itself.",
+            "A booking workflow with reminders, intake logic, and AI-assisted call handling was put in place around the first customer touchpoints.",
           outcome:
-            "The business was presented more clearly, trust was easier to establish, and the enquiry journey became more focused.",
+            "The customer journey became cleaner, follow-up became easier to manage, and less time was lost to manual coordination.",
           scope:
-            "Usually a focused website repositioning and rebuild, sometimes connected to booking or contact workflow improvements.",
+            "Usually a focused booking and call-flow project, sometimes connected to the website or enquiry path as well.",
         },
         {
-          title: "Booking and call-flow cleanup",
-          sector: "Booking & AI Call Workflows",
+          title: "Internal visibility reset",
+          sector: "Operational small business",
           summary:
-            "Appointments, reminders, intake, and missed calls were creating too much manual work and too many dropped opportunities.",
+            "Tracking was spreadsheet-heavy, follow-up was uneven, and the team did not have a clear daily view of status across the work.",
           addressed:
-            "The booking path, confirmations, reminders, intake flow, and call-handling logic were tightened so the handoff became more reliable.",
+            "An internal dashboard and structured status workflow were introduced around the records, ownership, and follow-up the team needed.",
           outcome:
-            "The booking experience became smoother, missed opportunities dropped, and the internal follow-up load became easier to manage.",
+            "Follow-up became easier, ownership became clearer, and reporting became more useful for day-to-day management.",
           scope:
-            "Usually a focused workflow implementation, sometimes paired with operational scoping when several services or teams are involved.",
+            "Usually a focused internal tool or dashboard build, sometimes preceded by a short scoping step.",
         },
         {
-          title: "Recurring admin automation pass",
-          sector: "Business Process Automation",
+          title: "Maintenance workflow cleanup",
+          sector: "Facility or maintenance-heavy operation",
           summary:
-            "Important internal steps were still being driven by reminders, manual updates, copied data, and people checking everything by hand.",
+            "Service requests, contractor coordination, and maintenance records were difficult to follow cleanly from start to finish.",
           addressed:
-            "The repeated workflow was mapped, the manual bottlenecks were removed, and the right automation layer was introduced around the existing tools.",
+            "A structured maintenance workflow and clearer operational records were put in place around requests, status, and service activity.",
           outcome:
-            "Routine work moved more reliably, the team spent less time chasing, and the process became easier to oversee.",
+            "Day-to-day control improved and the team gained a more reliable view of service activity.",
           scope:
-            "Usually a contained automation project around a clear repeated workflow, with room to expand later if useful.",
+            "Usually a phased operations setup, starting with the highest-friction area first.",
         },
         {
           title: "Internal operations portal",
@@ -1399,6 +1434,12 @@ export const marketingContentOverrides = {
         title: "Benyah reviews the enquiry and recommends the right commercial path.",
         description:
           "Some projects are clear enough for a direct proposal. Others need a short scoping step first. The aim is to give you a clear next move, not extra noise.",
+        reassurance: {
+          eyebrow: "Directly With Benyah",
+          title: "You will be speaking with Benyah directly.",
+          description:
+            "If the need is already clear, the next step may be a proposal. If the project is broader, Benyah may recommend a structured scoping step before implementation.",
+        },
         bestFitTitle: "Good enquiries to send here",
         bestFitDescription:
           "This form works best when you know what the business needs, or when the problem is already obvious even if the exact solution still needs shaping.",
@@ -1569,37 +1610,55 @@ export const marketingContentOverrides = {
           },
         ],
       },
-      trust: {
-        eyebrow: "طريقة الشغل",
-        title: "توصية واضحة، نطاق محسوب، ودعم بعد الإطلاق إذا كان له قيمة.",
+      founder: {
+        eyebrow: "بقيادة المؤسس",
+        title: "Benyah تنطلق من فهم تشغيلي عملي، مو منطق وكالة تقليدية.",
         description:
-          "نحرص إن المشروع من البداية يكون واضح: وش المشكلة، وش أقرب خدمة، وهل البداية عرض سعر مباشر أو خطوة تعريف نطاق.",
+          "يقود Benyah زياد التركي، بخلفية هندسية وتشغيلية تنعكس على طريقة التفكير في الموقع، والمسارات اليومية، والأنظمة الداخلية، وطبيعة الشغل الخدمي. التركيز عندنا مو على الشكل فقط، بل على كيف يمشي الشغل فعلياً كل يوم.",
+        points: [
+          "خلفية هندسية وتشغيلية",
+          "تحديد واضح قبل التنفيذ",
+          "تنفيذ ثنائي اللغة مناسب للسوق السعودي",
+        ],
+        ctaLabel: "تعرّف أكثر على Benyah",
+        imageAlt: "زياد التركي، مؤسس Benyah",
+      },
+      trust: {
+        eyebrow: "كيف نشتغل",
+        title: "طريقة العمل عندنا واضحة من البداية، مو اجتهاد أثناء الطريق.",
+        description:
+          "الأهم عندنا مو بس النتيجة النهائية، بل إن التنفيذ نفسه يكون مفهوم، عملي، ومناسب للشغل اليومي داخل الشركة.",
         items: [
           {
-            title: "نبدأ من المشكلة الفعلية",
+            title: "نحدد النطاق بشكل واضح قبل التنفيذ",
             description:
-              "مو كل احتياج يحتاج مشروع كبير. نحدد أولاً وين فعلاً يضيع الوقت أو الفرص أو الوضوح داخل الشركة.",
+              "نبدأ بصورة واضحة عن المطلوب حتى يكون المشروع مفهوم للطرفين من البداية.",
           },
           {
-            title: "عرض سعر أو تعريف نطاق حسب الحالة",
+            title: "نبني الشيء بطريقة تناسب الاستخدام اليومي",
             description:
-              "إذا الشغل واضح نختصر الطريق. وإذا يحتاج ترتيب أكثر قبل التنفيذ نقولها بشكل مباشر من البداية.",
+              "النتيجة لازم تخفف الشغل على الفريق، مو تضيف عليهم طبقة جديدة من التعقيد.",
           },
           {
-            title: "دعم وتحسين بعد الإطلاق",
+            title: "التركيز على التنفيذ العملي، مو الكلام النظري",
             description:
-              "إذا المشروع يستفيد من متابعة بعد الإطلاق، نكمل عليه بالشكل اللي يخدم الشركة فعلاً من غير تعقيد زيادة.",
+              "المهم عندنا إن الشغل يشتغل فعلياً داخل الشركة، مو مجرد أفكار مرتبة على الورق.",
+          },
+          {
+            title: "فيه دعم وتحسين بعد الإطلاق عند الحاجة",
+            description:
+              "إذا العمل احتاج متابعة أو ضبط بعد الإطلاق، نكمل عليه بالشكل اللي يخدم الشركة فعلاً.",
           },
         ],
       },
       selectedWork: {
-        title: "أمثلة على نوع المشاكل اللي نُطلب عادة علشان نرتبها.",
+        title: "أمثلة مختصرة على نوع الشغل اللي نُطلب عادة علشانه.",
         description:
-          "المهم هنا مو اسم العميل. المهم نوع المشكلة، وش انضبط، ووش تغيّر بعد الشغل.",
-        noteEyebrow: "طريقة العرض",
-        noteTitle: "نعرض الأمثلة بشكل واضح حتى لو ما قدرنا ننشرها باسم العميل",
+          "المهم هنا هو نوع المشكلة، وش انعمل فيها، ووش اللي تغير بعدها في الشغل اليومي.",
+        noteEyebrow: "أمثلة واقعية",
+        noteTitle: "حتى إذا كان الاسم غير معلن، نقدر نوضح شكل الشغل بشكل كافٍ",
         noteDescription:
-          "إذا ما كان مناسب ننشر القصة كاملة باسمها، نظهر على الأقل بداية الوضع، ونوع الشغل، وشكل التحسن اللي كان مطلوباً.",
+          "مو كل مشروع مناسب ينذكر باسم العميل، لكن نوع الوضع، وطريقة المعالجة، والنتيجة المتوقعة تظل واضحة بما يكفي.",
       },
       finalCta: {
         eyebrow: "الخطوة التالية",
@@ -2376,30 +2435,47 @@ export const marketingContentOverrides = {
           "نكمل بعد الإطلاق إذا كان الشغل يحتاج ذلك",
         ],
       },
-      beliefs: {
-        title: "وش نؤمن فيه في هذا النوع من الشغل.",
+      founder: {
+        eyebrow: "المؤسس",
+        title: "Benyah يقودها المؤسس بنظرة عملية جاية من الواقع التشغيلي.",
+        name: "زياد التركي",
+        role: "المؤسس، Benyah",
         description:
-          "أفضل المشاريع عندنا هي اللي تكون واضحة تجارياً، ومحددة بشكل جيد، ومبنية على طريقة الشغل الفعلية داخل الشركة.",
+          "يقود Benyah زياد التركي، بخلفية هندسية وتشغيلية تنعكس على طريقة التعامل مع المواقع، ومسارات العمل، والأنظمة الداخلية، وطبيعة الشغل الخدمي.",
+        secondaryDescription:
+          "Benyah بدأت من فكرة بسيطة: كثير من الشركات ما تحتاج أدوات أكثر بقدر ما تحتاج وضوحاً في الشغل، ومسارات أرتب، وأنظمة تخدم التنفيذ اليومي فعلاً.",
+        points: [
+          "خلفية هندسية وتشغيلية",
+          "تحديد واضح قبل التنفيذ",
+          "أنظمة عملية قابلة للاستخدام اليومي",
+        ],
+        imageAlt: "زياد التركي، مؤسس Benyah",
+      },
+      beliefs: {
+        eyebrow: "كيف نشتغل",
+        title: "التنفيذ عندنا واضح وعملي من البداية.",
+        description:
+          "طريقة الشغل نفسها مهمة عندنا مثل النتيجة النهائية. نحرص إنها تكون مفهومة، عملية، ومناسبة للشغل اليومي داخل الشركة.",
         items: [
           {
-            title: "المشكلة التجارية أهم من قائمة الخصائص",
+            title: "نحدد النطاق بشكل واضح قبل التنفيذ",
             description:
-              "نبدأ من أثر المشكلة داخل الشركة، مو من قائمة أدوات أو مميزات شكلها جميل على الورق.",
+              "نبدأ بصورة واضحة عن المطلوب حتى يكون المشروع مفهوم وموزون من البداية.",
           },
           {
-            title: "الترابط أهم من الحلول المعزولة",
+            title: "نبني على طريقة الشغل الفعلية",
             description:
-              "الموقع، والحجز، والمتابعة، والنظام الداخلي ما المفروض يتعامل معها كأنها أشياء منفصلة إذا كانت كلها تؤثر على نفس النتيجة.",
+              "النتيجة المفروض تخدم الفريق في الشغل اليومي، مو تزيد عليهم طبقة جديدة من التعقيد.",
           },
           {
-            title: "وضوح النطاق جزء من الشغل الاحترافي",
+            title: "التركيز على التنفيذ العملي",
             description:
-              "المشروع لازم يكون مفهوماً وموزوناً من أول نقاش، مو متضخماً أو غامضاً.",
+              "الأهم عندنا إن الشغل يشتغل فعلاً داخل الشركة، مو يظل أفكاراً مرتبة من غير أثر واضح.",
           },
           {
-            title: "الدعم بعد الإطلاق متاح عند الحاجة",
+            title: "الدعم والتحسين متاحان بعد الإطلاق عند الحاجة",
             description:
-              "بعض المشاريع يكفيها إطلاق مرتب. وبعضها يستفيد من متابعة وتحسين. المهم نختار اللي يخدم الشركة فعلاً.",
+              "بعض المشاريع يكفيها إطلاق مرتب، وبعضها يحتاج متابعة خفيفة بعده. نكمل بالشكل اللي يخدم الشركة فعلاً.",
           },
         ],
       },
@@ -2550,40 +2626,40 @@ export const marketingContentOverrides = {
       },
       items: [
         {
-          title: "إعادة ترتيب موقع يجيب تواصلاً أفضل",
-          sector: "المواقع واستقبال الاستفسارات",
+          title: "ترتيب مسار الحجز من أول اتصال",
+          sector: "نشاط يعتمد على المواعيد",
           summary:
-            "شركة خدمية عرضها جيد، لكن موقعها كان عاماً وضعيفاً وما يدعم استفسارات مناسبة بما يكفي.",
+            "المكالمات الفائتة، وخطوات الإدخال غير الواضحة، والمتابعة المتقطعة كانت تضيع فرصاً وتزيد الجهد اليدوي على الفريق.",
           addressed:
-            "تمت إعادة ترتيب الرسالة، والصفحات، وعناصر الثقة، وطريق التواصل حول طريقة البيع الفعلية للشركة.",
+            "انعمل مسار حجز أوضح مع تذكيرات، وخطوات إدخال مرتبة، وتعامل أذكى مع المكالمات في البداية.",
           outcome:
-            "صار عرض الشركة أوضح، والثقة أسهل، ومسار الاستفسار أكثر تركيزاً.",
+            "صار الطريق على العميل أوضح، والمتابعة أسهل، والجهد اليدوي أقل في تنسيق المواعيد.",
           scope:
-            "غالباً مشروع موقع واضح ومركز، وأحياناً يرتبط أيضاً بالحجز أو النماذج أو المتابعة.",
+            "غالباً مشروع مركز على الحجز والمكالمات، وأحياناً يرتبط أيضاً بالموقع أو مسار الاستفسارات.",
         },
         {
-          title: "ترتيب الحجز والمكالمات والمتابعة",
-          sector: "الحجوزات والمكالمات الذكية",
+          title: "ترتيب المتابعة الداخلية بشكل أوضح",
+          sector: "شركة تشغيلية صغيرة",
           summary:
-            "المواعيد، والتذكيرات، وخطوات الإدخال، والمكالمات الفائتة كانت ترفع الجهد اليدوي وتفوت فرصاً على الشركة.",
+            "المتابعة كانت ماشية على جداول كثيرة، والصورة اليومية ما كانت واضحة، وكل شيء يعتمد على اجتهاد الفريق في الملاحقة.",
           addressed:
-            "تم ترتيب مسار الحجز، والتأكيدات، والتذكيرات، وخطوات الإدخال، وطريقة التعامل مع المكالمات والتسليم بعدها.",
+            "انعملت لوحة متابعة داخلية ومسار حالة أوضح يربط المسؤوليات، والمتابعة، ووضع كل مهمة بشكل أسهل.",
           outcome:
-            "صار المسار أهدأ، والفرص الضائعة أقل، والمتابعة الداخلية أوضح.",
+            "صارت المتابعة أسهل، والمسؤولية أوضح، والتقارير اليومية أنفع للإدارة.",
           scope:
-            "غالباً مشروع تدفق عمل مركز، وأحياناً يبدأ بخطوة تعريف نطاق إذا كان يمس أكثر من نظام أو فريق.",
+            "غالباً أداة داخلية أو لوحة متابعة مركزة، وأحياناً تسبقها خطوة تعريف قصيرة إذا كان الاستخدام أوسع.",
         },
         {
-          title: "تخفيف الأعمال المتكررة في التشغيل اليومي",
-          sector: "أتمتة الإجراءات اليومية",
+          title: "تنظيم أعمال الصيانة والمتابعة الميدانية",
+          sector: "تشغيل يعتمد على الصيانة أو المرافق",
           summary:
-            "خطوات مهمة داخل الشركة كانت ما زالت تمشي بالتذكير، ونسخ البيانات، والمتابعة اليدوية بين الأدوات.",
+            "طلبات الخدمة، وتنسيق المتعهدين، وسجلات الصيانة كانت متعبة في المتابعة وما تعطي صورة واضحة من البداية للنهاية.",
           addressed:
-            "تم رسم المسار المتكرر، وإزالة أكبر نقاط الاختناق اليدوي، وبناء طبقة أتمتة مناسبة على الأدوات الحالية.",
+            "انعمل مسار صيانة أوضح مع سجلات تشغيلية مرتبة، وحالات متابعة مفهومة، وتنظيم أفضل لحركة الطلبات والخدمة.",
           outcome:
-            "صار الشغل المتكرر أهدأ، والمطاردة اليدوية أقل، وتسليم المراحل أوضح.",
+            "صار التحكم اليومي أقوى، ومتابعة الخدمة أوضح، والرؤية على الشغل الميداني أهدأ وأكثر موثوقية.",
           scope:
-            "غالباً مشروع أتمتة مركز حول مسار واحد واضح، مع إمكانية التوسع بعده إذا كان له قيمة.",
+            "غالباً يبدأ من أكثر جزء مربك في التشغيل، ثم يتوسع بعد ضبطه إذا كان لذلك قيمة.",
         },
         {
           title: "بوابة أو لوحة متابعة للشغل الداخلي",
@@ -2838,6 +2914,12 @@ export const marketingContentOverrides = {
         title: "نراجع الاستفسار ونحدد معك المسار التجاري الأنسب.",
         description:
           "بعض المشاريع تكون واضحة كفاية لعرض سعر مباشر. وبعضها تحتاج خطوة تعريف نطاق أولاً. المهم إن الرد يعطيك وضوحاً، مو تفاصيل أكثر من اللازم.",
+        reassurance: {
+          eyebrow: "بشكل مباشر",
+          title: "تواصلك هنا يكون مباشرة مع Benyah.",
+          description:
+            "إذا كانت الحاجة واضحة، غالباً ننتقل إلى عرض مناسب مباشرة. وإذا كان الموضوع أوسع، نوصي أولاً بخطوة ترتيب واضحة قبل التنفيذ.",
+        },
         bestFitTitle: "أفضل نوع استفسارات لهذا النموذج",
         bestFitDescription:
           "هذا النموذج أنسب لما تكون الخدمة واضحة، أو لما تكون المشكلة واضحة حتى لو الحل النهائي ما بعد تحدد بالكامل.",

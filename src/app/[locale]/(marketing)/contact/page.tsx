@@ -67,6 +67,7 @@ export default async function ContactPage({
   }
 
   const content = getMarketingContent(locale);
+  const trustReassurance = content.contact.trust.reassurance!;
   const serviceQuery = Array.isArray(resolvedSearchParams?.service)
     ? resolvedSearchParams?.service[0]
     : resolvedSearchParams?.service;
@@ -215,7 +216,7 @@ export default async function ContactPage({
         </div>
       </PageSection>
 
-      <PageSection containerClassName="grid gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start">
+      <PageSection containerClassName="space-y-8">
         <SectionHeading
           eyebrow={content.contact.trust.eyebrow}
           title={content.contact.trust.title}
@@ -223,40 +224,54 @@ export default async function ContactPage({
           className="max-w-4xl"
         />
 
-        <div className="grid gap-5 lg:grid-cols-2">
-          <div className="surface-panel px-6 py-7 sm:px-7">
-            <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
-              {content.contact.trust.bestFitTitle}
-            </p>
-            <BodyText className="mt-4">{content.contact.trust.bestFitDescription}</BodyText>
-            <div className="mt-5 space-y-3">
-              {content.contact.trust.bestFitPoints.map((point) => (
-                <div
-                  key={point}
-                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
-                >
-                  {point}
-                </div>
-              ))}
+        <div className="space-y-5">
+          <FadeIn>
+            <div className="surface-panel grid gap-4 px-6 py-6 sm:px-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
+              <div className="space-y-3">
+                <Eyebrow>{trustReassurance.eyebrow}</Eyebrow>
+                <p className="text-[1.16rem] font-semibold leading-tight text-foreground">
+                  {trustReassurance.title}
+                </p>
+              </div>
+              <BodyText>{trustReassurance.description}</BodyText>
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="surface-panel px-6 py-7 sm:px-7">
-            <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
-              {content.contact.trust.nextStepsTitle}
-            </p>
-            <BodyText className="mt-4">
-              {content.contact.trust.nextStepsDescription}
-            </BodyText>
-            <div className="mt-4 space-y-3">
-              {content.contact.trust.points.map((point) => (
-                <div
-                  key={point}
-                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
-                >
-                  {point}
-                </div>
-              ))}
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="surface-panel px-6 py-7 sm:px-7">
+              <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
+                {content.contact.trust.bestFitTitle}
+              </p>
+              <BodyText className="mt-4">{content.contact.trust.bestFitDescription}</BodyText>
+              <div className="mt-5 space-y-3">
+                {content.contact.trust.bestFitPoints.map((point) => (
+                  <div
+                    key={point}
+                    className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
+                  >
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="surface-panel px-6 py-7 sm:px-7">
+              <p className="text-[1.08rem] font-semibold leading-tight text-foreground">
+                {content.contact.trust.nextStepsTitle}
+              </p>
+              <BodyText className="mt-4">
+                {content.contact.trust.nextStepsDescription}
+              </BodyText>
+              <div className="mt-4 space-y-3">
+                {content.contact.trust.points.map((point) => (
+                  <div
+                    key={point}
+                    className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
+                  >
+                    {point}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
