@@ -228,6 +228,7 @@ export default async function HomePage({
           imageAlt={founderContent.imageAlt}
           ctaHref={localizedPathname(locale, sitePaths.about)}
           ctaLabel={founderContent.ctaLabel}
+          variant="home"
         />
 
         <div className="space-y-8 border-t border-page-line/65 pt-8 sm:pt-10">

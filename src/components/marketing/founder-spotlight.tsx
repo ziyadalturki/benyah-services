@@ -17,7 +17,23 @@ type FounderSpotlightProps = {
   ctaHref?: string;
   ctaLabel?: string;
   imageSrc?: string;
+  variant?: "home" | "about";
 };
+
+const founderSpotlightVariants = {
+  home: {
+    gridClassName: "gap-6 lg:grid-cols-[minmax(14.5rem,17.5rem)_minmax(0,1fr)] lg:items-start",
+    frameClassName: "mx-auto w-full max-w-[15rem] sm:max-w-[16.5rem] lg:max-w-[17.5rem]",
+    panelClassName: "p-2.5 sm:p-3",
+    imageSizes: "(max-width: 640px) 15rem, (max-width: 1024px) 16.5rem, 17.5rem",
+  },
+  about: {
+    gridClassName: "gap-7 lg:grid-cols-[minmax(15rem,19.5rem)_minmax(0,1fr)] lg:items-start",
+    frameClassName: "mx-auto w-full max-w-[16rem] sm:max-w-[18rem] lg:max-w-[19.5rem]",
+    panelClassName: "p-3 sm:p-3.5",
+    imageSizes: "(max-width: 640px) 16rem, (max-width: 1024px) 18rem, 19.5rem",
+  },
+} as const;
 
 export function FounderSpotlight({
   eyebrow,
@@ -31,21 +47,32 @@ export function FounderSpotlight({
   ctaHref,
   ctaLabel,
   imageSrc = "/brand/founder-ziyad.png",
+  variant = "home",
 }: FounderSpotlightProps) {
+  const variantStyles = founderSpotlightVariants[variant];
+
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-center">
-      <div className="surface-panel p-3 sm:p-4">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          width={1353}
-          height={983}
-          sizes="(max-width: 1024px) 100vw, 38vw"
-          className="h-auto w-full rounded-[calc(var(--radius-panel)-0.45rem)]"
-        />
+    <div className={cn("grid", variantStyles.gridClassName)}>
+      <div
+        className={cn(
+          "surface-panel overflow-hidden",
+          variantStyles.frameClassName,
+          variantStyles.panelClassName,
+        )}
+      >
+        <div className="overflow-hidden rounded-[calc(var(--radius-panel)-0.45rem)]">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={1353}
+            height={983}
+            sizes={variantStyles.imageSizes}
+            className="aspect-[5/4] h-full w-full object-cover object-[center_14%]"
+          />
+        </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-5 sm:space-y-6">
         {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
         {(name || role) ? (
           <div className="space-y-1.5">

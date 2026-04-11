@@ -156,6 +156,7 @@ export default async function AboutPage({
           imageAlt={founderContent.imageAlt}
           name={founderContent.name}
           role={founderContent.role}
+          variant="about"
         />
       </PageSection>
 
