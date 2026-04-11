@@ -67,6 +67,7 @@ type LeadFormProps = {
   formId?: string;
   endpoint?: string;
   showHeader?: boolean;
+  submitLabelOverride?: string;
   defaultValues?: Partial<{
     name: string;
     companyName: string;
@@ -85,6 +86,7 @@ export function LeadForm({
   formId = "lead-form",
   endpoint = "/api/contact",
   showHeader = true,
+  submitLabelOverride,
   defaultValues,
 }: LeadFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -410,7 +412,9 @@ export function LeadForm({
               disabled={pending}
               aria-disabled={pending}
             >
-              {pending ? `${content.submitLabel}...` : content.submitLabel}
+              {pending
+                ? `${submitLabelOverride ?? content.submitLabel}...`
+                : submitLabelOverride ?? content.submitLabel}
             </Button>
           </div>
         </form>

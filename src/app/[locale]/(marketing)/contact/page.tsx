@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { serviceSlugs, sitePaths } from "@/config/site";
+import { publicServiceSlugs, sitePaths } from "@/config/site";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
 import { LeadForm } from "@/components/marketing/lead-form";
@@ -97,7 +97,7 @@ export default async function ContactPage({
     : content.contact.heroPrimaryAction;
 
   const serviceOptions = [
-    ...serviceSlugs.map((slug) => ({
+    ...publicServiceSlugs.map((slug) => ({
       value: slug,
       label: content.services.items[slug].title,
     })),
@@ -205,6 +205,11 @@ export default async function ContactPage({
             serviceOptions={serviceOptions}
             locale={locale}
             showHeader={false}
+            submitLabelOverride={
+              isDiscoveryCallIntent
+                ? content.contact.callIntent.primaryAction
+                : undefined
+            }
             defaultValues={initialValues}
           />
         </div>

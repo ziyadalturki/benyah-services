@@ -22,9 +22,20 @@ export const serviceSlugs = [
 
 export type ServiceSlug = (typeof serviceSlugs)[number];
 
+export const publicServiceSlugs = [
+  "websites",
+  "booking-workflows",
+  "automation",
+  "business-systems",
+  "facility-maintenance-management",
+] as const satisfies readonly ServiceSlug[];
+
+export type PublicServiceSlug = (typeof publicServiceSlugs)[number];
+
 export const legacyServiceSlugRedirects = {
   "cafm-cmms": "facility-maintenance-management",
-  "n8n-automations": "workflow-systems-automation",
+  "n8n-automations": "automation",
+  "workflow-systems-automation": "automation",
   "saas-tools": "business-systems",
 } as const satisfies Record<string, ServiceSlug>;
 
@@ -42,7 +53,7 @@ export const sitePaths = {
 export const siteConfig = {
   name: "Benyah",
   description:
-    "Premium websites, automation, booking and AI call workflows, facility and maintenance management solutions, workflow automation, and internal systems for small businesses.",
+    "Premium websites, booking and AI call workflows, business process automation, internal systems, dashboards, portals, and facility and maintenance management solutions for growing businesses.",
   defaultLocale,
   locales,
 } as const;
@@ -68,7 +79,7 @@ export const staticMarketingPaths = [
 export function getMarketingPaths() {
   return [
     ...staticMarketingPaths,
-    ...serviceSlugs.map((slug) => `${sitePaths.services}/${slug}`),
+    ...publicServiceSlugs.map((slug) => `${sitePaths.services}/${slug}`),
   ];
 }
 

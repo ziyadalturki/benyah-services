@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import {
+  publicServiceSlugs,
   serviceIcons,
-  serviceSlugs,
   sitePaths,
   type ServiceSlug,
 } from "@/config/site";
@@ -154,7 +154,7 @@ export default async function ServicesPage({
         />
 
         <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-          {serviceSlugs.map((slug) => {
+          {publicServiceSlugs.map((slug) => {
             const service = content.services.items[slug];
 
             return (
@@ -200,25 +200,27 @@ export default async function ServicesPage({
                 <CardContent className="space-y-5">
                   <BodyText>{item.description}</BodyText>
 
-                  <div className="space-y-3">
-                    <p className="ui-label text-page-muted">
-                      {content.services.labels.groupServicesLabel}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {item.services.map((slug) => (
-                        <Link
-                          key={`${item.title}-${slug}`}
-                          href={getServiceDetailHref(locale, slug)}
-                          className={cn(
-                            buttonVariants({ variant: "secondary", size: "sm" }),
-                            "h-9 rounded-[var(--radius-pill)] px-3",
-                          )}
-                        >
-                          {content.services.items[slug].title}
-                        </Link>
-                      ))}
+                  {item.services?.length ? (
+                    <div className="space-y-3">
+                      <p className="ui-label text-page-muted">
+                        {content.services.labels.groupServicesLabel}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {item.services.map((slug) => (
+                          <Link
+                            key={`${item.title}-${slug}`}
+                            href={getServiceDetailHref(locale, slug)}
+                            className={cn(
+                              buttonVariants({ variant: "secondary", size: "sm" }),
+                              "h-9 rounded-[var(--radius-pill)] px-3",
+                            )}
+                          >
+                            {content.services.items[slug].title}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  ) : null}
                 </CardContent>
               </Card>
             </FadeIn>

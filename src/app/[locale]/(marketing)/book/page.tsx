@@ -58,15 +58,6 @@ export default async function BookingPage({
     locale,
     `${sitePaths.contact}?preferredNextStep=discovery-call`,
   )}#lead-form`;
-  const heroTitle = isBookingEnabled
-    ? content.book.title
-    : content.book.booking.shell.fallbackTitle;
-  const heroDescription = isBookingEnabled
-    ? content.book.description
-    : content.book.booking.shell.fallbackDescription;
-  const heroSupportingLine = isBookingEnabled
-    ? content.book.supportingLine
-    : content.book.booking.shell.fallbackNote;
 
   return (
     <>
@@ -86,8 +77,8 @@ export default async function BookingPage({
       />
       <PageHero
         eyebrow={content.book.eyebrow}
-        title={heroTitle}
-        description={heroDescription}
+        title={content.book.title}
+        description={content.book.description}
         primaryAction={{
           href: isBookingEnabled ? "#booking-area" : fallbackContactHref,
           label: isBookingEnabled
@@ -102,62 +93,58 @@ export default async function BookingPage({
             ? content.book.heroSecondaryAction
             : content.ctas.secondary,
         }}
-        supportingLine={heroSupportingLine}
+        supportingLine={content.book.supportingLine}
         supportingLabel={content.book.highlightsLabel}
         supportingPoints={content.book.highlights}
       />
 
-      {isBookingEnabled ? (
-        <>
-          <PageSection containerClassName="space-y-10">
-            <SectionHeading
-              eyebrow={content.book.covers.eyebrow}
-              title={content.book.covers.title}
-              description={content.book.covers.description}
-              className="max-w-4xl"
-            />
+      <PageSection containerClassName="space-y-10">
+        <SectionHeading
+          eyebrow={content.book.covers.eyebrow}
+          title={content.book.covers.title}
+          description={content.book.covers.description}
+          className="max-w-4xl"
+        />
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {content.book.covers.items.map((item, index) => (
-                <FadeIn key={item.title}>
-                  <Card tone={index === 1 ? "strong" : "subtle"} className="h-full">
-                    <CardHeader>
-                      <CardTitle className="text-[1.35rem]">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <BodyText>{item.description}</BodyText>
-                    </CardContent>
-                  </Card>
-                </FadeIn>
-              ))}
-            </div>
-          </PageSection>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {content.book.covers.items.map((item, index) => (
+            <FadeIn key={item.title}>
+              <Card tone={index === 1 ? "strong" : "subtle"} className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-[1.35rem]">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <BodyText>{item.description}</BodyText>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          ))}
+        </div>
+      </PageSection>
 
-          <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
-            <SectionHeading
-              eyebrow={content.book.audience.eyebrow}
-              title={content.book.audience.title}
-              description={content.book.audience.description}
-              className="max-w-4xl"
-            />
+      <PageSection tone="subtle" divider="both" containerClassName="space-y-10">
+        <SectionHeading
+          eyebrow={content.book.audience.eyebrow}
+          title={content.book.audience.title}
+          description={content.book.audience.description}
+          className="max-w-4xl"
+        />
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {content.book.audience.items.map((item, index) => (
-                <FadeIn key={item.title}>
-                  <Card tone={index === 1 ? "strong" : "default"} className="h-full">
-                    <CardHeader>
-                      <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <BodyText>{item.description}</BodyText>
-                    </CardContent>
-                  </Card>
-                </FadeIn>
-              ))}
-            </div>
-          </PageSection>
-        </>
-      ) : null}
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {content.book.audience.items.map((item, index) => (
+            <FadeIn key={item.title}>
+              <Card tone={index === 1 ? "strong" : "default"} className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-[1.4rem]">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <BodyText>{item.description}</BodyText>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          ))}
+        </div>
+      </PageSection>
 
       <PageSection
         id="booking-area"

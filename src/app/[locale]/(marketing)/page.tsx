@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { serviceIcons, serviceSlugs, sitePaths } from "@/config/site";
+import { publicServiceSlugs, serviceIcons, sitePaths } from "@/config/site";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getMarketingContent } from "@/content/marketing";
@@ -65,6 +65,11 @@ export default async function HomePage({
 
   const content = getMarketingContent(locale);
   const featuredCaseStudies = content.caseStudies.items.slice(0, 2);
+  const coreServicesSection = content.home.coreServices ?? {
+    eyebrow: content.services.catalog.eyebrow,
+    title: content.services.catalog.title,
+    description: content.services.catalog.description,
+  };
 
   return (
     <>
@@ -155,14 +160,14 @@ export default async function HomePage({
 
       <PageSection tone="subtle" divider="both" containerClassName="space-y-12">
         <SectionHeading
-          eyebrow={content.services.eyebrow}
-          title={content.services.title}
-          description={content.services.description}
+          eyebrow={coreServicesSection.eyebrow}
+          title={coreServicesSection.title}
+          description={coreServicesSection.description}
           className="max-w-4xl"
         />
 
         <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-          {serviceSlugs.map((slug) => {
+          {publicServiceSlugs.map((slug) => {
             const service = content.services.items[slug];
 
             return (
@@ -170,11 +175,14 @@ export default async function HomePage({
                 key={slug}
                 title={service.title}
                 summary={service.summary}
+                bestWhen={service.bestWhen}
                 bullets={service.capabilities}
                 href={localizedPathname(locale, `/services/${slug}`)}
                 icon={serviceIcons[slug]}
                 badgeLabel={content.home.labels.serviceBadge}
                 actionLabel={content.home.labels.serviceAction}
+                bulletsLabel={content.services.labels.serviceSupportLabel}
+                bestWhenLabel={content.services.labels.bestWhenLabel}
               />
             );
           })}
@@ -285,8 +293,17 @@ export default async function HomePage({
                 {content.home.selectedWork.noteTitle}
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-5">
               <BodyText>{content.home.selectedWork.noteDescription}</BodyText>
+              <Link
+                href={localizedPathname(locale, sitePaths.caseStudies)}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "w-full sm:w-auto",
+                )}
+              >
+                {content.navigation[3].label}
+              </Link>
             </CardContent>
           </Card>
         </div>

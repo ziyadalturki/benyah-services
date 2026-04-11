@@ -1,5 +1,6 @@
 import type { ServiceSlug } from "@/config/site";
 import type { Locale } from "@/i18n/config";
+import { marketingContentOverrides } from "@/content/marketing-commercial-overrides";
 
 type NavigationItem = {
   href: string;
@@ -19,6 +20,10 @@ type ServiceContent = {
   processTitle?: string;
   processDescription?: string;
   processSteps?: HomeProcessStep[];
+  afterLaunch?: {
+    description: string;
+    points: string[];
+  };
   finalCta?: {
     title: string;
     description: string;
@@ -64,7 +69,7 @@ type HomeSection = {
 type ServicesCapabilityGroup = {
   title: string;
   description: string;
-  services: ServiceSlug[];
+  services?: ServiceSlug[];
 };
 
 type OptionItem = {
@@ -100,6 +105,7 @@ type MarketingContent = {
     supportingLine: string;
     highlightsLabel: string;
     highlights: string[];
+    coreServices?: HomeSection;
     labels: {
       serviceBadge: string;
       serviceAction: string;
@@ -168,6 +174,7 @@ type MarketingContent = {
       process: HomeSection & {
         steps: HomeProcessStep[];
       };
+      afterLaunch?: HomeSection;
       faq: HomeSection;
       finalCta: HomeSection & {
         supportingLine: string;
@@ -3420,6 +3427,54 @@ export const marketingContent: Record<Locale, MarketingContent> = {
   },
 };
 
+type DeepPartial<T> = T extends Array<infer U>
+  ? Array<DeepPartial<U>>
+  : T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function mergeDeep<T>(base: T, override?: DeepPartial<T>): T {
+  if (override === undefined) {
+    return base;
+  }
+
+  if (base === undefined || base === null) {
+    return override as T;
+  }
+
+  if (Array.isArray(base) || Array.isArray(override)) {
+    return override as T;
+  }
+
+  if (isPlainObject(base) && isPlainObject(override)) {
+    const result: Record<string, unknown> = { ...base };
+
+    for (const [key, overrideValue] of Object.entries(override)) {
+      if (overrideValue === undefined) {
+        continue;
+      }
+
+      result[key] = mergeDeep(
+        (base as Record<string, unknown>)[key],
+        overrideValue as DeepPartial<unknown>,
+      );
+    }
+
+    return result as T;
+  }
+
+  return override as T;
+}
+
+const resolvedMarketingContent = {
+  en: mergeDeep(marketingContent.en, marketingContentOverrides.en),
+  ar: mergeDeep(marketingContent.ar, marketingContentOverrides.ar),
+} satisfies Record<Locale, MarketingContent>;
+
 export function getMarketingContent(locale: Locale) {
-  return marketingContent[locale];
+  return resolvedMarketingContent[locale];
 }

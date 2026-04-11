@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 
 import {
   isServiceSlug,
+  publicServiceSlugs,
   serviceIcons,
-  serviceSlugs,
   sitePaths,
 } from "@/config/site";
 import { TrackedLink } from "@/components/analytics/tracked-link";
@@ -37,7 +37,7 @@ import { cn } from "@/lib/utils";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return serviceSlugs.map((slug) => ({ slug }));
+  return publicServiceSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -319,6 +319,30 @@ export default async function ServiceDetailPage({
           ))}
         </div>
       </PageSection>
+
+      {service.afterLaunch && detail.afterLaunch ? (
+        <PageSection tone="subtle" containerClassName="grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start">
+          <SectionHeading
+            eyebrow={detail.afterLaunch.eyebrow}
+            title={detail.afterLaunch.title}
+            description={service.afterLaunch.description}
+            className="max-w-4xl"
+          />
+
+          <aside className="surface-panel h-full px-6 py-7 sm:px-7">
+            <div className="space-y-3">
+              {service.afterLaunch.points.map((point) => (
+                <div
+                  key={point}
+                  className="surface-muted px-4 py-3.5 text-sm leading-7 text-page-muted"
+                >
+                  {point}
+                </div>
+              ))}
+            </div>
+          </aside>
+        </PageSection>
+      ) : null}
 
       <PageSection tone="subtle" divider="top" containerClassName="space-y-10">
         <SectionHeading
