@@ -146,6 +146,7 @@ type MarketingContent = {
       noteEyebrow: string;
       noteTitle: string;
       noteDescription: string;
+      actionLabel?: string;
     };
     finalCta: HomeSection & {
       supportingLine: string;
@@ -299,6 +300,10 @@ type MarketingContent = {
         fallbackSecondaryAction?: string;
         fallbackNote: string;
       };
+    };
+    quote?: {
+      body: string;
+      attribution: string;
     };
     reassurance: HomeSection & {
       points: string[];

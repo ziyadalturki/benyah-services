@@ -165,6 +165,21 @@ export default async function BookingPage({
         />
       </PageSection>
 
+      {content.book.quote ? (
+        <PageSection containerClassName="space-y-6">
+          <div className="surface-panel px-6 py-7 sm:px-8 sm:py-8">
+            <blockquote className="space-y-4">
+              <p className="text-[1.14rem] leading-8 text-foreground sm:text-[1.2rem]">
+                {content.book.quote.body}
+              </p>
+              <p className="ui-label text-page-muted">
+                {content.book.quote.attribution}
+              </p>
+            </blockquote>
+          </div>
+        </PageSection>
+      ) : null}
+
       <PageSection
         tone={isBookingEnabled ? "subtle" : "default"}
         divider={isBookingEnabled ? "top" : "none"}

@@ -319,7 +319,7 @@ export default async function HomePage({
                   "w-full sm:w-auto",
                 )}
               >
-                {content.navigation[3].label}
+                {content.home.selectedWork.actionLabel ?? content.navigation[3].label}
               </Link>
             </CardContent>
           </Card>
